@@ -13,4 +13,5 @@ LCRendezVous::~LCRendezVous()
 		delete t;
 		t=s;
 	}
+//test	
 }
