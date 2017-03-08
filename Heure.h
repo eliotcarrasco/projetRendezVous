@@ -8,7 +8,6 @@ class Heure
 	private:
 		int d_heure;
 		int d_minute;
-		string denomination;
 };
 
 #endif
