@@ -1,6 +1,8 @@
 #ifndef HEURE_H
 #define HEURE_H
 
+
+
 class Heure
 {
 	public:
