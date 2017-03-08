@@ -6,9 +6,9 @@ class Date
 	public:
 		Date(int jour, int mois, int annee);
 	private:
-		int jour;
-		int mois;
-		int annee;
+		int d_jour;
+		int d_mois;
+		int d_annee;
 };
 
 #endif
