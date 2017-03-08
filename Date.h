@@ -4,7 +4,19 @@
 class Date
 {
 	public:
+		Date();
 		Date(int jour, int mois, int annee);
+		// getters
+		int jour() const;
+		int mois() const;
+		int annee() const;
+		// setters
+		void setJour(int j);
+		void setMois(int m);
+		void setAnnee(int a);
+		
+		bool valide() const;
+
 	private:
 		int d_jour;
 		int d_mois;
