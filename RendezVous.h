@@ -11,10 +11,10 @@ class RendezVous
 	public:
 		RendezVous();
 	private:
-		string nomRdV;
-		Date d;
-		Heure heureDeb;
-		Heure heureFin;
+		string d_nomRdv;
+		Date d_date;
+		Heure d_heureDeb;
+		Heure d_heureFin;
 		
 		
 };
