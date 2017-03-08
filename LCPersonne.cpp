@@ -15,6 +15,10 @@ LCPersonne::~LCPersonne()
 	}
 }
 
+/**
+	Ajoute une nouvelle personne dans la liste
+	@param pers - la personne a ajouter
+*/
 void LCPersonne::Inserer(Personne pers)
 {
 	ChainonPersonne* nouv;
@@ -40,6 +44,10 @@ void LCPersonne::Inserer(Personne pers)
 	}
 }
 
+/**
+	Enlever une personne 
+	@param pers - la personne a supprimer
+*/
 void LCPersonne::Supprimer(Personne pers)
 {
 	if(t == 0) {}
