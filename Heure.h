@@ -6,8 +6,8 @@ class Heure
 	public:
 		Heure(int heure, int minute);
 	private:
-		int heure;
-		int minute;
+		int d_heure;
+		int d_minute;
 };
 
 #endif

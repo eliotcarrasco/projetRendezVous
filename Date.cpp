@@ -1,4 +1,4 @@
 #include "Date.h"
 
-Date::Date(int jour, int mois, int annee): jour{jour}, mois{mois}, annee{annee}
+Date::Date(int jour, int mois, int annee): d_jour{jour}, d_mois{mois}, d_annee{annee}
 {}
