@@ -2,7 +2,7 @@
 
 using namespace std;
 
-LCPersonne::LCPersonne():t{nullptr}
+LCPersonne::LCPersonne():t{0}
 {}
 
 LCPersonne::~LCPersonne()
@@ -11,7 +11,7 @@ LCPersonne::~LCPersonne()
 	{
 		ChainonPersonne* s = t->suiv;
 		delete t;
-		t=s;
+		t = s;
 	}
 }
 
@@ -54,7 +54,40 @@ void LCPersonne::Supprimer(Personne pers)
 	else if(t->p == pers)
 	{
 		ChainonPersonne* tmp = t;
-		t=t->suiv;
+		t = t->suiv;
 		delete tmp;
+		cout << "La personne a ete supprimee avec succes";
+	}
+	else
+	{
+		ChainonPersonne* c1 = t, c2 = t->suiv;
+		while(c2 != 0 && c2 != pers)
+		{
+			c1 = c2;
+			c2 = c2->suiv;
+		}
+		if(c2 == 0)
+			cout << "La personne n'existe pas";
+		else
+		{
+			c1->suiv = c2->suiv;
+			delete c2;
+			cout << "La personne a ete supprimee avec succes";
+		}
+	}
+}
+
+/**
+	Modifier le numéro et/ou le mail à partir du nom et du prenom
+	@param nom - Le nom de la personne a modifier
+	@param prenom - Le prenom de la personne a modifer
+*/
+void LCPersonne::Modifier(string nom, string prenom)
+{
+	if(t == 0)
+		cout << "Cette personne n'existe pas";
+	else
+	{
+		
 	}
 }

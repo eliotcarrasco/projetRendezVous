@@ -2,6 +2,8 @@
 #define LCPERSONNE_H
 #include "Personne.h"
 
+#include <string>
+
 struct ChainonPersonne
 {
 	Personne p;
@@ -15,6 +17,7 @@ class LCPersonne
 		~LCPersonne();
 		void Inserer(Personne p);
 		void Supprimer(Personne p);
+		void Modifier(string nom, string prenom);
 		
 	private:
 		ChainonPersonne* t;		

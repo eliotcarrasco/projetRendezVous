@@ -11,6 +11,7 @@ class Personne
 	public:
 		Personne(string nom, string prenom, string telephone, string mail);
 		string Nom();
+		stirng Prenom();
 		bool aRendezVous(Date d, Heure h);
 	private:
 		string d_nom;
