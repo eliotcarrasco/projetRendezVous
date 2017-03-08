@@ -3,10 +3,10 @@
 #include "Heure.h"
 #include <string>
 
-Personne::Personne(string nom, string prenom, string telephone, string mail) : nom{nom}, 
-																			   prenom{prenom}, 
-																			   telephone{telephone}, 
-																			   mail{mail}
+Personne::Personne(string nom, string prenom, string telephone, string mail) : d_nom{nom}, 
+																			   d_prenom{prenom}, 
+																			   d_telephone{telephone}, 
+																			   d_mail{mail}
 {}
 
 bool Personne::aRendezVous(Date d, Heure h)
@@ -15,5 +15,6 @@ bool Personne::aRendezVous(Date d, Heure h)
 
 string Personne::Nom()
 {
-	return nom;
+	return d_nom;
 }
+
