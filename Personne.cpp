@@ -36,3 +36,12 @@ string Personne::Prenom()
 	return d_prenom;
 }
 
+void Personne::setNoTelephone(string telephone)
+{
+     d_telephone = telephone;
+}
+
+void Personne::setNoMail(string mail)
+{
+     d_mail = mail;
+}

@@ -1,5 +1,6 @@
 #ifndef PERSONNE_H
 #define PERSONNE_H
+	
 #include <string>
 #include "Date.h"
 #include "Heure.h"
@@ -11,9 +12,11 @@ class Personne
 	public:
 		Personne(string nom, string prenom, string telephone, string mail);
 		string Nom();
-		stirng Prenom();
+		string Prenom();
 		bool aRendezVous(Date d, Heure h);
-		void ModificationPersonne();
+		void setNoTelephone(string telephone);
+		void setNoMail(string mail);
+		
 	private:
 		string d_nom;
 		string d_prenom;

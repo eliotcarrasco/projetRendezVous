@@ -1,5 +1,6 @@
 #include "LCPersonne.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -94,7 +95,37 @@ void LCPersonne::Modifier(string nom, string prenom)
 			tmp = tmp->suiv;
 		if(tmp.Nom() == nom && tmp.Prenom() == Prenom)
 		{
-			cout << "Voulez-vous modifier le "
+			char c;
+			
+			do	
+			{		
+				cout << "Voulez-vous modifier le numero de telephone de la personne? (O/N) : ";
+				cin >> c;
+			}
+			while(c != 'O' || c != 'o' || c != 'N' || c != 'n');
+			if(c == 'O' || c == 'o')
+			{
+				string tel;
+				cout << "Veuillez inscrire le nouveau numero : ";
+				cin >> tel;
+				setNoTelephone(tel);
+			}
+			
+			do
+			{			
+				cout << "Voulez-vous modifier le mail de la personne? (O/N) : ";
+				cin >> c;
+			}
+			while(c != 'O' || c != 'o' || c != 'N' || c != 'n');
+			if(c == 'O' || c == 'o')
+			{
+				string mail;
+				cout << "Veuillez inscrire le nouveau mail : ";
+				cin >> mail;
+				setNoMail(mail);
+			}
 		}
+		else
+			cout << "Cette personne n'existe pas";
 	}
 }
