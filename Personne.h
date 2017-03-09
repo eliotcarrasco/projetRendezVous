@@ -13,6 +13,7 @@ class Personne
 		string Nom();
 		stirng Prenom();
 		bool aRendezVous(Date d, Heure h);
+		void ModificationPersonne();
 	private:
 		string d_nom;
 		string d_prenom;

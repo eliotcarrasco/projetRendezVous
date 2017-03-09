@@ -1,4 +1,5 @@
 #include "LCPersonne.h"
+#include <iostream>
 
 using namespace std;
 
@@ -88,6 +89,12 @@ void LCPersonne::Modifier(string nom, string prenom)
 		cout << "Cette personne n'existe pas";
 	else
 	{
-		
+		ChianonPersonne* tmp = t;
+		while(tmp.Nom() != nom && tmp.Prenom() != prenom && tmp->suiv != 0)
+			tmp = tmp->suiv;
+		if(tmp.Nom() == nom && tmp.Prenom() == Prenom)
+		{
+			cout << "Voulez-vous modifier le "
+		}
 	}
 }
