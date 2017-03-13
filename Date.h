@@ -5,7 +5,7 @@ class Date
 {
 	public:
 		Date(int jour, int mois, int annee);
-        Date (Date& date);
+        Date(const Date& date);
     
 		// getters
 		int jour() const;

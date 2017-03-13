@@ -15,9 +15,9 @@ class RendezVous
     
         // getters
         string nom() const;
-        Date& date();
-        Heure& heureDeb();
-        Heure& heureFin();
+        Date date() const;
+        Heure heureDeb() const;
+        Heure heureFin() const;
         LCPersonne listeParticipants() const;
     
         //setters

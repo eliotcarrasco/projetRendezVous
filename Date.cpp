@@ -15,7 +15,7 @@ Date::Date(int jour, int mois, int annee): d_jour{jour}, d_mois{mois}, d_annee{a
 	Constructeur par recopie
 	@param date - une instance de l'objet date
  */
-Date::Date(Date& date): d_jour{date.jour()}, d_mois{date.mois()}, d_annee{date.annee()}
+Date::Date(const Date& date): d_jour{date.jour()}, d_mois{date.mois()}, d_annee{date.annee()}
 {}
 
 /**

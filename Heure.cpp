@@ -13,7 +13,7 @@ Heure::Heure(int heures, int minutes): d_heures{heures}, d_minutes{minutes}
 	Constructeur par recopie
 	@param heure - un instance d'objet heure
  */
-Heure::Heure(Heure& heure): d_heures{heure.heures()}, d_minutes{heure.minutes()}
+Heure::Heure(const Heure& heure): d_heures{heure.heures()}, d_minutes{heure.minutes()}
 {}
 
 

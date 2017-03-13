@@ -32,7 +32,7 @@ string RendezVous::nom() const
  Renvoie la date du rdv
  @return date du rdv
  */
-Date& RendezVous::date()
+Date RendezVous::date() const
 {
     return d_date;
 }
@@ -41,7 +41,7 @@ Date& RendezVous::date()
  Renvoie l'heure de debut du rdv
  @return heure de debut du rdv
  */
-Heure& RendezVous::heureDeb()
+Heure RendezVous::heureDeb() const
 {
     return d_heureDeb;
 }
@@ -50,7 +50,7 @@ Heure& RendezVous::heureDeb()
  Renvoie l'heure de fin du rdv
  @return heure de fin du rdv
  */
-Heure& RendezVous::heureFin()
+Heure RendezVous::heureFin() const
 {
     return d_heureFin;
 }
