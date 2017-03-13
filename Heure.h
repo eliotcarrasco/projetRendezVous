@@ -5,6 +5,7 @@ class Heure
 {
 	public:
 		Heure(int heures, int minutes);
+        Heure(Heure& heure);
     
         // getters
         int heures() const;

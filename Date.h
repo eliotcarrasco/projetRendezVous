@@ -5,6 +5,8 @@ class Date
 {
 	public:
 		Date(int jour, int mois, int annee);
+        Date (Date& date);
+    
 		// getters
 		int jour() const;
 		int mois() const;

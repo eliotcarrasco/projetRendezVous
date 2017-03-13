@@ -3,8 +3,11 @@
 
 class interface
 {
-	public:
-		interface();
+    public:
+        interface();
+        void menuPrincipal();
+        void menuPersonnes();
+        void menuRendezVous();
 };
 
 #endif
