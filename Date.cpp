@@ -43,7 +43,7 @@ int Date::annee() const
 */
 void Date::setJour(int j)
 {
-	if (j > 31 || j < 1)
+	if (j <= 31 && j >= 1)
 		d_jour = j;
 }
 
@@ -53,7 +53,7 @@ void Date::setJour(int j)
 */
 void Date::setMois(int m)
 {
-	if (m > 12 || m <1)
+	if (m <= 12 && m >= 1)
 		d_mois = m;
 }
 

@@ -28,7 +28,7 @@ void LCPersonne::Inserer(Personne pers)
 	nouv->suiv = 0;
 	if( t == 0 )
 		t = nouv;
-	else if( pers.Nom() < t->p.Nom() )
+	else if(pers.Nom() < t->p.Nom())
 	{
 		nouv->suiv = t;
 		t = nouv;
@@ -36,7 +36,7 @@ void LCPersonne::Inserer(Personne pers)
 	else
 	{
 		ChainonPersonne *c1 = t, *c2 = t->suiv;
-		while( c2 != 0 && pers.Nom() > c2->p.Nom() )
+		while( c2 != 0 && pers.Nom() > c2->p.Nom())
 		{
 			c1 = c2;
 			c2 = c2->suiv;
@@ -53,7 +53,7 @@ void LCPersonne::Inserer(Personne pers)
 void LCPersonne::Supprimer(Personne pers)
 {
 	if(t == 0) {}
-	else if( t->p.Nom() == pers.Nom() )
+	else if(t->p.Nom() == pers.Nom())
 	{
 		ChainonPersonne* tmp = t;
 		t = t->suiv;
@@ -62,8 +62,8 @@ void LCPersonne::Supprimer(Personne pers)
 	}
 	else
 	{
-		ChainonPersonne* c1 = t, *c2 = t->suiv;
-		while( c2 != 0 && c2->p.Nom() != pers.Nom() )
+		ChainonPersonne *c1 = t, *c2 = t->suiv;
+		while(c2 != 0 && c2->p.Nom() != pers.Nom())
 		{
 			c1 = c2;
 			c2 = c2->suiv;
@@ -80,7 +80,7 @@ void LCPersonne::Supprimer(Personne pers)
 }
 
 /**
-	Modifier le numéro et/ou le mail à partir du nom et du prenom
+	Modifier le numero et/ou le mail a partir du nom et du prenom
 	@param nom - Le nom de la personne a modifier
 	@param prenom - Le prenom de la personne a modifer
 */
@@ -108,7 +108,7 @@ void LCPersonne::Modifier(string nom, string prenom)
 				string tel;
 				cout << "Veuillez inscrire le nouveau numero : ";
 				cin >> tel;
-				setNoTelephone(tel);
+				tmp->p.setNoTelephone(tel);
 			}
 			
 			do
@@ -122,7 +122,7 @@ void LCPersonne::Modifier(string nom, string prenom)
 				string mail;
 				cout << "Veuillez inscrire le nouveau mail : ";
 				cin >> mail;
-				setNoMail(mail);
+				tmp->p.setMail(mail);
 			}
 		}
 		else

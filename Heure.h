@@ -1,15 +1,23 @@
 #ifndef HEURE_H
 #define HEURE_H
 
-
-
 class Heure
 {
 	public:
-		Heure(int heure, int minute);
+		Heure(int heures, int minutes);
+    
+        // getters
+        int heures() const;
+        int minutes() const;
+        // setters
+        void setHeures(int j);
+        void setMinutes(int m);
+    
+        bool valide() const;
+    
 	private:
-		int d_heure;
-		int d_minute;
+		int d_heures;
+		int d_minutes;
 };
 
 #endif

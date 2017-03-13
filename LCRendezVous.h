@@ -1,7 +1,11 @@
 #ifndef LCRENDEZVOUS_H
 #define LCRENDEZVOUS_H
 #include "RendezVous.h"
+#include "Date.h"
+#include "Heure.h"
 #include <string>
+
+using namespace std;
 
 struct ChainonRdV
 {
@@ -15,7 +19,8 @@ class LCRendezVous
 		LCRendezVous();
 		~LCRendezVous();
 		void InsererRendezVous(RendezVous r);
-		void SupprimerRendezVous(String nom);
+		void SupprimerRendezVous(string nom);
+        bool disponible(Date date, Heure heure);
 		
 	private:
 		ChainonRdV* t;

@@ -2,25 +2,26 @@
 #include "Date.h"
 #include "Heure.h"
 #include <string>
+#include "globals.h"
 
-Personne::Personne(string nom, string prenom, string telephone, string mail) : d_nom{nom}, 
-																			   d_prenom{prenom}, 
+Personne::Personne(string nom, string prenom, string telephone, string mail) : d_nom{convertToLower(nom)},
+																			   d_prenom{convertToLower(prenom)},
 																			   d_telephone{telephone}, 
 																			   d_mail{mail}
 {}
 
 /**
 	Verifie que la personne est disponible
-	@return Vrai si la personne a deja un rdv de prevu a la date d et l'heure h, Faux sinon
+	@return Vrai si la personne est deja a un rdv de prevu a la date d et pendant l'heure h, Faux sinon
 */
-bool Personne::aRendezVous(Date d, Heure h)
+bool Personne::aRendezVous(Date date, Heure heure)
 {
-	
+    return d_listeRdv.disponible(date, heure);
 }
 
 /**
 	Retourne le nom de la personne interroge
-	@retrun d_nom - le nom
+	@return d_nom - le nom
 */
 string Personne::Nom()
 {
@@ -29,7 +30,7 @@ string Personne::Nom()
 
 /**
 	Retourne le prenom de la personne interroge
-	@retrun d_prenom - le prenom
+	@return d_prenom - le prenom
 */
 string Personne::Prenom()
 {
@@ -41,7 +42,7 @@ void Personne::setNoTelephone(string telephone)
      d_telephone = telephone;
 }
 
-void Personne::setNoMail(string mail)
+void Personne::setMail(string mail)
 {
      d_mail = mail;
 }
