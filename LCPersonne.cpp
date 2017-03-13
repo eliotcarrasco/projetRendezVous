@@ -28,7 +28,7 @@ void LCPersonne::Inserer(Personne pers)
 	nouv->suiv = 0;
 	if( t == 0 )
 		t = nouv;
-	else if(pers < t->p)
+	else if( pers.Nom() < t->p.Nom() )
 	{
 		nouv->suiv = t;
 		t = nouv;
@@ -36,7 +36,7 @@ void LCPersonne::Inserer(Personne pers)
 	else
 	{
 		ChainonPersonne *c1 = t, *c2 = t->suiv;
-		while( c2 != 0 && pers > c2->p)
+		while( c2 != 0 && pers.Nom() > c2->p.Nom() )
 		{
 			c1 = c2;
 			c2 = c2->suiv;
@@ -53,7 +53,7 @@ void LCPersonne::Inserer(Personne pers)
 void LCPersonne::Supprimer(Personne pers)
 {
 	if(t == 0) {}
-	else if(t->p == pers)
+	else if( t->p.Nom() == pers.Nom() )
 	{
 		ChainonPersonne* tmp = t;
 		t = t->suiv;
@@ -62,8 +62,8 @@ void LCPersonne::Supprimer(Personne pers)
 	}
 	else
 	{
-		ChainonPersonne* c1 = t, c2 = t->suiv;
-		while(c2 != 0 && c2 != pers)
+		ChainonPersonne* c1 = t, *c2 = t->suiv;
+		while( c2 != 0 && c2->p.Nom() != pers.Nom() )
 		{
 			c1 = c2;
 			c2 = c2->suiv;
@@ -90,10 +90,10 @@ void LCPersonne::Modifier(string nom, string prenom)
 		cout << "Cette personne n'existe pas";
 	else
 	{
-		ChianonPersonne* tmp = t;
-		while(tmp.Nom() != nom && tmp.Prenom() != prenom && tmp->suiv != 0)
+		ChainonPersonne* tmp = t;
+		while(tmp->p.Nom() != nom && tmp->p.Prenom() != prenom && tmp->suiv != 0)
 			tmp = tmp->suiv;
-		if(tmp.Nom() == nom && tmp.Prenom() == Prenom)
+		if(tmp->p.Nom() == nom && tmp->p.Prenom() == prenom)
 		{
 			char c;
 			

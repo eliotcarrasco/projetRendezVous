@@ -12,9 +12,9 @@ class RendezVous
 		RendezVous();
 	private:
 		string d_nomRdv;
-		Date d_date;
+		/*Date d_date;
 		Heure d_heureDeb;
-		Heure d_heureFin;
+		Heure d_heureFin;*/
 		
 		
 };
