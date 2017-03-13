@@ -1,5 +1,8 @@
 #include "RendezVous.h"
+#include "Date.h"
+#include "Heure.h"
 #include "globals.h"
+
 
 /**
     Constructeur
@@ -8,11 +11,12 @@
     @param heureDeb - l'heure a laquelle commence le rdv
     @param heureFin - l'heure a laquelle termine le rdv
  */
-RendezVous::RendezVous(string nom, Date date, Heure heureDeb, Heure heureFin) : d_nom{convertToLower(nom)},
+RendezVous::RendezVous(string nom, Date& date, Heure& heureDeb, Heure& heureFin) : d_nom{convertToLower(nom)},
                                                                                 d_date{date},
                                                                                 d_heureDeb{heureDeb},
                                                                                 d_heureFin{heureFin}
 {}
+
 
 /**
     Renvoie le nom du rdv
@@ -23,32 +27,34 @@ string RendezVous::nom() const
     return d_nom;
 }
 
+
 /**
-     Renvoie la date du rdv
-     @return date du rdv
+ Renvoie la date du rdv
+ @return date du rdv
  */
-Date RendezVous::date() const
+Date& RendezVous::date()
 {
     return d_date;
 }
 
 /**
-     Renvoie l'heure de debut du rdv
-     @return heure de debut du rdv
+ Renvoie l'heure de debut du rdv
+ @return heure de debut du rdv
  */
-Heure RendezVous::heureDeb() const
+Heure& RendezVous::heureDeb()
 {
     return d_heureDeb;
 }
 
 /**
-     Renvoie l'heure de fin du rdv
-     @return heure de fin du rdv
+ Renvoie l'heure de fin du rdv
+ @return heure de fin du rdv
  */
-Heure RendezVous::heureFin() const
+Heure& RendezVous::heureFin()
 {
     return d_heureFin;
 }
+
 
 /**
      Renvoie la liste des personnes participants au rdv
@@ -118,10 +124,20 @@ void RendezVous::ajouterParticipant(Personne pers)
 
 /**
     Permet de supprimer un participant de la liste de participants d'un rdv
+    @param pers - une personne
  */
 void RendezVous::supprimerParticipant(Personne pers)
 {
     d_participants.Supprimer(pers);
 }
 
+/**
+    Compte le nombre de participants au rdv
+    @return le nombre de participants
+ */
 
+int RendezVous::nombreParticipants() const
+{
+    int nb = d_participants.Compter();
+    return nb;
+}

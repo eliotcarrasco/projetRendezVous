@@ -18,6 +18,7 @@ class LCPersonne
 		void Inserer(Personne p);
 		void Supprimer(Personne p);
 		void Modifier(string nom, string prenom);
+        int Compter() const;
 		
 	private:
 		ChainonPersonne* t;		

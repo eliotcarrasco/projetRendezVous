@@ -11,13 +11,13 @@ using namespace std;
 class RendezVous
 {
 	public:
-		RendezVous(string nom, Date date, Heure heureDeb, Heure heureFin);
+		RendezVous(string nom, Date& date, Heure& heureDeb, Heure& heureFin);
     
         // getters
         string nom() const;
-        Date date() const;
-        Heure heureDeb() const;
-        Heure heureFin() const;
+        Date& date();
+        Heure& heureDeb();
+        Heure& heureFin();
         LCPersonne listeParticipants() const;
     
         //setters
@@ -29,7 +29,7 @@ class RendezVous
     
         void ajouterParticipant(Personne pers);
         void supprimerParticipant(Personne pers);
-        //void nombreParticipants();
+        int nombreParticipants() const;
     
 
 	private:

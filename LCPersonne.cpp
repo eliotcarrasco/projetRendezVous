@@ -129,3 +129,35 @@ void LCPersonne::Modifier(string nom, string prenom)
 			cout << "Cette personne n'existe pas";
 	}
 }
+
+
+/**
+    Compte le nombre de chainon dans la liste
+    @return nb le nombre de chainon
+*/
+
+int LCPersonne::Compter() const
+{
+    int nb = 0;
+    
+    if (t==0) return nb;
+    else
+    {
+        ChainonPersonne* tmp = t;
+        
+        while (tmp != 0)
+        {
+            ++nb;
+            tmp = tmp->suiv;
+        }
+        
+        delete tmp;
+        
+        return nb;
+    }
+}
+
+
+
+
+
