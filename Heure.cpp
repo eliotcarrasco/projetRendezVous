@@ -77,11 +77,19 @@ bool Heure::valide() const {
     return true;
 }
 
+/**
+	Operateur <
+	@params h - une Heure
+*/
 bool Heure::operator<(Heure h)
 {
 	return ( (d_heures < h.d_heures) || (d_heures == h.d_heures && d_minutes < h.d_minutes) );
 }
 
+/**
+	Operateur >
+	@params h - une Heure
+*/
 bool Heure::operator>(Heure h)
 {
 	return ( (d_heures > h.d_heures) || (d_heures == h.d_heures && d_minutes > h.d_minutes) );

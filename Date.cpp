@@ -113,16 +113,28 @@ bool Date::valide() const {
 	return true;
 };
 
+/**
+	Operateur !=
+	@params d - une Date
+*/
 bool Date::operator!=(Date d)
 {
 	return (d.d_annee!=d_annee || d.d_mois!=d_mois || d.d_jour!=d_jour);
 }
 
+/**
+	Operateur ==
+	@params d - une Date
+*/
 bool Date::operator==(Date d)
 {
 	return (d.d_annee=d_annee && d.d_mois==d_mois && d.d_jour==d_jour);
 }
 
+/**
+	Operateur <
+	@params d - une Date
+*/
 bool Date::operator<(Date d)
 {
 	return ( (d_annee<d.d_annee) || (d_annee == d.d_annee && d_mois < d.d_mois) || (d_annee == d.d_annee && d_mois == d.d_mois && d_jour < d.d_jour) );
