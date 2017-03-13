@@ -4,6 +4,7 @@
 #include "Date.h"
 #include "Heure.h"
 #include "LCPersonne.h"
+#include "Personne.h"
 
 using namespace std;
 
@@ -28,6 +29,7 @@ class RendezVous
     
         void ajouterParticipant(Personne pers);
         void supprimerParticipant(Personne pers);
+        //void nombreParticipants();
     
 
 	private:
