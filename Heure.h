@@ -4,6 +4,7 @@
 class Heure
 {
 	public:
+        Heure();
 		Heure(int heures, int minutes);
         Heure(const Heure& heure);
     

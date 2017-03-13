@@ -1,6 +1,15 @@
 #include "Date.h"
 #include <ctime>
 
+
+
+/**
+	Constructeur vide
+ */
+Date::Date(): d_jour{}, d_mois{}, d_annee{}
+{}
+
+
 /**
 	Constructeur
 	@param jour - un jour

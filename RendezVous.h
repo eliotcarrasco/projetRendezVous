@@ -11,6 +11,7 @@ using namespace std;
 class RendezVous
 {
 	public:
+        RendezVous();
 		RendezVous(string nom, Date& date, Heure& heureDeb, Heure& heureFin);
     
         // getters

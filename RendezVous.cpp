@@ -4,6 +4,15 @@
 #include "globals.h"
 
 
+
+
+/**
+ Constructeur vide
+ */
+RendezVous::RendezVous() : d_nom{}, d_date{}, d_heureDeb{}, d_heureFin{}
+{}
+
+
 /**
     Constructeur
     @param nom - le nom du rdv

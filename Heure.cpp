@@ -2,6 +2,13 @@
 
 
 /**
+	Constructeur vide
+ */
+Heure::Heure(): d_heures{}, d_minutes{}
+{}
+
+
+/**
 	Constructeur
 	@param heures - un nombre d'heures
 	@param minutes - un nombre de minutes

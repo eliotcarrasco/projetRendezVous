@@ -4,9 +4,10 @@
 #include <string>
 #include "Date.h"
 #include "Heure.h"
-#include "LCRendezVous.h"
 
 using namespace std;
+
+class LCRendezVous;
 
 class Personne
 {
@@ -23,7 +24,7 @@ class Personne
 		string d_prenom;
 		string d_telephone;
 		string d_mail;
-        LCRendezVous d_listeRdv;
+        LCRendezVous* d_listeRdv;
 		
 };
 

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "LCRendezVous.h"
+#include "RendezVous.h"
 
 using namespace std;
 
