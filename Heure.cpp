@@ -75,4 +75,14 @@ bool Heure::valide() const {
     if(d_minutes < 0 || d_minutes > 60) return false;
     
     return true;
-};
+}
+
+bool Heure::operator<(Heure h)
+{
+	return ( (d_heures < h.d_heures) || (d_heures == h.d_heures && d_minutes < h.d_minutes) );
+}
+
+bool Heure::operator>(Heure h)
+{
+	return ( (d_heures > h.d_heures) || (d_heures == h.d_heures && d_minutes > h.d_minutes) );
+}

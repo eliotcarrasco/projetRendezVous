@@ -17,6 +17,11 @@ class Date
 		void setMois(int m);
 		void setAnnee(int a);
 		
+		//operators
+		bool operator==(Date d);
+		bool operator!=(Date d);
+		bool operator<(Date d);
+		
 		bool valide() const;
 
 	private:

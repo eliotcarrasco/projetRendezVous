@@ -15,6 +15,10 @@ class Heure
         void setHeures(int j);
         void setMinutes(int m);
     
+    	//operateurs
+    	bool operator<(Heure h);
+    	bool operator>(Heure h);
+    	
         bool valide() const;
     
 	private:

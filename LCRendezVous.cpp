@@ -115,14 +115,14 @@ bool LCRendezVous::disponible(Date date, Heure heure)
     {
         ChainonRdV* tmp = t;
         
-        while(tmp->RdV.date() != date) //operateur a coder
+        while(tmp->RdV.date() != date) //operateur a coder -> ok normalement
         {
             tmp = tmp->suiv;
         }
         
-        if (tmp->RdV.date() == date) //operateur a coder
+        if (tmp->RdV.date() == date) //operateur a coder -> ok normalement
         {
-            if(heure > tmp->RdV.heureDeb() && heure < tmp->RdV.heureFin()) //operateur a coder
+            if(heure > tmp->RdV.heureDeb() && heure < tmp->RdV.heureFin()) //operateur a coder -> ok normalement
                 return false;
         }
         
