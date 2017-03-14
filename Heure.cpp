@@ -81,7 +81,7 @@ bool Heure::valide() const {
 	Operateur <
 	@params h - une Heure
 */
-bool Heure::operator<(Heure h)
+bool Heure::operator<(const Heure& h) const
 {
 	return ( (d_heures < h.d_heures) || (d_heures == h.d_heures && d_minutes < h.d_minutes) );
 }
@@ -90,7 +90,7 @@ bool Heure::operator<(Heure h)
 	Operateur >
 	@params h - une Heure
 */
-bool Heure::operator>(Heure h)
+bool Heure::operator>(const Heure& h) const
 {
 	return ( (d_heures > h.d_heures) || (d_heures == h.d_heures && d_minutes > h.d_minutes) );
 }

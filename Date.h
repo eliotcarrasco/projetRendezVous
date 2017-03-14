@@ -18,9 +18,9 @@ class Date
 		void setAnnee(int a);
 		
 		//operators
-		bool operator==(Date d);
-		bool operator!=(Date d);
-		bool operator<(Date d);
+		bool operator==(const Date& d) const;
+		bool operator!=(const Date& d) const;
+		bool operator<(const Date& d) const;
 		
 		bool valide() const;
 
