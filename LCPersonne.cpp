@@ -36,7 +36,7 @@ void LCPersonne::Inserer(Personne pers)
 	else
 	{
 		ChainonPersonne *c1 = t, *c2 = t->suiv;
-		while( c2 != 0 && pers.Nom() > c2->p.Nom())
+		while( c2 != 0 && pers.Nom() > c2->p.Nom())  // cas si noms égaux, regarder ordre prénoms
 		{
 			c1 = c2;
 			c2 = c2->suiv;
