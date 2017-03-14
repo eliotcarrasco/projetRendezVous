@@ -75,7 +75,7 @@ void LCRendezVous::SupprimerRendezVous(string nom)
 	else
 	{
 		ChainonRdV *c1 = t, *c2 = t->suiv;
-		while(c2 != 0 && c2->RdV.nom() != nom)
+		while(c2 != 0 && c2->RdV.nom() != nom) // cas si noms égaux, regarder ordre prénoms
 		{
 			c1 = c2;
 			c2 = c2->suiv;

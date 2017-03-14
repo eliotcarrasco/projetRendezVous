@@ -3,6 +3,7 @@
 #include "Heure.h"
 #include <string>
 #include "globals.h"
+#include "LCRendezVous.h"
 
 Personne::Personne(string nom, string prenom, string telephone, string mail) : d_nom{convertToLower(nom)},
 																			   d_prenom{convertToLower(prenom)},
@@ -16,7 +17,7 @@ Personne::Personne(string nom, string prenom, string telephone, string mail) : d
 */
 bool Personne::aRendezVous(Date date, Heure heure)
 {
-    return d_listeRdv.disponible(date, heure);
+    return d_listeRdv->disponible(date, heure);
 }
 
 /**
