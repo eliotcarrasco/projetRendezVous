@@ -38,7 +38,7 @@ string Personne::Prenom()
 	return d_prenom;
 }
 
-void Personne::setNoTelephone(string telephone)
+void Personne::setTelephone(string telephone)
 {
      d_telephone = telephone;
 }

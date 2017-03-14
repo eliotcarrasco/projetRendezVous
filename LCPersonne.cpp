@@ -95,20 +95,20 @@ void LCPersonne::Modifier(string nom, string prenom)
 			tmp = tmp->suiv;
 		if(tmp->p.Nom() == nom && tmp->p.Prenom() == prenom)
 		{
-			char c;
+			string c;
 			
 			do	
 			{		
 				cout << "Voulez-vous modifier le numero de telephone de la personne? (O/N) : ";
 				cin >> c;
 			}
-			while(c != 'O' || c != 'o' || c != 'N' || c != 'n');
-			if(c == 'O' || c == 'o')
+			while(c != "O" || c != "o" || c != "N" || c != "n");
+			if(c == "O" || c == "o")
 			{
 				string tel;
 				cout << "Veuillez inscrire le nouveau numero : ";
 				cin >> tel;
-				tmp->p.setNoTelephone(tel);
+				tmp->p.setTelephone(tel);
 			}
 			
 			do
@@ -116,8 +116,8 @@ void LCPersonne::Modifier(string nom, string prenom)
 				cout << "Voulez-vous modifier le mail de la personne? (O/N) : ";
 				cin >> c;
 			}
-			while(c != 'O' || c != 'o' || c != 'N' || c != 'n');
-			if(c == 'O' || c == 'o')
+			while(c != "O" || c != "o" || c != "N" || c != "n");
+			if(c == "O" || c == "o")
 			{
 				string mail;
 				cout << "Veuillez inscrire le nouveau mail : ";
