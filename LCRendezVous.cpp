@@ -36,7 +36,7 @@ void LCRendezVous::InsererRendezVous(RendezVous r)
 	{
 		t=nouv;
 	}
-	else if ( (r.date() < t->RdV.date()) && (r.heureDeb() < t->RdV.heureDeb()) ) // operateurs à coder pour classe date et heure
+	else if ( (r.date() < t->RdV.date()) && (r.heureDeb() < t->RdV.heureDeb()) )
 	{
 		nouv->suiv = t;
 		t = nouv;
@@ -44,7 +44,7 @@ void LCRendezVous::InsererRendezVous(RendezVous r)
 	else
 	{
 		ChainonRdV *c1 = t, *c2 = t->suiv;
-		while(c2 != 0 && (c2->RdV.date() < r.date()) && (c2->RdV.heureDeb() < r.heureDeb())) //opérateurs à coder
+		while(c2 != 0 && (c2->RdV.date() < r.date()) && (c2->RdV.heureDeb() < r.heureDeb()))
 		{
 			c1 = c2;
 			c2 = c2->suiv;

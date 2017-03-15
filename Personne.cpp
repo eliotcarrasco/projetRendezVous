@@ -12,7 +12,7 @@ Personne::Personne(string nom, string prenom, string telephone, string mail) : d
 {}
 
 /**
-	Verifie que la personne est disponible
+	Verifie que la personne est occupee
     @param date - une date
     @param heureDeb - l'heure de début du creneau
     @param heureFin - l'heure de fin du créneau
