@@ -1,6 +1,7 @@
 #include <iostream>
 #include "LCRendezVous.h"
 #include "RendezVous.h"
+#include "Personne.h"
 
 using namespace std;
 
@@ -92,6 +93,40 @@ void LCRendezVous::SupprimerRendezVous(const string& nom)
 		}
 		
 	}
+}
+
+
+
+/**
+    Renvoie la liste des rdv pour une personne donnée
+    @listeRdv - la liste des rdv
+ */
+
+LCRendezVous LCRendezVous::getRendezVous(const Personne& pers) const
+{
+    LCRendezVous listeRdv{};
+    
+    if (t==0) return listeRdv;
+    else
+    {
+        ChainonRdV *tmp = t; // tete la LCRendezVous dans une variable
+        while(tmp != 0)
+        {
+            LCPersonne listPartRdv = tmp->RdV.listeParticipants(); // liste des participants de chaque rdv de la LCRendezVous
+            ChainonPersonne* teteLCPart = listPartRdv.getTete(); // tete de la liste des participants
+            
+            while (teteLCPart != 0)
+            {
+                if(teteLCPart->p == pers)
+                {
+                    ChainonRdV* nc = tmp;
+                    listeRdv.InsererRendezVous(nc->RdV); // insere le nouveau chainon dans la liste des rdv
+                }
+            }
+        }
+    }
+    
+    return listeRdv;
 }
 
 

@@ -4,6 +4,7 @@
 #include "Heure.h"
 #include <string>
 #include "RendezVous.h"
+#include "Personne.h"
 
 using namespace std;
 
@@ -22,6 +23,7 @@ class LCRendezVous
 		void InsererRendezVous(const RendezVous& r);
         void SupprimerRendezVous(const string& nom);
         bool occupee(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
+        LCRendezVous getRendezVous(const Personne& pers) const;
 		
 	private:
 		ChainonRdV* t;

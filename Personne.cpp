@@ -18,10 +18,10 @@ Personne::Personne(string nom, string prenom, string telephone, string mail) : d
     @param heureFin - l'heure de fin du créneau
 	@return Vrai si la personne est deja a un rdv de prevu a la date d et pendant le creneau heureDeb/heureFin, Faux sinon
 */
-bool Personne::aRendezVous(const Date& date, const Heure& heureDeb, const Heure& heureFin) const
+/*bool Personne::aRendezVous(const Date& date, const Heure& heureDeb, const Heure& heureFin) const
 {
     return d_listeRdv->occupee(date, heureDeb, heureFin);
-}
+}*/
 
 /**
 	Retourne le nom de la personne interroge
@@ -41,12 +41,32 @@ string Personne::Prenom() const
 	return d_prenom;
 }
 
+
+/**
+     Modifie le no de telephone
+     @param telephone - le no de telephone
+ */
 void Personne::setTelephone(const string& telephone)
 {
      d_telephone = telephone;
 }
 
+/**
+    Modifie le mail
+    @param mail - le mail
+ */
 void Personne::setMail(const string& mail)
 {
      d_mail = mail;
+}
+
+
+/**
+    Operateur ==
+    @param pers - une personne
+    @return Vrai si les deux personnes sont egales, Faux sinon
+ */
+bool Personne::operator==(const Personne& pers) const
+{
+    return (d_nom == pers.Nom() && d_prenom == pers.Prenom());
 }

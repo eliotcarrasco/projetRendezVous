@@ -17,6 +17,17 @@ LCPersonne::~LCPersonne()
 	}
 }
 
+
+/**
+    Fonction qui retourne la tete de la liste
+    @return t - la tete de la liste
+ */
+
+ChainonPersonne* LCPersonne::getTete() const
+{
+    return t;
+}
+
 /**
 	Ajoute une nouvelle personne dans la liste
 	@param pers - la personne a ajouter

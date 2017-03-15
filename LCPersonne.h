@@ -15,6 +15,7 @@ class LCPersonne
 	public:
 		LCPersonne();
 		~LCPersonne();
+        ChainonPersonne* getTete() const;
 		void Inserer(const Personne& p);
 		void Supprimer(const Personne& p);
 		void Modifier(const string& nom, const string& prenom);
