@@ -41,11 +41,19 @@ string Personne::Prenom() const
 	return d_prenom;
 }
 
+/**
+	Modifie le numero de telephone de la personne interroge
+	@param telephone - le nouveau numero de telephone
+*/
 void Personne::setTelephone(const string& telephone)
 {
      d_telephone = telephone;
 }
 
+/**
+	Modifie le mail de la personne interroge
+	@param mail - le nouveau mail
+*/
 void Personne::setMail(const string& mail)
 {
      d_mail = mail;

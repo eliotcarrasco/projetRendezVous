@@ -10,8 +10,10 @@ interface::interface()
 
 /**
 	Affiche le menu principal de l'application
+	@param p - La liste chainee principale des personnes
+	@param r - La liste chainee principale des rdv
  */
-void interface::menuPrincipal()
+void interface::menuPrincipal(LCPersonne &p, LCRendezVous &r)
 {
     int i;
     cout << "Gestionnaire de Rendez-Vous : " << endl;
@@ -27,10 +29,10 @@ void interface::menuPrincipal()
 	    switch(i)
 	    {
 	        case 1 :
-	            menuPersonnes();
+	            menuPersonnes(p, r);
 	            break;
 	        case 2 :
-	            menuRendezVous();
+	            menuRendezVous(p, r);
 	            break;
 	        default :
 	            cout << "Veuillez selectionner une option valide." << endl;
@@ -41,8 +43,10 @@ void interface::menuPrincipal()
 
 /**
 	Affiche le menu de modification des personnes
+	@param p - La liste chainee principale des personnes
+	@param r - La liste chainee principale des rdv
  */
-void interface::menuPersonnes()
+void interface::menuPersonnes(LCPersonne &p, LCRendezVous &r)
 {
     int i;
     cout << "Gestion des personnes : " << endl;
@@ -71,7 +75,7 @@ void interface::menuPersonnes()
 		        	
 		        	break;
 		        case 0 :
-		        	menuPrincipal();
+		        	menuPrincipal(p, r);
 		        	break;
 		        default :
 		            cout << "Veuillez selectionner une option valide." << endl;
@@ -90,8 +94,10 @@ void interface::menuPersonnes()
 
 /**
 	Affiche le menu de modification des rendez-vous
+	@param p - La liste chainee principale des personnes
+	@param r - La liste chainee principale des rdv
  */
-void interface::menuRendezVous()
+void interface::menuRendezVous(LCPersonne &p, LCRendezVous &r)
 {
     int i;
     cout << "Gestion des rendez-vous : " << endl;
@@ -120,7 +126,7 @@ void interface::menuRendezVous()
 		    		
 		    		break;
 		   		case 0 :
-		    		menuPrincipal();
+		    		menuPrincipal(p, r);
 		    		break;
 		    	default :
 		        	cout << "Veuillez selectionner une option valide." << endl;
@@ -136,6 +142,9 @@ void interface::menuRendezVous()
 	while( (i != 1 && i != 2 && i != 3 && i != 0) || (cin.fail()));
 }
 
+/**
+	Récupère les differentes informations concernant la nouvelle personne a ajouter
+*/
 void ajouterPersonne()
 {
 	string nom, prenom, telephone, mail;

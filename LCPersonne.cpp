@@ -135,7 +135,6 @@ void LCPersonne::Modifier(const string& nom, const string& prenom)
     Compte le nombre de chainon dans la liste
     @return nb le nombre de chainon
 */
-
 int LCPersonne::Compter() const
 {
     int nb = 0;
