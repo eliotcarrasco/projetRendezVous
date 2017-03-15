@@ -13,11 +13,14 @@ Personne::Personne(string nom, string prenom, string telephone, string mail) : d
 
 /**
 	Verifie que la personne est disponible
-	@return Vrai si la personne est deja a un rdv de prevu a la date d et pendant l'heure h, Faux sinon
+    @param date - une date
+    @param heureDeb - l'heure de début du creneau
+    @param heureFin - l'heure de fin du créneau
+	@return Vrai si la personne est deja a un rdv de prevu a la date d et pendant la duree heureDeb...heureFin, Faux sinon
 */
-bool Personne::aRendezVous(Date date, Heure heure)
+bool Personne::aRendezVous(Date date, Heure heureDeb, Heure heureFin)
 {
-    return d_listeRdv->disponible(date, heure);
+    return d_listeRdv->occupee(date, heureDeb, heureFin);
 }
 
 /**

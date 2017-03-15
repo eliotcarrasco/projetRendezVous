@@ -15,7 +15,7 @@ class Personne
 		Personne(string nom, string prenom, string telephone, string mail);
 		string Nom();
 		string Prenom();
-		bool aRendezVous(Date date, Heure heure);
+		bool aRendezVous(Date date, Heure heureDeb, Heure heureFin);
 		void setTelephone(string telephone);
 		void setMail(string mail);
 		

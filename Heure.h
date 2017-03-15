@@ -18,7 +18,10 @@ class Heure
     	//operateurs
     	bool operator<(const Heure& h) const;
     	bool operator>(const Heure& h) const;
-    	
+        bool operator<=(const Heure& h) const;
+        bool operator>=(const Heure& h) const;
+        bool operator==(const Heure& h) const;
+    
         bool valide() const;
     
 	private:

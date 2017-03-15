@@ -21,7 +21,7 @@ class LCRendezVous
 		~LCRendezVous();
 		void InsererRendezVous(RendezVous r);
         void SupprimerRendezVous(string nom);
-        bool disponible(Date date, Heure heure);
+        bool occupee(Date date, Heure heureDeb, Heure heureFin);
 		
 	private:
 		ChainonRdV* t;

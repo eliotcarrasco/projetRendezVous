@@ -94,3 +94,33 @@ bool Heure::operator>(const Heure& h) const
 {
 	return ( (d_heures > h.d_heures) || (d_heures == h.d_heures && d_minutes > h.d_minutes) );
 }
+
+
+/**
+	Operateur >=
+	@params h - une Heure
+ */
+bool Heure::operator>=(const Heure& h) const
+{
+    return ( (d_heures > h.d_heures) || (d_heures == h.d_heures && d_minutes > h.d_minutes) || (d_heures == h.d_heures && d_minutes == h.d_minutes) );
+    
+}
+
+/**
+	Operateur <=
+	@params h - une Heure
+ */
+bool Heure::operator<=(const Heure& h) const
+{
+    return ( (d_heures < h.d_heures) || (d_heures == h.d_heures && d_minutes < h.d_minutes) || (d_heures == h.d_heures && d_minutes == h.d_minutes) );
+}
+
+
+/**
+	Operateur ==
+	@params h - une Heure
+ */
+bool Heure::operator==(const Heure& h) const
+{
+    return (d_heures == h.d_heures && d_minutes == h.d_minutes);
+}

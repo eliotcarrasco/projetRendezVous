@@ -99,36 +99,35 @@ void LCRendezVous::SupprimerRendezVous(string nom)
 /**
     Verifie si la personne a deja un rdv a une date et une heure donnee
     @param date - une date
-    @param heure - une heure
-    @return Vrai si la personne est disponible (n'a pas de rdv pendant cette heure), Faux sinon
+    @param heureDeb - une heure de début
+    @param heureFin - une heure de fin
+    @return Vrai si la personne est occupee (a un rdv pendant cette heure, ou la duree empietera sur un un rdv), Faux sinon
  */
-bool LCRendezVous::disponible(Date date, Heure heure)
+bool LCRendezVous::occupee(Date date, Heure heureDeb, Heure heureFin)
 {
-    // attention fonction a modifier car il faut verifier si la duree du rdv n'empiete pas sur un autre
-    
-    
     if(t == 0)
     {
-        return true;
+        return false;
     }
     else
     {
         ChainonRdV* tmp = t;
         
-        while(tmp->RdV.date() != date) //operateur a coder -> ok normalement
+        while(tmp->RdV.date() != date)
         {
             tmp = tmp->suiv;
         }
         
-        if (tmp->RdV.date() == date) //operateur a coder -> ok normalement
+        if (tmp->RdV.date() == date)
         {
-            if(heure > tmp->RdV.heureDeb() && heure < tmp->RdV.heureFin()) //operateur a coder -> ok normalement
-                return false;
+            if(heureDeb >= tmp->RdV.heureDeb() && heureDeb <= tmp->RdV.heureFin()) // heure de debut compris dans un creneau existant
+                return true;
+            else if (heureFin >= tmp->RdV.heureDeb() && heureFin <= tmp->RdV.heureFin())// heure de fin compris dans un creneau
+                return true;
+            else if(heureDeb < tmp->RdV.heureDeb() && heureFin > tmp->RdV.heureFin()) // creneau heureDeb...heureFin englobe un autre creneau
+                return true;
         }
-        
-        delete tmp;
-        
-        return true;
     }
-
+    
+    return false;
 }
