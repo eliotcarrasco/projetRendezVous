@@ -13,11 +13,11 @@ class Personne
 {
 	public:
 		Personne(string nom, string prenom, string telephone, string mail);
-		string Nom();
-		string Prenom();
-		bool aRendezVous(Date date, Heure heureDeb, Heure heureFin);
-		void setTelephone(string telephone);
-		void setMail(string mail);
+		string Nom() const;
+		string Prenom() const;
+		bool aRendezVous(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
+		void setTelephone(const string& telephone);
+		void setMail(const string& mail);
 		
 	private:
 		string d_nom;

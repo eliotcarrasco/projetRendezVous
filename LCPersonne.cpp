@@ -21,7 +21,7 @@ LCPersonne::~LCPersonne()
 	Ajoute une nouvelle personne dans la liste
 	@param pers - la personne a ajouter
 */
-void LCPersonne::Inserer(Personne pers)
+void LCPersonne::Inserer(const Personne& pers)
 {
 	ChainonPersonne* nouv;
 	nouv->p = pers;
@@ -50,7 +50,7 @@ void LCPersonne::Inserer(Personne pers)
 	Enlever une personne 
 	@param pers - la personne a supprimer
 */
-void LCPersonne::Supprimer(Personne pers)
+void LCPersonne::Supprimer(const Personne& pers)
 {
 	if(t == 0) {}
 	else if(t->p.Nom() == pers.Nom())
@@ -84,7 +84,7 @@ void LCPersonne::Supprimer(Personne pers)
 	@param nom - Le nom de la personne a modifier
 	@param prenom - Le prenom de la personne a modifer
 */
-void LCPersonne::Modifier(string nom, string prenom)
+void LCPersonne::Modifier(const string& nom, const string& prenom)
 {
 	if(t == 0)
 		cout << "Cette personne n'existe pas";

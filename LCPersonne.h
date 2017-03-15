@@ -15,9 +15,9 @@ class LCPersonne
 	public:
 		LCPersonne();
 		~LCPersonne();
-		void Inserer(Personne p);
-		void Supprimer(Personne p);
-		void Modifier(string nom, string prenom);
+		void Inserer(const Personne& p);
+		void Supprimer(const Personne& p);
+		void Modifier(const string& nom, const string& prenom);
         int Compter() const;
 		
 	private:

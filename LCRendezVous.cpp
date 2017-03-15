@@ -27,7 +27,7 @@ LCRendezVous::~LCRendezVous()
 	Ajouter un rendez vous a une liste
 	@param r - le rendez vous a ajouter
 */
-void LCRendezVous::InsererRendezVous(RendezVous r)
+void LCRendezVous::InsererRendezVous(const RendezVous& r)
 {
 	ChainonRdV* nouv;
 	nouv->RdV = r;
@@ -59,7 +59,7 @@ void LCRendezVous::InsererRendezVous(RendezVous r)
 	Supprimer un rendez vous
 	@param nom - le nom du rendez vous
 */
-void LCRendezVous::SupprimerRendezVous(string nom)
+void LCRendezVous::SupprimerRendezVous(const string& nom)
 {
 	if(t == 0)
 	{ 
@@ -103,7 +103,7 @@ void LCRendezVous::SupprimerRendezVous(string nom)
     @param heureFin - une heure de fin
     @return Vrai si la personne est occupee (a un rdv pendant cette heure, ou la duree empietera sur un un rdv), Faux sinon
  */
-bool LCRendezVous::occupee(Date date, Heure heureDeb, Heure heureFin)
+bool LCRendezVous::occupee(const Date& date, const Heure& heureDeb, const Heure& heureFin) const
 {
     if(t == 0)
     {

@@ -19,9 +19,9 @@ class LCRendezVous
 	public:
 		LCRendezVous();
 		~LCRendezVous();
-		void InsererRendezVous(RendezVous r);
-        void SupprimerRendezVous(string nom);
-        bool occupee(Date date, Heure heureDeb, Heure heureFin);
+		void InsererRendezVous(const RendezVous& r);
+        void SupprimerRendezVous(const string& nom);
+        bool occupee(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
 		
 	private:
 		ChainonRdV* t;
