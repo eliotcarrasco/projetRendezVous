@@ -1,5 +1,7 @@
 #include "globals.h"
+#include "Personne.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
 

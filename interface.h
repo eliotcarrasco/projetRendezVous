@@ -10,4 +10,6 @@ class interface
         void menuRendezVous();
 };
 
+void ajouterPersonne();
+
 #endif
