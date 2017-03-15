@@ -6,6 +6,8 @@
 int main(int argc, char** argv)
 {
 	interface inter;
+	// Creation des listes principales
+	// Lecture du fichier contenant les listes
 	inter.menuPrincipal();
 	return 0;
 }

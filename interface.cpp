@@ -23,14 +23,13 @@ void interface::menuPrincipal()
     {
     	cout << "Choix1 : ";
     	cin >> i;
+    	cout << endl;
 	    switch(i)
 	    {
 	        case 1 :
-	        	cout << endl;
 	            menuPersonnes();
 	            break;
 	        case 2 :
-	        	cout << endl;
 	            menuRendezVous();
 	            break;
 	        default :
@@ -57,25 +56,34 @@ void interface::menuPersonnes()
     {
     	cout << "Choix2 : ";
     	cin >> i;
-	    switch(i)
-	    {
-	        case 1 :
-	        	cout << endl;
-	        	ajouterPersonne();
-	            break;
-	        case 2 :
-	        	cout << endl;
-	            break;
-	        case 3 :
-	        	cout << endl;
-	        	break;
-	        case 0 :
-	        	cout << endl;
-	        	menuPrincipal();
-	        	break;
-	        default :
-	            cout << "Veuillez selectionner une option valide." << endl;
-	    }
+    	cout << endl;
+    	if( !cin.fail() )
+    	{
+    		switch(i)
+		    {
+		        case 1 :
+		        	ajouterPersonne();
+		            break;
+		        case 2 :
+		        	
+		            break;
+		        case 3 :
+		        	
+		        	break;
+		        case 0 :
+		        	menuPrincipal();
+		        	break;
+		        default :
+		            cout << "Veuillez selectionner une option valide." << endl;
+		    }
+		}
+		else
+		{
+			cin.clear();
+			cin.ignore(256,'\n');
+			
+		}
+	    
 	}
 	while( i != 1 && i != 2 && i != 3 && i != 0);
 }
@@ -94,40 +102,52 @@ void interface::menuRendezVous()
     cout << "0. Retour" << endl;
     
 	do
-    {
-    	cout << "Choix2 : ";
-    	cin >> i;
-	    switch(i)
-	    {
-	        case 1 :
-	        	cout << endl;
-	            break;
-	        case 2 :
-	        	cout << endl;
-	            break;
-	        case 3 :
-	        	cout << endl;
-	        	break;
-	        case 0 :
-	        	cout << endl;
-	        	menuPrincipal();
-	        	break;
-	        default :
-	            cout << "Veuillez selectionner une option valide." << endl;
-	    }
+    {	
+		cout << "Choix2 : ";
+		cin >> i;
+		cout << endl;
+		if( !cin.fail() )
+		{
+			switch(i)
+			{
+		    	case 1 :
+		    		
+		        	break;
+		    	case 2 :
+		    		
+		        	break;
+		    	case 3 :
+		    		
+		    		break;
+		   		case 0 :
+		    		menuPrincipal();
+		    		break;
+		    	default :
+		        	cout << "Veuillez selectionner une option valide." << endl;
+			}
+		}
+		else
+		{
+			cin.clear();
+			cin.ignore(256,'\n');
+			
+		}
 	}
-	while( i != 1 && i != 2 && i != 3 && i != 0);
+	while( (i != 1 && i != 2 && i != 3 && i != 0) || (cin.fail()));
 }
 
 void ajouterPersonne()
 {
 	string nom, prenom, telephone, mail;
 	cout << "Nom de la personne : ";
-	cin >> nom;
-	cout << "Preom de la personne : ";
+	cin >> nom;	
+
+	cout << "Prenom de la personne : ";
 	cin >> prenom;
+	
 	cout << "Numero de telephone de la personne (sous la forme 0612345678) : ";
 	cin >> telephone;
+	
 	cout << "Mail de la personne : ";
 	cin >> mail;
 	//Personne(nom, prenom, telephone, mail);
