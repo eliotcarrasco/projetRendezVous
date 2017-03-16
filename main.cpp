@@ -19,7 +19,7 @@ void testLCPersonne()
 
     vector<Personne> vP {
         Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"},
-        Personne{"Pfund", "Arnold", "0646231902", "dany.pfd@gmail.com"},
+        Personne{"Pfund", "aRnoLd", "0646231902", "dany.pfd@gmail.com"},
         Personne{"Hindi", "Hassane", "0646231902", "rppalestine@gmail.com"},
         Personne{"Carrasco", "Eliot", "0646121902", "insectsforlife@gmail.com"},
         Personne{"Machin", "Alexandre", "0646352413", "al@yahoo.fr"}
@@ -33,7 +33,7 @@ void testLCPersonne()
 
     while(tmp != 0)
     {
-        cout << "Test Insertion Personne : " << tmp->p.Nom() << tmp->p.Prenom() <<  endl;
+        cout << "Test Insertion Personne : " << tmp->p.Nom() << " " << tmp->p.Prenom() <<  endl;
         tmp = tmp->suiv;
     }
 

@@ -33,3 +33,23 @@ string convertToUpper(const string& chaine)
     
     return c;
 }
+
+
+/**
+     Converti une chaine entièrement en minuscule
+     @param chaine - une chaine de caractere
+     @return c - la chaine en minuscule
+ */
+string convertForName(const string& chaine)
+{
+    string c = chaine;
+    int i = 0;
+    c[i] = toupper(chaine[i]);
+    ++i;
+    for (i ; i < chaine.length(); ++i)
+        c[i] = tolower(chaine[i]);
+    
+    return c;
+}
+
+

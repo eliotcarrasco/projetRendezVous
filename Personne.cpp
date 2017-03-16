@@ -5,7 +5,7 @@
 #include "globals.h"
 
 Personne::Personne(const string& nom, const string& prenom, const string& telephone, const string& mail) : d_nom{convertToUpper(nom)},
-																			   d_prenom{convertToLower(prenom)},
+																			   d_prenom{convertForName(prenom)},
 																			   d_telephone{telephone}, 
 																			   d_mail{mail}
 {}
@@ -19,7 +19,7 @@ Personne::Personne(const string& nom, const string& prenom, const string& teleph
  */
 
 Personne::Personne(const Personne& pers) : d_nom{convertToUpper(pers.Nom())},
-                                        d_prenom{convertToLower(pers.Prenom())},
+                                        d_prenom{convertForName(pers.Prenom())},
                                         d_telephone{pers.Telephone()},
                                         d_mail{pers.Mail()}
 {}
