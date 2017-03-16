@@ -46,6 +46,8 @@ void testLCPersonne()
         cout << "Test Modification Personne : " << tmp->p.Nom() << endl << tmp->p.Prenom() << endl << tmp->p.Telephone() << endl << tmp->p.Mail() <<  endl;
         tmp = tmp->suiv;
     }
+    
+    cout << endl << "Test nombre de personne dans la liste : " << listePersonnes.Compter();
 }
 
 
@@ -60,7 +62,12 @@ void testLCRendezVous()
     
     vector<RendezVous> vR {
         RendezVous{"Business", Date{16, 3, 2017}, Heure{15, 27}, Heure{17, 30}},
-        RendezVous{"Business meeting", Date{17, 3, 2017}, Heure{14, 00}, Heure{15, 30}}
+        RendezVous{"Business meeting 2", Date{17, 3, 2017}, Heure{15, 31}, Heure{16,30}},
+        RendezVous{"Business 2", Date{17, 3, 2017}, Heure{14, 00}, Heure{15, 30}},
+        RendezVous{"Business 3", Date{17, 3, 2017}, Heure{15, 00}, Heure{15, 30}},
+        RendezVous{"Business meeting 4", Date{19, 3, 2017}, Heure{14, 00}, Heure{15, 30}},
+        RendezVous{"Business meeting 3", Date{18, 3, 2017}, Heure{14, 00}, Heure{15, 30}}
+        
     };
     
     for( int i = 0; i < vR.size(); i++)
@@ -74,6 +81,11 @@ void testLCRendezVous()
         cout << "Test Insertion Rdv :  " << tmp2->RdV.nom() << endl;
         tmp2 = tmp2->suiv;
     }
+    
+    //cout << "Test de la date et l'heure : " << Date{17, 3, 2017}.getStringDate() << " a " << Heure{15, 30}.getStringHeure() << endl;
+    
+    
+    
 }
 
 

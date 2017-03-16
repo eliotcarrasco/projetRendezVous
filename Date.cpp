@@ -96,7 +96,7 @@ void Date::setAnnee(int a)
     @return s - la date sous forme de chaine de caracteres
  */
 
-std::string Date::afficher() const
+std::string Date::getStringDate() const
 {
     std::string s = "";
     
@@ -161,5 +161,15 @@ bool Date::operator==(const Date& d) const
 */
 bool Date::operator<(const Date& d) const
 {
-	return ( (d_annee<d.d_annee) || (d_annee == d.d_annee && d_mois < d.d_mois) || (d_annee == d.d_annee && d_mois == d.d_mois && d_jour < d.d_jour) );
+	return ( (d_annee < d.d_annee) || (d_annee == d.d_annee && d_mois < d.d_mois) || (d_annee == d.d_annee && d_mois == d.d_mois && d_jour < d.d_jour) );
+}
+
+
+/**
+	Operateur >
+	@params d - une Date
+ */
+bool Date::operator>(const Date& d) const
+{
+    return ( (d_annee > d.d_annee) || (d_annee == d.d_annee && d_mois > d.d_mois) || (d_annee == d.d_annee && d_mois == d.d_mois && d_jour > d.d_jour) );
 }

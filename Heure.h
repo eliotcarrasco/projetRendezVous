@@ -1,5 +1,6 @@
 #ifndef HEURE_H
 #define HEURE_H
+#include <string>
 
 class Heure
 {
@@ -15,6 +16,9 @@ class Heure
         void setHeures(int j);
         void setMinutes(int m);
     
+        bool valide() const;
+        std::string getStringHeure() const;
+    
     	//operateurs
     	bool operator<(const Heure& h) const;
     	bool operator>(const Heure& h) const;
@@ -22,7 +26,7 @@ class Heure
         bool operator>=(const Heure& h) const;
         bool operator==(const Heure& h) const;
     
-        bool valide() const;
+    
     
 	private:
 		int d_heures;

@@ -77,6 +77,31 @@ bool Heure::valide() const {
     return true;
 }
 
+
+/**
+    Retourne l'heure sous la forme d'une chaine de caracteres
+    @return s - l'heure sous forme de chaine de caracteres
+ */
+std::string Heure::getStringHeure() const
+{
+    std::string s;
+    
+    if(d_heures<10)
+        s += "0" + std::to_string(d_heures) + ":";
+    else
+        s += std::to_string(d_heures) + ":";
+    
+    if(d_minutes<10)
+        s += "0" + std::to_string(d_minutes);
+    else
+        s += std::to_string(d_minutes);
+    
+    return s;
+}
+
+
+
+
 /**
 	Operateur <
 	@params h - une Heure
