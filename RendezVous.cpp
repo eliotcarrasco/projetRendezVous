@@ -79,7 +79,7 @@ LCPersonne RendezVous::listeParticipants() const
     Modifie le nom du rdv
     @param nom - nom du rdv
  */
-void RendezVous::setNom(string nom)
+void RendezVous::setNom(const string& nom)
 {
     d_nom = convertToLower(nom);
 }
@@ -88,7 +88,7 @@ void RendezVous::setNom(string nom)
      Modifie la date du rdv
      @param date - date du rdv
  */
-void RendezVous::setDate(Date date)
+void RendezVous::setDate(const Date& date)
 {
     d_date = date;
 }
@@ -97,7 +97,7 @@ void RendezVous::setDate(Date date)
      Modifie l'heure de debut du rdv
      @param heureDeb - heure de debut du rdv
  */
-void RendezVous::setHeureDeb(Heure heureDeb)
+void RendezVous::setHeureDeb(const Heure& heureDeb)
 {
     d_heureDeb = heureDeb;
 }
@@ -106,7 +106,7 @@ void RendezVous::setHeureDeb(Heure heureDeb)
      Modifie l'heure de fin du rdv
      @param heureFin - heure de fin du rdv
  */
-void RendezVous::setHeureFin(Heure heureFin)
+void RendezVous::setHeureFin(const Heure& heureFin)
 {
     d_heureFin = heureFin;
 }
@@ -116,7 +116,7 @@ void RendezVous::setHeureFin(Heure heureFin)
      @param heureDeb - heure de debut du rdv
      @param heureFin - heure de fin du rdv
  */
-void RendezVous::setHeure(Heure heureDeb, Heure heureFin)
+void RendezVous::setHeure(const Heure& heureDeb, const Heure& heureFin)
 {
     d_heureDeb = heureDeb;
     d_heureFin = heureFin;
@@ -126,7 +126,7 @@ void RendezVous::setHeure(Heure heureDeb, Heure heureFin)
     Permet d'ajouter un participant a la liste de participants d'un rdv
     @param pers - une personne
  */
-void RendezVous::ajouterParticipant(Personne pers)
+void RendezVous::ajouterParticipant(const Personne& pers)
 {
     d_participants.Inserer(pers);
 }
@@ -135,7 +135,7 @@ void RendezVous::ajouterParticipant(Personne pers)
     Permet de supprimer un participant de la liste de participants d'un rdv
     @param pers - une personne
  */
-void RendezVous::supprimerParticipant(Personne pers)
+void RendezVous::supprimerParticipant(const Personne& pers)
 {
     d_participants.Supprimer(pers);
 }

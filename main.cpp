@@ -10,7 +10,7 @@
 
 
 /**
-    Procédure de test temporaire
+    Procedure de test temporaire
  */
 void testLCPersonne()
 {
@@ -53,7 +53,7 @@ void testLCPersonne()
 
 
 /**
- Procédure de test temporaire
+    Procedure de test temporaire
  */
 void testLCRendezVous()
 {
@@ -82,7 +82,7 @@ void testLCRendezVous()
         tmp2 = tmp2->suiv;
     }
 
-    listeRdv.SupprimerRendezVous("Business");
+    listeRdv.SupprimerRendezVous("Business meeting 4");
 
     tmp2 = listeRdv.getTete();
 
@@ -95,13 +95,79 @@ void testLCRendezVous()
 }
 
 
+
+/**
+    Procedure de test temporaire pour les participants a un RdV
+ */
+void testParticipantsRDV()
+{
+
+    LCRendezVous listeRdv{};
+    
+    vector<RendezVous> vR {
+        RendezVous{"Business", Date{16, 3, 2017}, Heure{15, 27}, Heure{17, 30}},
+        RendezVous{"Business 6", Date{17, 3, 2017}, Heure{15, 31}, Heure{16,30}},
+        RendezVous{"Business 2", Date{17, 3, 2017}, Heure{14, 00}, Heure{15, 30}},
+        RendezVous{"Business 3", Date{17, 3, 2017}, Heure{15, 00}, Heure{15, 30}},
+        RendezVous{"Business meeting 4", Date{19, 3, 2017}, Heure{14, 00}, Heure{15, 30}},
+        RendezVous{"Business meeting 3", Date{18, 3, 2017}, Heure{14, 00}, Heure{15, 30}}
+        
+    };
+    
+    for( int i = 0; i < vR.size(); i++)
+        listeRdv.InsererRendezVous(vR[i]);
+    
+    
+    LCPersonne listePersonnes{};
+    
+    vector<Personne> vP {
+        Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"},
+        Personne{"Pfund", "Arnold", "0646231902", "dany.pfd@gmail.com"},
+        Personne{"Hindi", "Hassane", "0646231902", "rppalestine@gmail.com"},
+        Personne{"Carrasco", "Eliot", "0646121902", "insectsforlife@gmail.com"},
+        Personne{"Machin", "Alexandre", "0646352413", "al@yahoo.fr"}
+    };
+    
+    for( int i = 0; i < vP.size(); i++)
+        listePersonnes.Inserer(vP[i]);
+    
+    
+    listeRdv.getTete()->RdV.ajouterParticipant(Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"});
+    listeRdv.getTete()->RdV.ajouterParticipant(Personne{"Hindi", "Hassane", "0646231902", "rppalestine@gmail.com"});
+    listeRdv.getTete()->RdV.ajouterParticipant(Personne{"Carrasco", "Eliot", "0646121902", "insectsforlife@gmail.com"});
+    
+    
+    LCPersonne listePart = listeRdv.getTete()->RdV.listeParticipants();
+    
+    ChainonPersonne* tmp = listePart.getTete();
+    
+    while(tmp != 0)
+    {
+        cout << "Test Participants a 1 RDV : " << tmp->p.Nom() << endl << tmp->p.Prenom() << endl << tmp->p.Telephone() << endl << tmp->p.Mail() <<  endl;
+        tmp = tmp->suiv;
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv)
 {
 	//interface inter;
 	//inter.menuPrincipal(listePersonnes, listeRdv);
-    testLCRendezVous();
+    testParticipantsRDV();
 	return 0;
 }
 

@@ -30,7 +30,7 @@ ChainonPersonne::ChainonPersonne() : p{}, suiv{0}
 
 
 
-LCPersonne::LCPersonne():t{0}
+LCPersonne::LCPersonne():t{nullptr}
 {}
 
 LCPersonne::~LCPersonne()

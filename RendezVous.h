@@ -22,14 +22,14 @@ class RendezVous
         LCPersonne listeParticipants() const;
     
         //setters
-        void setNom(string nom);
-        void setDate(Date date);
-        void setHeureDeb(Heure heureDeb);
-        void setHeureFin(Heure heureFin);
-        void setHeure(Heure heureDeb, Heure heureFin);
+        void setNom(const string& nom);
+        void setDate(const Date& date);
+        void setHeureDeb(const Heure& heureDeb);
+        void setHeureFin(const Heure& heureFin);
+        void setHeure(const Heure& heureDeb, const Heure& heureFin);
     
-        void ajouterParticipant(Personne pers);
-        void supprimerParticipant(Personne pers);
+        void ajouterParticipant(const Personne& pers);
+        void supprimerParticipant(const Personne& pers);
         int nombreParticipants() const;
     
 

@@ -46,7 +46,7 @@ string convertForName(const string& chaine)
     int i = 0;
     c[i] = toupper(chaine[i]);
     ++i;
-    for (i ; i < chaine.length(); ++i)
+    for (; i < chaine.length(); ++i)
         c[i] = tolower(chaine[i]);
     
     return c;
