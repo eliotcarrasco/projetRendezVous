@@ -62,7 +62,7 @@ void testLCRendezVous()
     
     vector<RendezVous> vR {
         RendezVous{"Business", Date{16, 3, 2017}, Heure{15, 27}, Heure{17, 30}},
-        RendezVous{"Business meeting 2", Date{17, 3, 2017}, Heure{15, 31}, Heure{16,30}},
+        RendezVous{"Business 6", Date{17, 3, 2017}, Heure{15, 31}, Heure{16,30}},
         RendezVous{"Business 2", Date{17, 3, 2017}, Heure{14, 00}, Heure{15, 30}},
         RendezVous{"Business 3", Date{17, 3, 2017}, Heure{15, 00}, Heure{15, 30}},
         RendezVous{"Business meeting 4", Date{19, 3, 2017}, Heure{14, 00}, Heure{15, 30}},
