@@ -92,6 +92,30 @@ void Date::setAnnee(int a)
 }
 
 /**
+    Retourne la date sous la forme d'une chaine de caracteres
+    @return s - la date sous forme de chaine de caracteres
+ */
+
+std::string Date::afficher() const
+{
+    std::string s = "";
+    
+    if(d_jour<10)
+        s += "0" + std::to_string(d_jour) + "/";
+    else
+        s += std::to_string(d_jour) + "/";
+    
+    if(d_mois<10)
+        s += "0" + std::to_string(d_mois) + "/";
+    else
+        s += std::to_string(d_mois) + "/";
+    
+    s += std::to_string(d_annee);
+    
+    return s;
+}
+
+/**
 	Verifie si la date est valide
 	@return Vrai si la date est valide, Faux sinon
 */

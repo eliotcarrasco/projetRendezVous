@@ -5,6 +5,15 @@
 
 using namespace std;
 
+
+/**
+	Constructeur ChainonRdV
+ */
+ChainonRdV::ChainonRdV(): RdV{}, suiv{0}
+{}
+
+
+
 /**
 	Constructeur
 */
@@ -24,13 +33,24 @@ LCRendezVous::~LCRendezVous()
 	}
 }
 
+
+/**
+ Fonction qui retourne la tete de la liste
+ @return t - la tete de la liste
+ */
+
+ChainonRdV* LCRendezVous::getTete() const
+{
+    return t;
+}
+
 /**
 	Ajouter un rendez vous a une liste
 	@param r - le rendez vous a ajouter
 */
 void LCRendezVous::InsererRendezVous(const RendezVous& r)
 {
-	ChainonRdV* nouv;
+    ChainonRdV* nouv = new ChainonRdV();
 	nouv->RdV = r;
 	nouv->suiv = 0;
 	if(t==0)

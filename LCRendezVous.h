@@ -8,10 +8,12 @@
 
 using namespace std;
 
-struct ChainonRdV
+class ChainonRdV
 {
-    RendezVous RdV;
-	ChainonRdV* suiv;
+    public:
+        ChainonRdV();
+        RendezVous RdV;
+        ChainonRdV* suiv;
 };
 
 
@@ -20,6 +22,7 @@ class LCRendezVous
 	public:
 		LCRendezVous();
 		~LCRendezVous();
+        ChainonRdV* getTete() const;
 		void InsererRendezVous(const RendezVous& r);
         void SupprimerRendezVous(const string& nom);
         bool occupee(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;

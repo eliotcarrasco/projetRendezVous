@@ -5,6 +5,31 @@
 
 using namespace std;
 
+/**
+    Constructeur ChainonPersonne
+ */
+ChainonPersonne::ChainonPersonne() : p{}, suiv{0}
+{}
+
+///**
+//    Retourne la personne d'un ChainonPersonne
+// */
+//Personne ChainonPersonne::getP()
+//{
+//    return p;
+//}
+//
+///**
+//    Retourne le suivant d'un ChainonPersonne
+// */
+//ChainonPersonne* ChainonPersonne::getSuiv() const
+//{
+//    return suiv;
+//}
+
+
+
+
 LCPersonne::LCPersonne():t{0}
 {}
 
@@ -35,7 +60,7 @@ ChainonPersonne* LCPersonne::getTete() const
 */
 void LCPersonne::Inserer(const Personne& pers)
 {
-    ChainonPersonne *nouv;
+    ChainonPersonne* nouv = new ChainonPersonne();
 	nouv->p = pers;
 	nouv->suiv = 0;
 	if( t == 0 )
@@ -65,7 +90,7 @@ void LCPersonne::Inserer(const Personne& pers)
 void LCPersonne::Supprimer(const Personne& pers)
 {
 	if(t == 0) {}
-	else if(t->p.Nom() == pers.Nom())
+	else if(t->p == pers)
 	{
 		ChainonPersonne* tmp = t;
 		t = t->suiv;
@@ -75,7 +100,7 @@ void LCPersonne::Supprimer(const Personne& pers)
 	else
 	{
 		ChainonPersonne *c1 = t, *c2 = t->suiv;
-		while(c2 != 0 && c2->p.Nom() != pers.Nom())
+		while(c2 != 0 && c2->p != pers)
 		{
 			c1 = c2;
 			c2 = c2->suiv;
@@ -85,6 +110,7 @@ void LCPersonne::Supprimer(const Personne& pers)
 		else
 		{
 			c1->suiv = c2->suiv;
+            cout << c2->p.Prenom();
 			delete c2;
 			cout << "La personne a ete supprimee avec succes";
 		}
@@ -93,19 +119,18 @@ void LCPersonne::Supprimer(const Personne& pers)
 
 /**
 	Modifier le numero et/ou le mail a partir du nom et du prenom
-	@param nom - Le nom de la personne a modifier
-	@param prenom - Le prenom de la personne a modifer
+	@param pers - une personne
 */
-void LCPersonne::Modifier(const string& nom, const string& prenom)
+void LCPersonne::Modifier(const Personne& pers)
 {
 	if(t == 0)
 		cout << "Cette personne n'existe pas";
 	else
 	{
 		ChainonPersonne* tmp = t;
-		while(tmp->p.Nom() != nom && tmp->p.Prenom() != prenom && tmp->suiv != 0)
+        while(tmp != 0 && tmp->p != pers)
 			tmp = tmp->suiv;
-		if(tmp->p.Nom() == nom && tmp->p.Prenom() == prenom)
+		if(tmp->p == pers)
 		{
 			string c;
 			
@@ -114,7 +139,8 @@ void LCPersonne::Modifier(const string& nom, const string& prenom)
 				cout << "Voulez-vous modifier le numero de telephone de la personne? (O/N) : ";
 				cin >> c;
 			}
-			while(c != "O" || c != "o" || c != "N" || c != "n");
+			while(c != "O" && c != "o" && c != "N" && c != "n");
+            
 			if(c == "O" || c == "o")
 			{
 				string tel;
@@ -128,7 +154,8 @@ void LCPersonne::Modifier(const string& nom, const string& prenom)
 				cout << "Voulez-vous modifier le mail de la personne? (O/N) : ";
 				cin >> c;
 			}
-			while(c != "O" || c != "o" || c != "N" || c != "n");
+			while(c != "O" && c != "o" && c != "N" && c != "n");
+            
 			if(c == "O" || c == "o")
 			{
 				string mail;

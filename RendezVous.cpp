@@ -20,7 +20,7 @@ RendezVous::RendezVous() : d_nom{}, d_date{}, d_heureDeb{}, d_heureFin{}
     @param heureDeb - l'heure a laquelle commence le rdv
     @param heureFin - l'heure a laquelle termine le rdv
  */
-RendezVous::RendezVous(string nom, Date& date, Heure& heureDeb, Heure& heureFin) : d_nom{convertToLower(nom)},
+RendezVous::RendezVous(const string& nom, Date date, Heure heureDeb, Heure heureFin) : d_nom{convertToLower(nom)},
                                                                                 d_date{date},
                                                                                 d_heureDeb{heureDeb},
                                                                                 d_heureFin{heureFin}

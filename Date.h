@@ -1,5 +1,6 @@
 #ifndef DATE_H
 #define DATE_H
+#include <string>
 
 class Date
 {
@@ -16,6 +17,8 @@ class Date
 		void setJour(int j);
 		void setMois(int m);
 		void setAnnee(int a);
+    
+        std::string afficher() const;
 		
 		//operators
 		bool operator==(const Date& d) const;

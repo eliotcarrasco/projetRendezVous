@@ -12,7 +12,7 @@ class RendezVous
 {
 	public:
         RendezVous();
-		RendezVous(string nom, Date& date, Heure& heureDeb, Heure& heureFin);
+		RendezVous(const string& nom, Date date, Heure heureDeb, Heure heureFin);
     
         // getters
         string nom() const;

@@ -24,6 +24,18 @@ Personne::Personne(const Personne& pers) : d_nom{pers.Nom()},
                                         d_mail{pers.Mail()}
 {}
 
+
+/**
+ Constructeur vide
+ */
+
+Personne::Personne() : d_nom{},
+d_prenom{},
+d_telephone{},
+d_mail{}
+{}
+
+
 /**
 	Verifie que la personne est occupee
     @param date - une date
@@ -115,5 +127,18 @@ Personne& Personne::operator=(const Personne& pers)
  */
 bool Personne::operator==(const Personne& pers) const
 {
+    if(this == &pers) return true; // que pour les listes chainee ou la aussi ?
+    
     return (d_nom == pers.Nom() && d_prenom == pers.Prenom());
+}
+
+
+/**
+ Operateur !=
+ @param pers - une personne
+ @return Vrai si les deux personnes sont differente, Faux sinon
+ */
+bool Personne::operator!=(const Personne& pers) const
+{
+    return (d_nom != pers.Nom() || d_prenom != pers.Prenom());
 }

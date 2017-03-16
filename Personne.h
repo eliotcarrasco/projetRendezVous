@@ -12,6 +12,7 @@ class Personne
 	public:
 		Personne(const string& nom, const string& prenom, const string& telephone, const string& mail);
         Personne(const Personne& pers);
+        Personne();
 		string Nom() const;
 		string Prenom() const;
         string Telephone() const;
@@ -25,6 +26,7 @@ class Personne
     
         //opérateur de comparaison
         bool operator==(const Personne& pers) const;
+        bool operator!=(const Personne& pers) const;
     
 		
 	private:

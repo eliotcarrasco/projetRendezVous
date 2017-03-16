@@ -4,23 +4,29 @@
 
 #include <string>
 
-struct ChainonPersonne
+class ChainonPersonne
 {
-    Personne p;
-    ChainonPersonne* suiv;
+    public:
+        ChainonPersonne();
+//        Personne getP();
+//        ChainonPersonne* getSuiv() const;
+    
+//    private:
+        Personne p;
+        ChainonPersonne* suiv;
+    
 };
 
 
 class LCPersonne
 {
-    
 	public:
 		LCPersonne();
 		~LCPersonne();
         ChainonPersonne* getTete() const;
-		void Inserer(const Personne& p);
-		void Supprimer(const Personne& p);
-		void Modifier(const string& nom, const string& prenom);
+		void Inserer(const Personne& pers);
+		void Supprimer(const Personne& pers);
+		void Modifier(const Personne &pers);
         int Compter() const;
 		
 	private:
