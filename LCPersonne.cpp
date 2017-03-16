@@ -87,7 +87,7 @@ void LCPersonne::Inserer(const Personne& pers)
 	Enlever une personne 
 	@param pers - la personne a supprimer
 */
-void LCPersonne::Supprimer(const Personne& pers)
+void LCPersonne::Supprimer(const Personne& pers) //utiliser nom et prenom pour recherche
 {
 	if(t == 0) {}
 	else if(t->p == pers)
@@ -119,18 +119,19 @@ void LCPersonne::Supprimer(const Personne& pers)
 
 /**
 	Modifier le numero et/ou le mail a partir du nom et du prenom
-	@param pers - une personne
+	@param nom - Le nom de la personne a modifier
+	@param prenom - Le prenom de la personne a modifier
 */
-void LCPersonne::Modifier(const Personne& pers)
+void LCPersonne::Modifier(const string& nom, const string& prenom)
 {
 	if(t == 0)
 		cout << "Cette personne n'existe pas" << endl;
 	else
 	{
 		ChainonPersonne* tmp = t;
-        while(tmp != 0 && tmp->p != pers)
+        while(tmp != 0 && tmp->p.Nom() != nom && tmp->p.Prenom() != prenom)
 			tmp = tmp->suiv;
-		if(tmp->p == pers)
+		if(tmp->p.Nom() == nom && tmp->p.Prenom() == prenom)
 		{
 			string c;
 			

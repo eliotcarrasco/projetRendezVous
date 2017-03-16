@@ -13,6 +13,7 @@ class interface
         void menuRendezVous(LCPersonne &p, LCRendezVous &r);
 };
 
-void ajouterPersonne();
+void ajouterPersonne(LCPersonne &p);
+void modifierPersonne(LCPersonne &p);
 
 #endif

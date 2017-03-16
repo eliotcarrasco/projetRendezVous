@@ -26,7 +26,7 @@ class LCPersonne
         ChainonPersonne* getTete() const;
 		void Inserer(const Personne& pers);
 		void Supprimer(const Personne& pers);
-		void Modifier(const Personne &pers);
+		void Modifier(const string& nom, const string& prenom);
         int Compter() const;
 		
 	private:

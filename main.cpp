@@ -37,7 +37,8 @@ void testLCPersonne()
         tmp = tmp->suiv;
     }
 
-    listePersonnes.Modifier(Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"});
+    //listePersonnes.Modifier(Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"});
+    modifierPersonne(listePersonnes);
 
     tmp = listePersonnes.getTete();
 
@@ -165,9 +166,12 @@ void testParticipantsRDV()
 
 int main(int argc, char** argv)
 {
-	//interface inter;
-	//inter.menuPrincipal(listePersonnes, listeRdv);
-    testParticipantsRDV();
+	LCPersonne listePersonnes;
+	LCRendezVous listeRdv;
+	interface inter;
+	inter.menuPrincipal(listePersonnes, listeRdv);
+    //testLCPersonne();
+	//testParticipantsRDV();
 	return 0;
 }
 

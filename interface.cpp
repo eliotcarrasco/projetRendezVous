@@ -1,5 +1,6 @@
 #include "interface.h"
 #include "LCRendezVous.h"
+#include "globals.h"
 #include <iostream>
 #include <string>
 
@@ -20,6 +21,7 @@ void interface::menuPrincipal(LCPersonne &p, LCRendezVous &r)
     cout << "Action sur les : " << endl;
     cout << "1. Personnes" << endl;
     cout << "2. Rendez-Vous" << endl;
+    cout << "0. Quitter" << endl;
     
     do
     {
@@ -34,11 +36,13 @@ void interface::menuPrincipal(LCPersonne &p, LCRendezVous &r)
 	        case 2 :
 	            menuRendezVous(p, r);
 	            break;
+	        case 0 :
+	        	break;
 	        default :
 	            cout << "Veuillez selectionner une option valide." << endl;
 	    }
 	}
-	while( i != 1 && i != 2);
+	while( i != 1 && i != 2 && i != 0);
 }
 
 /**
@@ -66,13 +70,16 @@ void interface::menuPersonnes(LCPersonne &p, LCRendezVous &r)
     		switch(i)
 		    {
 		        case 1 :
-		        	ajouterPersonne();
+		        	ajouterPersonne(p);
+		        	menuPersonnes(p, r);
 		            break;
 		        case 2 :
-		        	
+		        	modifierPersonne(p);
+		        	menuPersonnes(p, r);
 		            break;
 		        case 3 :
 		        	
+		        	menuPersonnes(p, r);
 		        	break;
 		        case 0 :
 		        	menuPrincipal(p, r);
@@ -118,12 +125,15 @@ void interface::menuRendezVous(LCPersonne &p, LCRendezVous &r)
 			{
 		    	case 1 :
 		    		
+		    		menuRendezVous(p, r);
 		        	break;
 		    	case 2 :
 		    		
+		    		menuRendezVous(p, r);
 		        	break;
 		    	case 3 :
 		    		
+		    		menuRendezVous(p, r);
 		    		break;
 		   		case 0 :
 		    		menuPrincipal(p, r);
@@ -144,10 +154,12 @@ void interface::menuRendezVous(LCPersonne &p, LCRendezVous &r)
 
 /**
 	Récupère les differentes informations concernant la nouvelle personne a ajouter
+	@param p - La liste chainee de personnes
 */
-void ajouterPersonne()
+void ajouterPersonne(LCPersonne &p)
 {
 	string nom, prenom, telephone, mail;
+	
 	cout << "Nom de la personne : ";
 	cin >> nom;	
 
@@ -159,5 +171,21 @@ void ajouterPersonne()
 	
 	cout << "Mail de la personne : ";
 	cin >> mail;
-	//Personne(nom, prenom, telephone, mail);
+	
+	p.Inserer(Personne{nom, prenom, telephone, mail});
+	cout << endl;
+}
+
+void modifierPersonne(LCPersonne &p)
+{
+	string nom, prenom;
+	
+	cout << "Nom de la personne : ";
+	cin >> nom;	
+
+	cout << "Prenom de la personne : ";
+	cin >> prenom;
+	
+	p.Modifier(convertToUpper(nom), convertForName(prenom) );
+	cout << endl;
 }
