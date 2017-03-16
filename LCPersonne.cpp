@@ -95,7 +95,7 @@ void LCPersonne::Supprimer(const Personne& pers)
 		ChainonPersonne* tmp = t;
 		t = t->suiv;
 		delete tmp;
-		cout << "La personne a ete supprimee avec succes";
+		cout << "La personne a ete supprimee avec succes" << endl;
 	}
 	else
 	{
@@ -106,13 +106,13 @@ void LCPersonne::Supprimer(const Personne& pers)
 			c2 = c2->suiv;
 		}
 		if(c2 == 0)
-			cout << "La personne n'existe pas";
+			cout << "La personne n'existe pas" << endl;
 		else
 		{
 			c1->suiv = c2->suiv;
             cout << c2->p.Prenom();
 			delete c2;
-			cout << "La personne a ete supprimee avec succes";
+			cout << "La personne a ete supprimee avec succes" << endl;
 		}
 	}
 }
@@ -124,7 +124,7 @@ void LCPersonne::Supprimer(const Personne& pers)
 void LCPersonne::Modifier(const Personne& pers)
 {
 	if(t == 0)
-		cout << "Cette personne n'existe pas";
+		cout << "Cette personne n'existe pas" << endl;
 	else
 	{
 		ChainonPersonne* tmp = t;
@@ -165,7 +165,7 @@ void LCPersonne::Modifier(const Personne& pers)
 			}
 		}
 		else
-			cout << "Cette personne n'existe pas";
+			cout << "Cette personne n'existe pas" << endl;
 	}
 }
 

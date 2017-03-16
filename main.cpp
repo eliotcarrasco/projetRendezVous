@@ -74,6 +74,16 @@ void testLCRendezVous()
         cout << "Test Insertion Rdv :  " << tmp2->RdV.nom() << endl;
         tmp2 = tmp2->suiv;
     }
+    
+    listeRdv.SupprimerRendezVous("Business");
+    
+    tmp2 = listeRdv.getTete();
+    
+    while(tmp2 != 0)
+    {
+        cout << "Test Insertion Rdv :  " << tmp2->RdV.nom() << endl;
+        tmp2 = tmp2->suiv;
+    }
 }
 
 

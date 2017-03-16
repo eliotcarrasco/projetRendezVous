@@ -2,6 +2,7 @@
 #include "LCRendezVous.h"
 #include "RendezVous.h"
 #include "Personne.h"
+#include "globals.h"
 
 using namespace std;
 
@@ -84,19 +85,19 @@ void LCRendezVous::SupprimerRendezVous(const string& nom)
 {
 	if(t == 0)
 	{ 
-		cout << "Le rendez vous n'existe pas";
+		cout << "Le rendez vous n'existe pas" << endl;
 	}
-	else if (t->RdV.nom() == nom)
+	else if (t->RdV.nom() == convertToLower(nom) )
 	{
 		ChainonRdV* tmp = t;
 		t = t->suiv;
 		delete tmp;
-		cout << "Le rendez-vous a ete supprime avec succes";
+		cout << "Le rendez-vous a ete supprime avec succes" << endl;
 	}
 	else
 	{
 		ChainonRdV *c1 = t, *c2 = t->suiv;
-		while(c2 != 0 && c2->RdV.nom() != nom)
+		while(c2 != 0 && c2->RdV.nom() != convertToLower(nom) )
 		{
 			c1 = c2;
 			c2 = c2->suiv;
@@ -105,11 +106,11 @@ void LCRendezVous::SupprimerRendezVous(const string& nom)
 		{
 			c1->suiv = c2->suiv;
 			delete c2;
-			cout << "Le rendez-vous a ete supprime avec succes";
+			cout << "Le rendez-vous a ete supprime avec succes" << endl;
 		}
 		else
 		{
-			cout << "Le rendez vous n'existe pas";
+			cout << "Le rendez vous n'existe pas" << endl;
 		}
 		
 	}
