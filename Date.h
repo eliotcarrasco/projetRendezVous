@@ -18,12 +18,13 @@ class Date
 		void setMois(int m);
 		void setAnnee(int a);
     
-        std::string afficher() const;
+        std::string getStringDate() const;
 		
 		//operators
 		bool operator==(const Date& d) const;
 		bool operator!=(const Date& d) const;
 		bool operator<(const Date& d) const;
+        bool operator>(const Date& d) const;
 		
 		bool valide() const;
 

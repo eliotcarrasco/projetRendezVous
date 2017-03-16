@@ -147,6 +147,5 @@ void RendezVous::supprimerParticipant(Personne pers)
 
 int RendezVous::nombreParticipants() const
 {
-    int nb = d_participants.Compter();
-    return nb;
+    return d_participants.Compter();
 }

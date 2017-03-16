@@ -53,12 +53,12 @@ void LCRendezVous::InsererRendezVous(const RendezVous& r)
 {
     ChainonRdV* nouv = new ChainonRdV();
 	nouv->RdV = r;
-	nouv->suiv = 0;
+    nouv->suiv = 0;
 	if(t==0)
 	{
 		t=nouv;
 	}
-	else if ( (r.date() < t->RdV.date()) && (r.heureDeb() < t->RdV.heureDeb()) )
+	else if ( (r.date() < t->RdV.date()) || (r.date() == t->RdV.date() && r.heureDeb() < t->RdV.heureDeb()) )
 	{
 		nouv->suiv = t;
 		t = nouv;
@@ -66,7 +66,7 @@ void LCRendezVous::InsererRendezVous(const RendezVous& r)
 	else
 	{
 		ChainonRdV *c1 = t, *c2 = t->suiv;
-		while(c2 != 0 && (c2->RdV.date() < r.date()) && (c2->RdV.heureDeb() < r.heureDeb()))
+		while(c2 != 0 && ( (r.date() > c2->RdV.date()) || (r.date() == t->RdV.date() && r.heureDeb() > t->RdV.heureDeb()) ) )
 		{
 			c1 = c2;
 			c2 = c2->suiv;
