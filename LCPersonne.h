@@ -6,12 +6,14 @@
 
 struct ChainonPersonne
 {
-	Personne p;
-	ChainonPersonne* suiv;
+    Personne p;
+    ChainonPersonne* suiv;
 };
+
 
 class LCPersonne
 {
+    
 	public:
 		LCPersonne();
 		~LCPersonne();

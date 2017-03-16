@@ -6,7 +6,7 @@
 
 using namespace std;
 
-string convertToLower(string& chaine);
+string convertToLower(const string& chaine);
 
 
 #endif /* globals_h */

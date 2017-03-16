@@ -1,4 +1,5 @@
 #include "LCPersonne.h"
+#include "Personne.h"
 #include <iostream>
 #include <string>
 
@@ -34,7 +35,7 @@ ChainonPersonne* LCPersonne::getTete() const
 */
 void LCPersonne::Inserer(const Personne& pers)
 {
-	ChainonPersonne* nouv;
+    ChainonPersonne *nouv;
 	nouv->p = pers;
 	nouv->suiv = 0;
 	if( t == 0 )

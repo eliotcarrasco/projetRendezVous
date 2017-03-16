@@ -5,10 +5,11 @@
 
 using namespace std;
 
-string convertToLower(string& chaine)
+string convertToLower(const string& chaine)
 {
+    string c = chaine;
     for (int i = 0; i < chaine.length(); ++i)
-        chaine[i] = tolower(chaine[i]);
+        c[i] = tolower(chaine[i]);
     
-    return chaine;
+    return c;
 }

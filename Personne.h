@@ -7,20 +7,25 @@
 
 using namespace std;
 
-class LCRendezVous;
-
 class Personne
 {
 	public:
-		Personne(string nom, string prenom, string telephone, string mail);
+		Personne(const string& nom, const string& prenom, const string& telephone, const string& mail);
+        Personne(const Personne& pers);
 		string Nom() const;
 		string Prenom() const;
+        string Telephone() const;
+        string Mail() const;
 		//bool aRendezVous(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
 		void setTelephone(const string& telephone);
 		void setMail(const string& mail);
     
         // opérateurs
+        Personne& operator=(const Personne& pers);
+    
+        //opérateur de comparaison
         bool operator==(const Personne& pers) const;
+    
 		
 	private:
 		string d_nom;

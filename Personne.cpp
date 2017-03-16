@@ -3,12 +3,25 @@
 #include "Heure.h"
 #include <string>
 #include "globals.h"
-#include "LCRendezVous.h"
 
-Personne::Personne(string nom, string prenom, string telephone, string mail) : d_nom{convertToLower(nom)},
+Personne::Personne(const string& nom, const string& prenom, const string& telephone, const string& mail) : d_nom{convertToLower(nom)},
 																			   d_prenom{convertToLower(prenom)},
 																			   d_telephone{telephone}, 
 																			   d_mail{mail}
+{}
+
+
+
+
+/**
+    Constructeur par recopie
+    @param pers - une personne
+ */
+
+Personne::Personne(const Personne& pers) : d_nom{pers.Nom()},
+                                        d_prenom{pers.Prenom()},
+                                        d_telephone{pers.Telephone()},
+                                        d_mail{pers.Mail()}
 {}
 
 /**
@@ -41,6 +54,25 @@ string Personne::Prenom() const
 	return d_prenom;
 }
 
+/**
+	Retourne le telephone de la personne interroge
+	@return d_telephone - le telephone
+ */
+string Personne::Telephone() const
+{
+    return d_telephone;
+}
+
+
+/**
+	Retourne le mail de la personne interroge
+	@return d_mail - le mail
+ */
+string Personne::Mail() const
+{
+    return d_mail;
+}
+
 
 /**
      Modifie le no de telephone
@@ -60,6 +92,21 @@ void Personne::setMail(const string& mail)
      d_mail = mail;
 }
 
+/**
+     Operateur =
+     @param pers - une personne
+*/
+Personne& Personne::operator=(const Personne& pers)
+{
+    if(this == &pers) return *this; // mettre par référence ou pas ?
+    
+    d_nom = pers.Nom();
+    d_prenom = pers.Prenom();
+    d_telephone = pers.Telephone();
+    d_mail = pers.Mail();
+    
+    return *this;
+}
 
 /**
     Operateur ==
