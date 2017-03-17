@@ -14,6 +14,6 @@ class interface
 };
 
 void ajouterPersonne(LCPersonne &p);
-void modifierPersonne(LCPersonne &p);
+bool rechercherPersonne(LCPersonne &p, Personne& person);
 
 #endif

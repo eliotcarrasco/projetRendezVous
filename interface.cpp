@@ -65,6 +65,7 @@ void interface::menuPersonnes(LCPersonne &p, LCRendezVous &r)
     	cout << "Choix2 : ";
     	cin >> i;
     	cout << endl;
+    	Personne prsn;
     	if( !cin.fail() )
     	{
     		switch(i)
@@ -74,7 +75,9 @@ void interface::menuPersonnes(LCPersonne &p, LCRendezVous &r)
 		        	menuPersonnes(p, r);
 		            break;
 		        case 2 :
-		        	modifierPersonne(p);
+		        	if (rechercherPersonne(p, prsn))
+		        		p.Modifier(prsn);
+		        	else cout << "La personne n'existe pas" << endl;
 		        	menuPersonnes(p, r);
 		            break;
 		        case 3 :
@@ -85,7 +88,7 @@ void interface::menuPersonnes(LCPersonne &p, LCRendezVous &r)
 		        	menuPrincipal(p, r);
 		        	break;
 		        default :
-		            cout << "Veuillez selectionner une option valide." << endl;
+		            cout << "Veuillez selectionner une option valide" << endl;
 		    }
 		}
 		else
@@ -176,7 +179,7 @@ void ajouterPersonne(LCPersonne &p)
 	cout << endl;
 }
 
-void modifierPersonne(LCPersonne &p)
+bool rechercherPersonne(LCPersonne &p, Personne& person)
 {
 	string nom, prenom;
 	
@@ -186,6 +189,15 @@ void modifierPersonne(LCPersonne &p)
 	cout << "Prenom de la personne : ";
 	cin >> prenom;
 	
-	p.Modifier(convertToUpper(nom), convertForName(prenom) );
-	cout << endl;
+	ChainonPersonne* tmp = p.getTete();
+	while(tmp != 0 && tmp->p.Nom() != convertToUpper(nom) && tmp->p.Prenom() != convertForName(prenom) )
+	{
+		tmp = tmp->suiv;
+	}
+	if(tmp != 0)
+	{
+		person = tmp->p;
+		return true;	
+	}
+	return false;
 }

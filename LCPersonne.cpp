@@ -122,16 +122,16 @@ void LCPersonne::Supprimer(const Personne& pers) //utiliser nom et prenom pour r
 	@param nom - Le nom de la personne a modifier
 	@param prenom - Le prenom de la personne a modifier
 */
-void LCPersonne::Modifier(const string& nom, const string& prenom)
+void LCPersonne::Modifier(const Personne& pers)
 {
 	if(t == 0)
 		cout << "Cette personne n'existe pas" << endl;
 	else
 	{
 		ChainonPersonne* tmp = t;
-        while(tmp != 0 && tmp->p.Nom() != nom && tmp->p.Prenom() != prenom)
+        while(tmp != 0 && tmp->p != pers)
 			tmp = tmp->suiv;
-		if(tmp->p.Nom() == nom && tmp->p.Prenom() == prenom)
+		if(tmp->p == pers)
 		{
 			string c;
 			
