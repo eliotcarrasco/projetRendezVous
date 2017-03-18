@@ -25,7 +25,7 @@ void interface::menuPrincipal(LCPersonne &p, LCRendezVous &r)
     
     do
     {
-    	cout << "Choix1 : ";
+    	cout << "Choix : ";
     	cin >> i;
     	cout << endl;
 	    switch(i)
@@ -62,7 +62,7 @@ void interface::menuPersonnes(LCPersonne &p, LCRendezVous &r)
     
 	do
     {
-    	cout << "Choix2 : ";
+    	cout << "Choix : ";
     	cin >> i;
     	cout << endl;
     	Personne prsn;
@@ -77,11 +77,11 @@ void interface::menuPersonnes(LCPersonne &p, LCRendezVous &r)
 		        case 2 :
 		        	if (rechercherPersonne(p, prsn))
 		        		p.Modifier(prsn);
-		        	else cout << "La personne n'existe pas" << endl;
 		        	menuPersonnes(p, r);
 		            break;
 		        case 3 :
-		        	
+		        	if (rechercherPersonne(p, prsn))
+		        		p.Supprimer(prsn);
 		        	menuPersonnes(p, r);
 		        	break;
 		        case 0 :
@@ -179,6 +179,12 @@ void ajouterPersonne(LCPersonne &p)
 	cout << endl;
 }
 
+/**
+	Regarde a partir du nom et du prenom si la personne rechercher existe
+	@param p - Liste de personne existante dans le programme
+	@parma person - La personne recherchee (intialement vide puis remplit grace a cette fonction)
+	@return Vrai si la personne existe, Faux sinon
+*/
 bool rechercherPersonne(LCPersonne &p, Personne& person)
 {
 	string nom, prenom;
@@ -199,5 +205,6 @@ bool rechercherPersonne(LCPersonne &p, Personne& person)
 		person = tmp->p;
 		return true;	
 	}
+	cout << "Cette personne n'existe pas" << endl << endl;
 	return false;
 }

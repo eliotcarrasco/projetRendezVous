@@ -1,0 +1,28 @@
+Dans ce fichier vous aurez la "BDD" si vous voulez tester le programme en mode interface en ligne de commande
+(copier ce qui suit dans le premier menu de l'interface):
+1
+1
+Pfund
+Daniel
+0646231902
+dany.pfd@gmail.com
+1
+Pfund
+Arnold
+0646231902
+dany.pfd@gmail.com
+1
+Hindi
+Hassane
+0646231902
+rppalestine@gmail.com
+1
+Carrasco
+Eliot
+0646121902
+insectsforlife@gmail.com
+1
+Machin
+Alexandre
+0646352413
+al@yahoo.fr

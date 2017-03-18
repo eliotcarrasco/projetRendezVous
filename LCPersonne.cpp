@@ -81,93 +81,79 @@ void LCPersonne::Inserer(const Personne& pers)
 		c1->suiv = nouv;
 		nouv->suiv = c2;
 	}
+	cout << "La personne a ete ajoute avec succes" << endl;
 }
 
 /**
 	Enlever une personne 
 	@param pers - la personne a supprimer
 */
-void LCPersonne::Supprimer(const Personne& pers) //utiliser nom et prenom pour recherche
+void LCPersonne::Supprimer(const Personne& pers)
 {
-	if(t == 0) {}
-	else if(t->p == pers)
+	if(t->p == pers)
 	{
 		ChainonPersonne* tmp = t;
 		t = t->suiv;
 		delete tmp;
-		cout << "La personne a ete supprimee avec succes" << endl;
 	}
 	else
 	{
 		ChainonPersonne *c1 = t, *c2 = t->suiv;
-		while(c2 != 0 && c2->p != pers)
+		while(c2->p != pers)
 		{
 			c1 = c2;
 			c2 = c2->suiv;
 		}
-		if(c2 == 0)
-			cout << "La personne n'existe pas" << endl;
-		else
-		{
-			c1->suiv = c2->suiv;
-            cout << c2->p.Prenom();
-			delete c2;
-			cout << "La personne a ete supprimee avec succes" << endl;
-		}
+		c1->suiv = c2->suiv;
+		delete c2;
 	}
+	cout << "La personne a ete supprimee avec succes" << endl << endl;
 }
 
 /**
-	Modifier le numero et/ou le mail a partir du nom et du prenom
-	@param nom - Le nom de la personne a modifier
-	@param prenom - Le prenom de la personne a modifier
+	Modifier le numero et/ou le mail d'une personne
+	@param pers - la personne a supprimer
 */
 void LCPersonne::Modifier(const Personne& pers)
 {
-	if(t == 0)
-		cout << "Cette personne n'existe pas" << endl;
-	else
+	ChainonPersonne* tmp = t;
+    while(tmp != 0 && tmp->p != pers)
+		tmp = tmp->suiv;
+	if(tmp->p == pers)
 	{
-		ChainonPersonne* tmp = t;
-        while(tmp != 0 && tmp->p != pers)
-			tmp = tmp->suiv;
-		if(tmp->p == pers)
-		{
-			string c;
-			
-			do	
-			{		
-				cout << "Voulez-vous modifier le numero de telephone de la personne? (O/N) : ";
-				cin >> c;
-			}
-			while(c != "O" && c != "o" && c != "N" && c != "n");
-            
-			if(c == "O" || c == "o")
-			{
-				string tel;
-				cout << "Veuillez inscrire le nouveau numero : ";
-				cin >> tel;
-				tmp->p.setTelephone(tel);
-			}
-			
-			do
-			{			
-				cout << "Voulez-vous modifier le mail de la personne? (O/N) : ";
-				cin >> c;
-			}
-			while(c != "O" && c != "o" && c != "N" && c != "n");
-            
-			if(c == "O" || c == "o")
-			{
-				string mail;
-				cout << "Veuillez inscrire le nouveau mail : ";
-				cin >> mail;
-				tmp->p.setMail(mail);
-			}
+		string c;
+		
+		do	
+		{		
+			cout << "Voulez-vous modifier le numero de telephone de la personne? (O/N) : ";
+			cin >> c;
 		}
-		else
-			cout << "Cette personne n'existe pas" << endl;
+		while(c != "O" && c != "o" && c != "N" && c != "n");
+        
+		if(c == "O" || c == "o")
+		{
+			string tel;
+			cout << "Veuillez inscrire le nouveau numero : ";
+			cin >> tel;
+			tmp->p.setTelephone(tel);
+		}
+		
+		do
+		{			
+			cout << "Voulez-vous modifier le mail de la personne? (O/N) : ";
+			cin >> c;
+		}
+		while(c != "O" && c != "o" && c != "N" && c != "n");
+        
+		if(c == "O" || c == "o")
+		{
+			string mail;
+			cout << "Veuillez inscrire le nouveau mail : ";
+			cin >> mail;
+			tmp->p.setMail(mail);
+		}
 	}
+	cout << "Modifications enregistrees avec succees" << endl << endl;
 }
 
 
