@@ -14,6 +14,8 @@ class interface
 };
 
 void ajouterPersonne(LCPersonne &p);
-bool rechercherPersonne(LCPersonne &p, Personne& person);
+bool rechercherPersonne(LCPersonne &p, Personne &person);
+void ajouterRdv(LCPersonne &p, LCRendezVous &r);
+bool rechercherRdv(LCRendezVous &r, RendezVous &rdv);
 
 #endif

@@ -1,6 +1,8 @@
 #include "interface.h"
 #include "LCRendezVous.h"
 #include "globals.h"
+#include "Date.h"
+#include "Heure.h"
 #include <iostream>
 #include <string>
 
@@ -76,12 +78,18 @@ void interface::menuPersonnes(LCPersonne &p, LCRendezVous &r)
 		            break;
 		        case 2 :
 		        	if (rechercherPersonne(p, prsn))
-		        		p.Modifier(prsn);
+		        		{
+		        			prsn.afficherPersonne();
+		        			p.Modifier(prsn);	
+						}
 		        	menuPersonnes(p, r);
 		            break;
 		        case 3 :
-		        	if (rechercherPersonne(p, prsn))
-		        		p.Supprimer(prsn);
+		        	if (rechercherPersonne(p, prsn)) //penser a verifier que la personne n'a pas de rdv avant de la supprimer -->
+		        		{
+		        			prsn.afficherPersonne();
+							p.Supprimer(prsn);
+		        		}
 		        	menuPersonnes(p, r);
 		        	break;
 		        case 0 :
@@ -122,20 +130,27 @@ void interface::menuRendezVous(LCPersonne &p, LCRendezVous &r)
 		cout << "Choix2 : ";
 		cin >> i;
 		cout << endl;
+		RendezVous rdv;
 		if( !cin.fail() )
 		{
 			switch(i)
 			{
 		    	case 1 :
-		    		
+		    		ajouterRdv(p, r);
 		    		menuRendezVous(p, r);
 		        	break;
 		    	case 2 :
-		    		
+		    		if(rechercherRdv(r, rdv))
+		    		{
+		    			
+					}
 		    		menuRendezVous(p, r);
 		        	break;
 		    	case 3 :
+		    		if(rechercherRdv(r, rdv))
+		    		{
 		    		
+					}
 		    		menuRendezVous(p, r);
 		    		break;
 		   		case 0 :
@@ -156,7 +171,7 @@ void interface::menuRendezVous(LCPersonne &p, LCRendezVous &r)
 }
 
 /**
-	Récupère les differentes informations concernant la nouvelle personne a ajouter
+	Recupere les differentes informations concernant la nouvelle personne a ajouter
 	@param p - La liste chainee de personnes
 */
 void ajouterPersonne(LCPersonne &p)
@@ -206,5 +221,68 @@ bool rechercherPersonne(LCPersonne &p, Personne& person)
 		return true;	
 	}
 	cout << "Cette personne n'existe pas" << endl << endl;
+	return false;
+}
+
+/**
+	Recupere les differentes informations concernant le nouveau rdv a ajouter
+	@param r - La liste chainee des rdv
+*/
+void ajouterRdv(LCPersonne &p, LCRendezVous &r)
+{
+	string nom;
+	int j, m, a, hdeb, mindeb, hfin, minfin;
+	
+	cout << "Nom du rendez-vous : ";
+	cin >> nom;
+	
+	cout << "Jour (1-31) : ";
+	cin >> j;
+	cout << "Mois (1-12) : ";
+	cin >> m;
+	cout << "Annee (ex : 2017) : ";
+	cin >> a;
+	
+	cout << "Horaire du debut : " << endl << "	Heure : ";
+	cin >> hdeb;
+	cout << "	Minute : ";
+	cin >> mindeb;
+	
+	cout << "Horaire de fin : " << endl << "	Heure : ";
+	cin >> hfin;
+	cout << "	Minute : ";
+	cin >> minfin;
+	
+	//manque l'ajout des particiapants (ne pas oublier de verifier les disponibilité de chaques participants)
+	
+	RendezVous rdv{nom, Date{j, m, a}, Heure{hdeb, mindeb}, Heure{hfin, minfin}};
+	r.InsererRendezVous(rdv);
+	
+	cout << "Rendez-vous ajoute avec succees" << endl << endl;
+}
+
+/**
+	Regarde a partir du nom si la rdv rechercher existe
+	@param r - Liste de rdv existante dans le programme
+	@parma rdv - Le rdv recherchee (intialement vide puis remplit grace a cette fonction)
+	@return Vrai si le rev existe, Faux sinon
+*/
+bool rechercherRdv(LCRendezVous &r, RendezVous &rdv)
+{
+	string nom;
+	cout << "Nom du rendez-vous : ";
+	cin >> nom;
+	
+	ChainonRdV *tmp = r.getTete();
+	while(tmp != 0 && tmp->RdV.nom() != nom)
+	{
+		tmp = tmp->suiv;
+	}
+	if(tmp != 0)
+	{
+		rdv = tmp->RdV;
+		return true;
+	}
+	cout << "Ce rendez-vous n'existe pas" << endl << endl;
 	return false;
 }

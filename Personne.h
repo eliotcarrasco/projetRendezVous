@@ -20,11 +20,12 @@ class Personne
 		//bool aRendezVous(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
 		void setTelephone(const string& telephone);
 		void setMail(const string& mail);
+		void afficherPersonne() const;
     
-        // opérateurs
+        // operateurs
         Personne& operator=(const Personne& pers);
     
-        //opérateur de comparaison
+        //operateur de comparaison
         bool operator==(const Personne& pers) const;
         bool operator!=(const Personne& pers) const;
     

@@ -2,6 +2,7 @@
 #include "Date.h"
 #include "Heure.h"
 #include "globals.h"
+#include <iostream>
 
 
 
@@ -148,4 +149,23 @@ void RendezVous::supprimerParticipant(const Personne& pers)
 int RendezVous::nombreParticipants() const
 {
     return d_participants.Compter();
+}
+/**
+	Affiche les infos des particpant a une reunion
+*/
+void RendezVous::afficherParticipants() const
+{
+	ChainonPersonne* tmp = d_participants.getTete();
+	
+	if(tmp == 0)
+		std::cout << "Aucun participant pour ce rendez-vous" << endl <<endl;
+	else
+	{
+		std::cout << "Liste des particiants de ce rendez-vous : " << endl;
+		while(tmp != 0)
+		{
+			tmp->p.afficherPersonne();
+			tmp = tmp->suiv;
+		}
+	}
 }

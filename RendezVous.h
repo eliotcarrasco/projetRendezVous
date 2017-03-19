@@ -31,6 +31,9 @@ class RendezVous
         void ajouterParticipant(const Personne& pers);
         void supprimerParticipant(const Personne& pers);
         int nombreParticipants() const;
+        void afficherParticipants() const;
+        
+        //manque les surcharges d'operateurs pour utiliser les fonction modifier et supprimer de LCRendezVous avec des rdv
     
 
 	private:

@@ -8,6 +8,7 @@
 #include "Heure.h"
 #include <vector>
 
+using namespace std;
 
 /**
     Procedure de test temporaire
@@ -138,7 +139,7 @@ void testParticipantsRDV()
     listeRdv.getTete()->RdV.ajouterParticipant(Personne{"Carrasco", "Eliot", "0646121902", "insectsforlife@gmail.com"});
     
     
-    LCPersonne listePart = listeRdv.getTete()->RdV.listeParticipants();
+    /*LCPersonne listePart = listeRdv.getTete()->RdV.listeParticipants();
     
     ChainonPersonne* tmp = listePart.getTete();
     
@@ -146,8 +147,10 @@ void testParticipantsRDV()
     {
         cout << "Test Participants a 1 RDV : " << tmp->p.Nom() << endl << tmp->p.Prenom() << endl << tmp->p.Telephone() << endl << tmp->p.Mail() <<  endl;
         tmp = tmp->suiv;
-    }
+    }*/
     
+    RendezVous rdv = listeRdv.getTete()->RdV;
+    rdv.afficherParticipants();
     
 }
 
@@ -166,12 +169,12 @@ void testParticipantsRDV()
 
 int main(int argc, char** argv)
 {
-	LCPersonne listePersonnes;
-	LCRendezVous listeRdv;
-	interface inter;
-	inter.menuPrincipal(listePersonnes, listeRdv);
+//	LCPersonne listePersonnes;
+//	LCRendezVous listeRdv;
+//	interface inter;
+//	inter.menuPrincipal(listePersonnes, listeRdv);
 //  testLCPersonne();
-//	testParticipantsRDV();
+	testParticipantsRDV();
 	return 0;
 }
 

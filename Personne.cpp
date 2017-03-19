@@ -1,8 +1,10 @@
 #include "Personne.h"
 #include "Date.h"
 #include "Heure.h"
-#include <string>
 #include "globals.h"
+
+#include <string>
+#include <iostream>
 
 Personne::Personne(const string& nom, const string& prenom, const string& telephone, const string& mail) : d_nom{convertToUpper(nom)},
 																			   d_prenom{convertForName(prenom)},
@@ -102,6 +104,17 @@ void Personne::setTelephone(const string& telephone)
 void Personne::setMail(const string& mail)
 {
      d_mail = mail;
+}
+
+/**
+	Afficher les informations de la personne concerne
+*/
+void Personne::afficherPersonne() const
+{
+	std::cout << "Nom : " << d_nom << endl;
+	std::cout << "Preom : " << d_prenom << endl;
+	std::cout << "Numero de telephone : " << d_telephone << endl;
+	std::cout << "Adresse mail : " << d_mail << endl;
 }
 
 /**
