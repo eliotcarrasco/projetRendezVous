@@ -10,8 +10,7 @@ class ChainonPersonne
 //    private:
     public:
         ChainonPersonne();
-        ChainonPersonne(const ChainonPersonne&);
-        ~ChainonPersonne();
+//        ChainonPersonne(const ChainonPersonne&);
         Personne p;
         ChainonPersonne* suiv;
 //    friend class LCPersonne;

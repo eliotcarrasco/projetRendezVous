@@ -14,10 +14,10 @@ ChainonRdV::ChainonRdV(): RdV{}, suiv{0}
 {}
 
 
-ChainonRdV::~ChainonRdV()
-{
-    RdV.~RendezVous();
-}
+//ChainonRdV::~ChainonRdV()
+//{
+//    RdV.~RendezVous();
+//}
 
 
 /**
@@ -39,8 +39,6 @@ LCRendezVous::~LCRendezVous()
 		delete t;
 		t=s;
 	}
-    
-    
 }
 
 
@@ -132,8 +130,9 @@ void LCRendezVous::SupprimerRendezVous(const string& nom)
     @listeRdv - la liste des rdv
  */
 
-LCRendezVous& LCRendezVous::getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const
+LCRendezVous LCRendezVous::getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const
 {
+    
     
     if (t==0) return listeRdv;
     else
@@ -158,6 +157,14 @@ LCRendezVous& LCRendezVous::getRendezVous(LCRendezVous& listeRdv, const Personne
             tmp = tmp->suiv;
         }
     }
+    
+//    ChainonRdV* test =  listeRdv.getTete();
+//    
+//    while(test != 0)
+//    {
+//        cout << "Test 1 :  " << test->RdV.nom() << endl;
+//        test = test->suiv;
+//    }
     
     return listeRdv;
 }

@@ -79,7 +79,7 @@ Heure RendezVous::heureFin() const
      Renvoie la liste des personnes participants au rdv
      @return liste de personnes du rdv
  */
-LCPersonne RendezVous::listeParticipants() const
+LCPersonne& RendezVous::listeParticipants()
 {
     return d_participants;
 }
