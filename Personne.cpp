@@ -32,11 +32,14 @@ Personne::Personne(const Personne& pers) : d_nom{convertToUpper(pers.Nom())},
  */
 
 Personne::Personne() : d_nom{},
-d_prenom{},
-d_telephone{},
-d_mail{}
+                        d_prenom{},
+                        d_telephone{},
+                        d_mail{}
 {}
 
+
+Personne::~Personne()
+{}
 
 /**
 	Verifie que la personne est occupee

@@ -10,7 +10,7 @@
 /**
  Constructeur vide
  */
-RendezVous::RendezVous() : d_nom{}, d_date{}, d_heureDeb{}, d_heureFin{}
+RendezVous::RendezVous() : d_nom{}, d_date{}, d_heureDeb{}, d_heureFin{}, d_participants{}
 {}
 
 
@@ -24,9 +24,18 @@ RendezVous::RendezVous() : d_nom{}, d_date{}, d_heureDeb{}, d_heureFin{}
 RendezVous::RendezVous(const string& nom, Date date, Heure heureDeb, Heure heureFin) : d_nom{convertToLower(nom)},
                                                                                 d_date{date},
                                                                                 d_heureDeb{heureDeb},
-                                                                                d_heureFin{heureFin}
+                                                                                d_heureFin{heureFin},
+                                                                                d_participants{}
 {}
 
+
+RendezVous::~RendezVous()
+{
+    d_date.~Date();
+    d_heureDeb.~Heure();
+    d_heureFin.~Heure();
+    d_participants.~LCPersonne();
+}
 
 /**
     Renvoie le nom du rdv

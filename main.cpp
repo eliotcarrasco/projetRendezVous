@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "interface.h"
 #include "LCPersonne.h"
 #include "LCRendezVous.h"
@@ -6,7 +7,7 @@
 #include "RendezVous.h"
 #include "Date.h"
 #include "Heure.h"
-#include <vector>
+#include "globals.h"
 
 using namespace std;
 
@@ -50,6 +51,7 @@ void testLCPersonne()
     }
 
     cout << endl << "Test nombre de personne dans la liste : " << listePersonnes.Compter();
+    
 }
 
 
@@ -94,6 +96,7 @@ void testLCRendezVous()
         tmp2 = tmp2->suiv;
     }
     //cout << "Test de la date et l'heure : " << Date{17, 3, 2017}.getStringDate() << " a " << Heure{15, 30}.getStringHeure() << endl;
+    
 }
 
 
@@ -134,12 +137,24 @@ void testParticipantsRDV()
         listePersonnes.Inserer(vP[i]);
     
     
-    listeRdv.getTete()->RdV.ajouterParticipant(Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"});
-    listeRdv.getTete()->RdV.ajouterParticipant(Personne{"Hindi", "Hassane", "0646231902", "rppalestine@gmail.com"});
-    listeRdv.getTete()->RdV.ajouterParticipant(Personne{"Carrasco", "Eliot", "0646121902", "insectsforlife@gmail.com"});
+    listeRdv.getTete()->RdV.ajouterParticipant(vP[0]);
+    listeRdv.getTete()->RdV.ajouterParticipant(vP[1]);
+    listeRdv.getTete()->RdV.ajouterParticipant(vP[2]);
+    
+//    cout << "Test";
+//    
+//    LCRendezVous listeRDVDaniel = listeRdv.getRendezVous(vP[0]);
+//    
+//    ChainonRdV* tmp2 = listeRDVDaniel.getTete();
+//    
+//    while(tmp2 != 0)
+//    {
+//        cout << "Test get Rdv :  " << tmp2->RdV.nom() << endl;
+//        tmp2 = tmp2->suiv;
+//    }
     
     
-    /*LCPersonne listePart = listeRdv.getTete()->RdV.listeParticipants();
+    LCPersonne listePart = listeRdv.getTete()->RdV.listeParticipants();
     
     ChainonPersonne* tmp = listePart.getTete();
     
@@ -147,10 +162,10 @@ void testParticipantsRDV()
     {
         cout << "Test Participants a 1 RDV : " << tmp->p.Nom() << endl << tmp->p.Prenom() << endl << tmp->p.Telephone() << endl << tmp->p.Mail() <<  endl;
         tmp = tmp->suiv;
-    }*/
+    }
     
-    RendezVous rdv = listeRdv.getTete()->RdV;
-    rdv.afficherParticipants();
+
+
     
 }
 
@@ -169,13 +184,37 @@ void testParticipantsRDV()
 
 int main(int argc, char** argv)
 {
-//	LCPersonne listePersonnes;
-//	LCRendezVous listeRdv;
-//	interface inter;
-//	inter.menuPrincipal(listePersonnes, listeRdv);
-//  testLCPersonne();
-	testParticipantsRDV();
-	return 0;
+
+    LCPersonne listePersonnes{};
+    
+    vector<Personne> vP {
+        Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"},
+        Personne{"Pfund", "aRnoLd", "0646231902", "dany.pfd@gmail.com"},
+        Personne{"Hindi", "Hassane", "0646231902", "rppalestine@gmail.com"},
+        Personne{"Carrasco", "Eliot", "0646121902", "insectsforlife@gmail.com"},
+        Personne{"Machin", "Alexandre", "0646352413", "al@yahoo.fr"}
+    };
+    
+    for( int i = 0; i < vP.size(); i++)
+        listePersonnes.Inserer(vP[i]);
+    
+    
+    
+
+    ChainonPersonne* tmp = listePersonnes.getTete();
+    
+    while(tmp != 0)
+    {
+        cout << "Test Insertion Personne : " << tmp->p.Nom() << " " << tmp->p.Prenom() <<  endl;
+        tmp = tmp->suiv;
+    }
+    
+
 }
+
+
+
+
+
 
 

@@ -11,26 +11,16 @@ using namespace std;
 ChainonPersonne::ChainonPersonne() : p{}, suiv{0}
 {}
 
-///**
-//    Retourne la personne d'un ChainonPersonne
-// */
-//Personne ChainonPersonne::getP()
-//{
-//    return p;
-//}
-//
-///**
-//    Retourne le suivant d'un ChainonPersonne
-// */
-//ChainonPersonne* ChainonPersonne::getSuiv() const
-//{
-//    return suiv;
-//}
 
+ChainonPersonne::ChainonPersonne(const ChainonPersonne& cp) : p{cp.p}, suiv{cp.suiv}
+{}
 
+ChainonPersonne::~ChainonPersonne()
+{
+    p.~Personne();
+}
 
-
-LCPersonne::LCPersonne():t{nullptr}
+LCPersonne::LCPersonne():t{0}
 {}
 
 LCPersonne::~LCPersonne()
@@ -40,6 +30,7 @@ LCPersonne::~LCPersonne()
 		ChainonPersonne* s = t->suiv;
 		delete t;
 		t = s;
+        
 	}
 }
 
@@ -60,7 +51,7 @@ ChainonPersonne* LCPersonne::getTete() const
 */
 void LCPersonne::Inserer(const Personne& pers)
 {
-    ChainonPersonne* nouv = new ChainonPersonne();
+    ChainonPersonne* nouv = new ChainonPersonne{};
 	nouv->p = pers;
 	nouv->suiv = 0;
 	if( t == 0 )

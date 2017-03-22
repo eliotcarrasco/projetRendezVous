@@ -1,19 +1,27 @@
 #ifndef LCPERSONNE_H 
 #define LCPERSONNE_H
 #include "Personne.h"
+#include "LCPersonne.h"
 
 #include <string>
 
 class ChainonPersonne
 {
+//    private:
     public:
         ChainonPersonne();
-//        Personne getP();
-//        ChainonPersonne* getSuiv() const;
-    
-//    private:
+        ChainonPersonne(const ChainonPersonne&);
+        ~ChainonPersonne();
         Personne p;
         ChainonPersonne* suiv;
+//    friend class LCPersonne;
+//    friend class LCRendezVous;
+//    friend class interface;
+//    friend class RendezVous;
+//    friend void testLCRendezVous();
+//    friend void testLCPersonne();
+//    friend void testParticipantsRDV();
+//    friend int main(int argc, char** argv);
     
 };
 
@@ -30,7 +38,7 @@ class LCPersonne
         int Compter() const;
 		
 	private:
-		ChainonPersonne* t;		
+		ChainonPersonne* t;
 };
 
 #endif

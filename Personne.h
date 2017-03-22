@@ -13,6 +13,7 @@ class Personne
 		Personne(const string& nom, const string& prenom, const string& telephone, const string& mail);
         Personne(const Personne& pers);
         Personne();
+        ~Personne();
 		string Nom() const;
 		string Prenom() const;
         string Telephone() const;

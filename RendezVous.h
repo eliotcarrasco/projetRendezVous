@@ -13,6 +13,7 @@ class RendezVous
 	public:
         RendezVous();
 		RendezVous(const string& nom, Date date, Heure heureDeb, Heure heureFin);
+        ~RendezVous();
     
         // getters
         string nom() const;
