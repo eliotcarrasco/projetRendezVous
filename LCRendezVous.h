@@ -39,6 +39,7 @@ class LCRendezVous
         											 //manque la fonction qui permet de modifier les rdv
         bool occupee(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
         LCRendezVous& getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const;
+		void rechercherRendezVous(Date d);
 		
 	private:
 		ChainonRdV* t;

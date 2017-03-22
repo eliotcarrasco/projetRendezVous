@@ -279,8 +279,19 @@ void interface::menuRendezVous(LCPersonne &p, LCRendezVous &r)
 		    		menuRendezVous(p, r);
 		    		break;
 		    	case 4 :
-		    		
-		    		menuRendezVous(p, r);
+		    		{
+			    		int jour, mois, annee;
+			    		cout << "Entrez la date recherchee : " << endl;
+			    		cout << "Jour : ";
+			    		cin >> jour;
+			    		cout << "Mois : ";
+			    		cin >> mois;
+			    		cout << "Annee : ";
+			    		cin >> annee;
+			    		Date rech{jour, mois, annee};
+			    		r.rechercherRendezVous(rech);
+			    		menuRendezVous(p, r);
+		    		}
 		    	case 5 :
 		    		
 		    		menuRendezVous(p, r);

@@ -25,6 +25,7 @@ class Date
 		bool operator!=(const Date& d) const;
 		bool operator<(const Date& d) const;
         bool operator>(const Date& d) const;
+        bool operator<=(const Date& d) const;
 		
 		bool valide() const;
 
