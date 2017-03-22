@@ -163,8 +163,6 @@ void testParticipantsRDV()
         cout << "Test Participants a 1 RDV : " << tmp->p.Nom() << endl << tmp->p.Prenom() << endl << tmp->p.Telephone() << endl << tmp->p.Mail() <<  endl;
         tmp = tmp->suiv;
     }
-    
-
 
     
 }
@@ -209,6 +207,15 @@ int main(int argc, char** argv)
         tmp = tmp->suiv;
     }
     
+
+//	LCPersonne listePersonnes;
+//	LCRendezVous listeRdv;
+//	interface inter;
+//	inter.menuPrincipal(listePersonnes, listeRdv);
+//	testLCRendezVous();
+//  testLCPersonne();
+	testParticipantsRDV();
+	return 0;
 
 }
 

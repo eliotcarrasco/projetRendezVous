@@ -161,7 +161,7 @@ void interface::menuPrincipal(LCPersonne &p, LCRendezVous &r)
 	            cout << "Veuillez selectionner une option valide." << endl;
 	    }
 	}
-	while( i != 1 && i != 2 && i != 0);
+	while( i != 0 && i != 1 && i != 2 );
 }
 
 /**
@@ -177,6 +177,7 @@ void interface::menuPersonnes(LCPersonne &p, LCRendezVous &r)
     cout << "1. Ajouter une personne" << endl;
     cout << "2. Modifier une personne" << endl;
     cout << "3. Supprimer une personne" << endl;
+    cout << "4. Voir si une personne a un rendez-vous prevu a une certaine date";
     cout << "0. Retour" << endl;
     
 	do
@@ -209,6 +210,10 @@ void interface::menuPersonnes(LCPersonne &p, LCRendezVous &r)
 		        		}
 		        	menuPersonnes(p, r);
 		        	break;
+		        case 4 :
+		        	
+		        	menuPrincipal(p, r);
+		        	break;
 		        case 0 :
 		        	menuPrincipal(p, r);
 		        	break;
@@ -224,7 +229,7 @@ void interface::menuPersonnes(LCPersonne &p, LCRendezVous &r)
 		}
 	    
 	}
-	while( i != 1 && i != 2 && i != 3 && i != 0);
+	while( i != 0 && i != 1 && i != 2 && i != 3 && i != 4 );
 }
 
 /**
@@ -240,6 +245,9 @@ void interface::menuRendezVous(LCPersonne &p, LCRendezVous &r)
     cout << "1. Ajouter un rendez-vous" << endl;
     cout << "2. Modifier un rendez-vous" << endl;
     cout << "3. Supprimer un rendez-vous" << endl;
+    cout << "4. Afficher les rendez-vous pour une date donee" << endl;
+    cout << "5. Afficher les rendez-vous d'une personne" << endl;
+    cout << "6. Afficher les participants a un rendez-vous" << endl;
     cout << "0. Retour" << endl;
     
 	do
@@ -270,6 +278,15 @@ void interface::menuRendezVous(LCPersonne &p, LCRendezVous &r)
 					}
 		    		menuRendezVous(p, r);
 		    		break;
+		    	case 4 :
+		    		
+		    		menuRendezVous(p, r);
+		    	case 5 :
+		    		
+		    		menuRendezVous(p, r);
+		    	case 6 :
+		    		
+		    		menuRendezVous(p, r);
 		   		case 0 :
 		    		menuPrincipal(p, r);
 		    		break;
@@ -284,7 +301,7 @@ void interface::menuRendezVous(LCPersonne &p, LCRendezVous &r)
 			
 		}
 	}
-	while( (i != 1 && i != 2 && i != 3 && i != 0) || (cin.fail()));
+	while( (i != 0 && i != 1 && i != 2 && i != 3 && i != 4 && i != 5 && i != 6 ) || (cin.fail()));
 }
 
 
