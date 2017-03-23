@@ -12,13 +12,9 @@ ChainonPersonne::ChainonPersonne() : p{}, suiv{0}
 {}
 
 
-ChainonPersonne::ChainonPersonne(const ChainonPersonne& cp) : p{cp.p}, suiv{cp.suiv}
-{}
+//ChainonPersonne::ChainonPersonne(const ChainonPersonne& cp) : p{cp.p}, suiv{cp.suiv}
+//{}
 
-ChainonPersonne::~ChainonPersonne()
-{
-    p.~Personne();
-}
 
 LCPersonne::LCPersonne():t{0}
 {}

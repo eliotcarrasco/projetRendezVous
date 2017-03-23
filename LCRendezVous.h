@@ -13,7 +13,7 @@ class ChainonRdV
 //    private:
 public:
         ChainonRdV();
-        ~ChainonRdV();
+        //~ChainonRdV();
         RendezVous RdV;
         ChainonRdV* suiv;
 //friend class LCPersonne;
@@ -40,10 +40,10 @@ class LCRendezVous
         bool occupee(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
         LCRendezVous& getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const;
 		void rechercherRendezVous(Date d);
+        LCRendezVous getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const;
 		
 	private:
 		ChainonRdV* t;
-        bool deleted = false;
 };
 
 #endif
