@@ -95,6 +95,30 @@ void ajouterRdv(LCPersonne &p, LCRendezVous &r)
     cin >> minfin;
     
     //manque l'ajout des particiapants (ne pas oublier de verifier les disponibilité de chaques participants)
+    Personne person;
+    int nbparticipants;
+    cout << "Combien de participants pour ce rendez-vous? " << endl;
+    do
+    {
+    	if( !cin.fail() )
+    	{
+	    	cout << "Nombre de participants : ";
+	    	cin >> nbparticipants;
+	    }
+	    else
+	    {
+	    	cin.clear();
+			cin.ignore(256,'\n');
+			nbparticipants = -1;
+		}
+	}while( nbparticipants == -1 );
+	if( nbparticipants > p.Compter() )
+		nbparticipants = p.Compter();
+	for( int i = 0; i < nbparticipants; i++)
+	{
+		cout << "Personne " << i << " : " << endl;
+		rechercherPersonne(p, person);
+	}
     
     RendezVous rdv{nom, Date{j, m, a}, Heure{hdeb, mindeb}, Heure{hfin, minfin}};
     r.InsererRendezVous(rdv);
@@ -147,19 +171,28 @@ void interface::menuPrincipal(LCPersonne &p, LCRendezVous &r)
     	cout << "Choix : ";
     	cin >> i;
     	cout << endl;
-	    switch(i)
-	    {
-	        case 1 :
-	            menuPersonnes(p, r);
-	            break;
-	        case 2 :
-	            menuRendezVous(p, r);
-	            break;
-	        case 0 :
-	        	break;
-	        default :
-	            cout << "Veuillez selectionner une option valide." << endl;
-	    }
+		if( !cin.fail() )
+		{   
+		    switch(i)
+		    {
+		        case 1 :
+		            menuPersonnes(p, r);
+		            break;
+		        case 2 :
+		            menuRendezVous(p, r);
+		            break;
+		        case 0 :
+		        	break;
+		        default :
+		            cout << "Veuillez selectionner une option valide." << endl;
+		    }
+		}
+		else
+		{
+			cin.clear();
+			cin.ignore(256,'\n');
+			i = -1;
+		}
 	}
 	while( i != 0 && i != 1 && i != 2 );
 }
@@ -177,7 +210,7 @@ void interface::menuPersonnes(LCPersonne &p, LCRendezVous &r)
     cout << "1. Ajouter une personne" << endl;
     cout << "2. Modifier une personne" << endl;
     cout << "3. Supprimer une personne" << endl;
-    cout << "4. Voir si une personne a un rendez-vous prevu a une certaine date";
+    cout << "4. Voir si une personne a un rendez-vous prevu a une certaine date" << endl;
     cout << "0. Retour" << endl;
     
 	do
@@ -225,6 +258,7 @@ void interface::menuPersonnes(LCPersonne &p, LCRendezVous &r)
 		{
 			cin.clear();
 			cin.ignore(256,'\n');
+			i = -1;
 			
 		}
 	    
@@ -309,10 +343,10 @@ void interface::menuRendezVous(LCPersonne &p, LCRendezVous &r)
 		{
 			cin.clear();
 			cin.ignore(256,'\n');
-			
+			i = -1;
 		}
 	}
-	while( (i != 0 && i != 1 && i != 2 && i != 3 && i != 4 && i != 5 && i != 6 ) || (cin.fail()));
+	while( i != 0 && i != 1 && i != 2 && i != 3 && i != 4 && i != 5 && i != 6 );
 }
 
 
