@@ -25,6 +25,8 @@ class Personne
         //operateur de comparaison
         bool operator==(const Personne& pers) const;
         bool operator!=(const Personne& pers) const;
+        bool operator<(const Personne& pers) const;
+        bool operator>(const Personne& pers) const;
     
 		
 	private:

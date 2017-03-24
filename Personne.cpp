@@ -139,3 +139,23 @@ bool Personne::operator!=(const Personne& pers) const
 {
     return (d_nom != pers.Nom() || d_prenom != pers.Prenom());
 }
+
+/**
+ Operateur <
+ @param pers - une personne
+ @return Vrai si la personne (this) se trouve avant (alphabetiquement) que la personne (pers), Faux sinon
+ */
+bool Personne::operator<(const Personne& pers) const
+{
+    return ( ( d_nom < pers.d_nom ) || ( d_nom == pers.d_nom && d_prenom < pers.d_nom ) );
+}
+
+/**
+ Operateur >
+ @param pers - une personne
+ @return Vrai si la personne (this) se trouve apres (alphabetiquement) que la personne (pers), Faux sinon
+ */
+bool Personne::operator>(const Personne& pers) const
+{
+    return ( ( d_nom > pers.d_nom ) || ( d_nom == pers.d_nom && d_prenom > pers.d_nom ) );
+}

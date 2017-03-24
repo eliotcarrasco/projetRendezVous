@@ -72,7 +72,7 @@ void LCPersonne::Inserer(const Personne& pers)
 
 	if(t == nullptr)
 		t = nouv;
-	else if(pers.Nom() < t->p.Nom() || (pers.Nom() == t->p.Nom() && pers.Prenom() < t->p.Prenom()) )
+	else if( pers < t->p )
 	{
 		nouv->suiv = t;
 		t = nouv;
@@ -80,7 +80,7 @@ void LCPersonne::Inserer(const Personne& pers)
 	else
 	{
 		ChainonPersonne *c1 = t, *c2 = t->suiv;
-		while( c2 != 0 && ( pers.Nom() > c2->p.Nom() || (pers.Nom() == c2->p.Nom() && pers.Prenom() > c2->p.Prenom()) ) )
+		while( c2 != 0 && ( pers > c2->p ) )
 		{
 			c1 = c2;
 			c2 = c2->suiv;
