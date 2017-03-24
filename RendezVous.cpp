@@ -30,12 +30,7 @@ RendezVous::RendezVous(const string& nom, Date date, Heure heureDeb, Heure heure
 
 
 RendezVous::~RendezVous()
-{
-    d_date.~Date();
-    d_heureDeb.~Heure();
-    d_heureFin.~Heure();
-    d_participants.~LCPersonne();
-}
+{}
 
 /**
     Renvoie le nom du rdv
@@ -79,7 +74,7 @@ Heure RendezVous::heureFin() const
      Renvoie la liste des personnes participants au rdv
      @return liste de personnes du rdv
  */
-LCPersonne& RendezVous::listeParticipants()
+LCPersonne RendezVous::listeParticipants()
 {
     return d_participants;
 }

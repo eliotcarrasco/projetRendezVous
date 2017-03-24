@@ -37,10 +37,6 @@ Personne::Personne() : d_nom{},
                         d_mail{}
 {}
 
-
-Personne::~Personne()
-{}
-
 /**
 	Verifie que la personne est occupee
     @param date - une date
@@ -120,21 +116,6 @@ void Personne::afficherPersonne() const
 	std::cout << "Adresse mail : " << d_mail << endl;
 }
 
-/**
-     Operateur =
-     @param pers - une personne
-*/
-Personne& Personne::operator=(const Personne& pers)
-{
-    if(this == &pers) return *this; // mettre par référence ou pas ?
-    
-    d_nom = pers.Nom();
-    d_prenom = pers.Prenom();
-    d_telephone = pers.Telephone();
-    d_mail = pers.Mail();
-    
-    return *this;
-}
 
 /**
     Operateur ==

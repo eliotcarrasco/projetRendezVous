@@ -10,7 +10,11 @@ using namespace std;
 /**
 	Constructeur ChainonRdV
  */
-ChainonRdV::ChainonRdV(): RdV{}, suiv{0}
+ChainonRdV::ChainonRdV(): RdV{}, suiv{nullptr}
+{}
+
+
+ChainonRdV::ChainonRdV(const RendezVous& rdv): RdV{rdv}, suiv{nullptr}
 {}
 
 
@@ -23,7 +27,7 @@ ChainonRdV::ChainonRdV(): RdV{}, suiv{0}
 /**
 	Constructeur
 */
-LCRendezVous::LCRendezVous():t{0}
+LCRendezVous::LCRendezVous():t{nullptr}
 {}
 
 
@@ -33,7 +37,7 @@ LCRendezVous::LCRendezVous():t{0}
 */
 LCRendezVous::~LCRendezVous()
 {
-	while(t != 0)
+	while(t)
 	{
 		ChainonRdV* s = t->suiv;
 		delete t;
@@ -58,10 +62,8 @@ ChainonRdV* LCRendezVous::getTete() const
 */
 void LCRendezVous::InsererRendezVous(const RendezVous& r)
 {
-    ChainonRdV* nouv = new ChainonRdV();
-	nouv->RdV = r;
-    nouv->suiv = 0;
-	if(t==0)
+    ChainonRdV* nouv = new ChainonRdV(r);
+	if(t==nullptr)
 	{
 		t=nouv;
 	}
@@ -90,7 +92,7 @@ void LCRendezVous::InsererRendezVous(const RendezVous& r)
 */
 void LCRendezVous::SupprimerRendezVous(const string& nom)
 {
-	if(t == 0)
+	if(t == nullptr)
 	{ 
 		cout << "Le rendez vous n'existe pas" << endl;
 	}
@@ -104,12 +106,12 @@ void LCRendezVous::SupprimerRendezVous(const string& nom)
 	else
 	{
 		ChainonRdV *c1 = t, *c2 = t->suiv;
-		while(c2 != 0 && c2->RdV.nom() != convertToLower(nom) )
+		while(c2 != nullptr && c2->RdV.nom() != convertToLower(nom) )
 		{
 			c1 = c2;
 			c2 = c2->suiv;
 		}
-		if(c2 != 0)
+		if(c2)
 		{
 			c1->suiv = c2->suiv;
 			delete c2;
@@ -130,20 +132,19 @@ void LCRendezVous::SupprimerRendezVous(const string& nom)
     @listeRdv - la liste des rdv
  */
 
-LCRendezVous LCRendezVous::getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const
+void LCRendezVous::getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const
 {
     
     
-    if (t==0) return listeRdv;
-    else
+    if (t)
     {
         ChainonRdV *tmp = t; // tete de la LCRendezVous dans une variable
-        while(tmp != 0)
+        while(tmp)
         {
             //LCPersonne listPartRdv; // liste des participants de chaque rdv de la LCRendezVous
             ChainonPersonne* tmpLCPart = tmp->RdV.listeParticipants().getTete(); // tete de la liste des participants
             
-            while (tmpLCPart != 0)
+            while (tmpLCPart)
             {
                 if(tmpLCPart->p == pers)
                 {
@@ -166,7 +167,6 @@ LCRendezVous LCRendezVous::getRendezVous(LCRendezVous& listeRdv, const Personne&
 //        test = test->suiv;
 //    }
     
-    return listeRdv;
 }
 
 
@@ -183,7 +183,7 @@ bool LCRendezVous::occupee(const Date& date, const Heure& heureDeb, const Heure&
     
     
     
-    if(t == 0)
+    if(t == nullptr)
     {
         return false;
     }
@@ -193,12 +193,12 @@ bool LCRendezVous::occupee(const Date& date, const Heure& heureDeb, const Heure&
         
         //cout << "Tete " << tmp->RdV.date().getStringDate() << endl;
         
-        while(tmp != 0 && tmp->RdV.date() != date)
+        while(tmp != nullptr && tmp->RdV.date() != date)
         {
             tmp = tmp->suiv;
         }
         
-        if (tmp != 0)
+        if (tmp)
         {
             if(heureDeb >= tmp->RdV.heureDeb() && heureDeb <= tmp->RdV.heureFin()) // heure de debut compris dans un creneau existant
                 return true;

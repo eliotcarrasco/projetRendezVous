@@ -10,6 +10,7 @@ class ChainonPersonne
 //    private:
     public:
         ChainonPersonne();
+        ChainonPersonne(const Personne& pers);
 //        ChainonPersonne(const ChainonPersonne&);
         Personne p;
         ChainonPersonne* suiv;
@@ -29,6 +30,7 @@ class LCPersonne
 {
 	public:
 		LCPersonne();
+        LCPersonne(const LCPersonne& lcp);
 		~LCPersonne();
         ChainonPersonne* getTete() const;
 		void Inserer(const Personne& pers);
@@ -38,6 +40,7 @@ class LCPersonne
 		
 	private:
 		ChainonPersonne* t;
+    
 };
 
 #endif

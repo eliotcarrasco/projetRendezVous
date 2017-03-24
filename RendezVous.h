@@ -20,7 +20,7 @@ class RendezVous
         Date date() const;
         Heure heureDeb() const;
         Heure heureFin() const;
-        LCPersonne& listeParticipants();
+        LCPersonne listeParticipants();
     
         //setters
         void setNom(const string& nom);

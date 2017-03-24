@@ -238,26 +238,19 @@ int main(int argc, char** argv)
     LCRendezVous listeRVDaniel;
     
 listeRdv.getRendezVous(listeRVDaniel, Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"});
-//
-//    ChainonRdV* tmp3 = listeRVDaniel.getTete();
-//    
-//    if (tmp3==0)
-//        cout << "Fail";
-//    
-//    while(tmp3 != 0)
-//    {
-//        cout << "Test Rdv Daniel :  " << tmp3->RdV.nom() << endl;
-//        tmp3 = tmp3->suiv;
-//    }
 
-    listePersonnes.~LCPersonne();
+    ChainonRdV* tmp3 = listeRVDaniel.getTete();
     
-    listeRdv.~LCRendezVous();
-    //listeRVDaniel.~LCRendezVous();
+    if (tmp3==0)
+        cout << "Fail";
+    
+    while(tmp3 != 0)
+    {
+        cout << "Test Rdv Daniel :  " << tmp3->RdV.nom() << endl;
+        tmp3 = tmp3->suiv;
+    }
 
     
-//	LCPersonne listePersonnes;
-//	LCRendezVous listeRdv;
 //	interface inter;
 //	inter.menuPrincipal(listePersonnes, listeRdv);
 //	testLCRendezVous();

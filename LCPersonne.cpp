@@ -8,20 +8,41 @@ using namespace std;
 /**
     Constructeur ChainonPersonne
  */
-ChainonPersonne::ChainonPersonne() : p{}, suiv{0}
+ChainonPersonne::ChainonPersonne() : p{}, suiv{nullptr}
 {}
 
+ChainonPersonne::ChainonPersonne(const Personne& pers) : p{pers}, suiv{nullptr}
+{}
 
 //ChainonPersonne::ChainonPersonne(const ChainonPersonne& cp) : p{cp.p}, suiv{cp.suiv}
 //{}
 
 
-LCPersonne::LCPersonne():t{0}
+LCPersonne::LCPersonne():t{nullptr}
 {}
 
+
+/**
+    Constructeur par recopie
+ */
+LCPersonne::LCPersonne(const LCPersonne& lcp) : t{nullptr}
+{
+    ChainonPersonne* tmp = lcp.getTete();
+    
+    while(tmp)
+    {
+        this->Inserer(tmp->p);
+        tmp = tmp->suiv;
+    }
+}
+
+
+/**
+    Destructeur
+ */
 LCPersonne::~LCPersonne()
 {
-	while(t != 0)
+	while(t)
 	{
 		ChainonPersonne* s = t->suiv;
 		delete t;
@@ -47,10 +68,9 @@ ChainonPersonne* LCPersonne::getTete() const
 */
 void LCPersonne::Inserer(const Personne& pers)
 {
-    ChainonPersonne* nouv = new ChainonPersonne{};
-	nouv->p = pers;
-	nouv->suiv = 0;
-	if( t == 0 )
+    ChainonPersonne* nouv = new ChainonPersonne{pers}; //CreerUnChainon()
+
+	if(t == nullptr)
 		t = nouv;
 	else if(pers.Nom() < t->p.Nom() || (pers.Nom() == t->p.Nom() && pers.Prenom() < t->p.Prenom()) )
 	{
@@ -82,6 +102,7 @@ void LCPersonne::Supprimer(const Personne& pers)
 		ChainonPersonne* tmp = t;
 		t = t->suiv;
 		delete tmp;
+        //DetruireMonChainon(tmp);
 	}
 	else
 	{
@@ -104,7 +125,7 @@ void LCPersonne::Supprimer(const Personne& pers)
 void LCPersonne::Modifier(const Personne& pers)
 {
 	ChainonPersonne* tmp = t;
-    while(tmp != 0 && tmp->p != pers)
+    while(tmp != nullptr && tmp->p != pers)
 		tmp = tmp->suiv;
 	if(tmp->p == pers)
 	{
@@ -152,12 +173,12 @@ int LCPersonne::Compter() const
 {
     int nb = 0;
     
-    if (t==0) return nb;
+    if (t==nullptr) return nb;
     else
     {
         ChainonPersonne* tmp = t;
         
-        while (tmp != 0)
+        while (tmp)
         {
             ++nb;
             tmp = tmp->suiv;
