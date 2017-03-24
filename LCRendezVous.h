@@ -39,7 +39,12 @@ class LCRendezVous
         void SupprimerRendezVous(const string& nom); //utiliser un rdv comme parametre --> manque operateur pour rdv
         											 //manque la fonction qui permet de modifier les rdv
         bool occupee(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
+
         void getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const;
+
+		void rechercherRendezVous(Date d);
+
+
 		
 	private:
 		ChainonRdV* t;

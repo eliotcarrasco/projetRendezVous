@@ -18,12 +18,6 @@ ChainonRdV::ChainonRdV(const RendezVous& rdv): RdV{rdv}, suiv{nullptr}
 {}
 
 
-//ChainonRdV::~ChainonRdV()
-//{
-//    RdV.~RendezVous();
-//}
-
-
 /**
 	Constructeur
 */
@@ -210,4 +204,35 @@ bool LCRendezVous::occupee(const Date& date, const Heure& heureDeb, const Heure&
     }
     
     return false;
+}
+
+void LCRendezVous::rechercherRendezVous(Date d)
+{
+	bool rdv = false;
+	if(t == 0)
+	 return;
+	 
+	ChainonRdV* tmp = t;
+	
+	while(tmp != 0 && tmp->RdV.date() <= d )
+	{
+		if(tmp->RdV.date() == d)
+		{
+			rdv = true;
+			//afficher tmp->RdV
+			cout << "Nom du rendez-vous : " << tmp->RdV.nom() << endl;
+			
+//			A voir si on affiche les heures !
+//			cout << "Heure de debut : " << tmp->RdV.heureDeb() << endl;
+//			cout << "Heure de fin : " << tmp->RdV.heureFin() <<endl;
+
+			tmp->RdV.afficherParticipants();
+		}
+		tmp = tmp->suiv;
+	}
+	
+	if(!rdv)
+	{
+		cout << "Aucun rendez-vous pour cette date.";
+	}
 }

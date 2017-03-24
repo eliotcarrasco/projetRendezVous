@@ -173,3 +173,8 @@ bool Date::operator>(const Date& d) const
 {
     return ( (d_annee > d.d_annee) || (d_annee == d.d_annee && d_mois > d.d_mois) || (d_annee == d.d_annee && d_mois == d.d_mois && d_jour > d.d_jour) );
 }
+
+bool Date::operator<=(const Date& d) const
+{
+	return ( (*this < d) || (*this == d));
+}
