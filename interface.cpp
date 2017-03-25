@@ -31,8 +31,8 @@ void ajouterPersonne(LCPersonne &p)
     cout << "Mail de la personne : ";
     cin >> mail;
     
-    p.Inserer(Personne{nom, prenom, telephone, mail});
-    cout << endl;
+    p.Inserer(Personne{nom, prenom, telephone, mail});    
+	cout << /*"La personne a ete ajoute avec succes" << endl <<*/ endl;
 }
 
 /**
@@ -94,33 +94,38 @@ void ajouterRdv(LCPersonne &p, LCRendezVous &r)
     cout << "	Minute : ";
     cin >> minfin;
     
+    RendezVous rdv{nom, Date{j, m, a}, Heure{hdeb, mindeb}, Heure{hfin, minfin}};
+    
     //manque l'ajout des particiapants (ne pas oublier de verifier les disponibilité de chaques participants)
     Personne person;
+    LCPersonne participants;
     int nbparticipants;
     cout << "Combien de participants pour ce rendez-vous? " << endl;
     do
     {
-    	if( !cin.fail() )
+    	cout << "Nombre de participants : ";
+	    cin >> nbparticipants;
+    	if( cin.fail() )
     	{
-	    	cout << "Nombre de participants : ";
-	    	cin >> nbparticipants;
-	    }
-	    else
-	    {
 	    	cin.clear();
 			cin.ignore(256,'\n');
 			nbparticipants = -1;
 		}
-	}while( nbparticipants == -1 );
+	}while( nbparticipants <= -1 );
 	if( nbparticipants > p.Compter() )
 		nbparticipants = p.Compter();
-	for( int i = 0; i < nbparticipants; i++)
+	int i = 0;
+	do
 	{
-		cout << "Personne " << i << " : " << endl;
-		rechercherPersonne(p, person);
+		cout << endl << "Personne " << i+1 << " : " << endl;
+		if( rechercherPersonne(p, person) )
+		{
+			rdv.ajouterParticipant(person);
+			i++;
+		}
 	}
+	while( i != nbparticipants );
     
-    RendezVous rdv{nom, Date{j, m, a}, Heure{hdeb, mindeb}, Heure{hfin, minfin}};
     r.InsererRendezVous(rdv);
     
     cout << "Rendez-vous ajoute avec succees" << endl << endl;
