@@ -63,6 +63,25 @@ ChainonPersonne* LCPersonne::getTete() const
 }
 
 /**
+    Retourne une instance de personne à partir de son identifiant
+    @pre - la personne doit exister
+ */
+Personne LCPersonne::getPersonneById(int pId) const
+{
+    
+    ChainonPersonne* tmp = t;
+    
+    while (tmp && tmp->p.Id() != pId)
+        tmp = tmp->suiv;
+    
+    if(tmp)
+        return tmp->p;
+    
+    return Personne{};
+}
+
+
+/**
 	Ajoute une nouvelle personne dans la liste
 	@param pers - la personne a ajouter
 */

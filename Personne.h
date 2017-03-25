@@ -1,42 +1,46 @@
 #ifndef PERSONNE_H
 #define PERSONNE_H
-	
-#include <string>
+
 #include "Date.h"
 #include "Heure.h"
 
-using namespace std;
+#include <string>
+
 
 class Personne
 {
 	public:
-		Personne(const string& nom, const string& prenom, const string& telephone, const string& mail);
+        Personne(const std::string& nom, const std::string& prenom, const std::string& telephone, const std::string& mail);
         Personne(const Personne& pers);
         Personne();
-		string Nom() const;
-		string Prenom() const;
-        string Telephone() const;
-        string Mail() const;
-		//bool aRendezVous(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
-		void setTelephone(const string& telephone);
-		void setMail(const string& mail);
+    
+        int Id() const;
+		std::string Nom() const;
+		std::string Prenom() const;
+        std::string Telephone() const;
+        std::string Mail() const;
+		
+        void setTelephone(const std::string& telephone);
+		void setMail(const std::string& mail);
 		void afficherPersonne() const;
     
         //operateur de comparaison
-        bool operator==(const Personne& pers) const;
-        bool operator!=(const Personne& pers) const;
+        bool operator==(const Personne& pers) const; // à modifier avec id
+        bool operator!=(const Personne& pers) const; // à modifier avec id
         bool operator<(const Personne& pers) const;
         bool operator>(const Personne& pers) const;
     
 		
 	private:
-		string d_nom;
-		string d_prenom;
-		string d_telephone;
-		string d_mail;
-		
-    
+        static int id_suiv;
+        int d_id;
+		std::string d_nom;
+		std::string d_prenom;
+		std::string d_telephone;
+		std::string d_mail;
     
 };
+
+int Personne::id_suiv = 0;
 
 #endif

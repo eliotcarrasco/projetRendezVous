@@ -8,14 +8,25 @@
 
 using namespace std;
 
-interface::interface()
+
+/**
+    Constructeur vide
+ */
+interface::interface() :p{}, r{}
 {}
 
 /**
-	Recupere les differentes informations concernant la nouvelle personne a ajouter
-	@param listeParticipantsPrincipale - La liste chainee principale de personne existante dans le programme
+    Constructeur
  */
-void ajouterPersonne(LCPersonne &listeParticipantsPrincipale)
+interface::interface(LCPersonne &listePersonnes, LCRendezVous &listeRdv) : p{listePersonnes}, r{listeRdv}
+{}
+
+
+/**
+	Recupere les differentes informations concernant la nouvelle personne a ajouter
+ */
+
+void interface::ajouterPersonne()
 {
     string nom, prenom, telephone, mail;
     
@@ -31,17 +42,16 @@ void ajouterPersonne(LCPersonne &listeParticipantsPrincipale)
     cout << "Mail de la personne : ";
     cin >> mail;
     
-    listeParticipantsPrincipale.Inserer(Personne{nom, prenom, telephone, mail});    
+    p.Inserer(Personne{nom, prenom, telephone, mail});    
 	cout << /*"La personne a ete ajoute avec succes" << endl <<*/ endl;
 }
 
 /**
-	Regarde a partir du nom et du prenom si la personne rechercher existe
-	@param listeParticipantsPrincipale - La liste chainee principale de personne existante dans le programme
-	@parma person - La personne recherchee (intialement vide puis remplit grace a cette fonction)
+	Regarde a partir du nom et du prenom si la personne recherchee existe
+	@param person - La personne recherchee (intialement vide puis remplit grace a cette fonction)
 	@return Vrai si la personne existe, Faux sinon
  */
-bool rechercherPersonne(LCPersonne &listeParticipantsPrincipale, Personne& person)
+bool interface::rechercherPersonne(Personne& person)
 {
     string nom, prenom;
     
@@ -51,7 +61,7 @@ bool rechercherPersonne(LCPersonne &listeParticipantsPrincipale, Personne& perso
     cout << "Prenom de la personne : ";
     cin >> prenom;
     
-    ChainonPersonne* tmp = listeParticipantsPrincipale.getTete();
+    ChainonPersonne* tmp = p.getTete();
     while(tmp != 0 && (tmp->p.Nom() != convertToUpper(nom) || tmp->p.Prenom() != convertForName(prenom) ) )
     {
         tmp = tmp->suiv;
@@ -67,10 +77,8 @@ bool rechercherPersonne(LCPersonne &listeParticipantsPrincipale, Personne& perso
 
 /**
 	Recupere les differentes informations concernant le nouveau rdv a ajouter
-	@param listeParticipantsPrincipale - La liste chainee principale de personne existante dans le programme
-	@param r - La liste chainee des rdv
  */
-void ajouterRdv(LCPersonne &listeParticipantsPrincipale, LCRendezVous &r)
+void interface::ajouterRdv()
 {
     string nom;
     int j, m, a, hdeb, mindeb, hfin, minfin;
@@ -116,13 +124,14 @@ void ajouterRdv(LCPersonne &listeParticipantsPrincipale, LCRendezVous &r)
 			nbparticipants = -1;
 		}
 	}while( nbparticipants <= -1 );
-	if( nbparticipants > listeParticipantsPrincipale.Compter() )
-		nbparticipants = listeParticipantsPrincipale.Compter();
+	if( nbparticipants > p.Compter() )
+		nbparticipants = p.Compter();
 	int i = 0;
 	do
 	{
 		cout << endl << "Personne " << i+1 << " : " << endl;
-		if( rechercherPersonne(listeParticipantsPrincipale, person) )
+
+		if( rechercherPersonne(person) )
 		{
 			cout << "Personne trouve" << endl;
 			LCRendezVous listeRdvDuParticipant;
@@ -146,12 +155,11 @@ void ajouterRdv(LCPersonne &listeParticipantsPrincipale, LCRendezVous &r)
 }
 
 /**
-	Regarde a partir du nom si la rdv rechercher existe
-	@param r - Liste de rdv existante dans le programme
-	@parma rdv - Le rdv recherchee (intialement vide puis remplit grace a cette fonction)
-	@return Vrai si le rev existe, Faux sinon
+	Regarde a partir du nom si le rdv rechercher existe
+	@param rdv - Le rdv recherche (initialement vide puis rempli grace a cette fonction)
+	@return Vrai si le rdv existe, Faux sinon
  */
-bool rechercherRdv(LCRendezVous &r, RendezVous &rdv)
+bool interface::rechercherRdv(RendezVous &rdv)
 {
     string nom;
     cout << "Nom du rendez-vous : ";
@@ -172,11 +180,54 @@ bool rechercherRdv(LCRendezVous &r, RendezVous &rdv)
 }
 
 /**
-	Affiche le menu principal de l'application
-	@param listeParticipantsPrincipale - La liste chainee principale de personne existante dans le programme
-	@param r - La liste chainee principale des rdv
+    Affiche tous les rdv pour une date donnee
+    @param d - une date
  */
-void interface::menuPrincipal(LCPersonne &listeParticipantsPrincipale, LCRendezVous &r)
+void interface::afficherTousLesRdv(Date d)
+{
+    ChainonRdV* tmp = r.getTete();
+    
+    bool rdv = false;
+    
+    while(tmp != 0 && tmp->RdV.date() <= d ) //puisque les rdv sont classes par ordre chronologique
+    {
+        if(tmp->RdV.date() == d)
+        {
+            rdv = true;
+            //afficher tmp->RdV
+            cout << "Nom du rendez-vous : " << tmp->RdV.nom() << endl;
+            cout << "Heure de debut : " << tmp->RdV.heureDeb().getStringHeure() << endl;
+            cout << "Heure de fin : " << tmp->RdV.heureFin().getStringHeure() <<endl;
+            
+            afficherParticipants(tmp->RdV);
+        }
+        tmp = tmp->suiv;
+    }
+    
+    if(!rdv)
+    {
+        cout << "Aucun rendez-vous pour cette date.";
+    }
+}
+
+
+/**
+    Affiche tous les participants a un rendez-vous
+ */
+void interface::afficherParticipants(RendezVous &rdv)
+{
+    vector<int> vPart = rdv.listeParticipants();
+    
+    for (int i = 0; i < vPart.size(); i++)
+    {
+        p.getPersonneById(vPart[i]).afficherPersonne();
+    }
+}
+
+/**
+	Affiche le menu principal de l'application
+ */
+void interface::menuPrincipal()
 {
     int i;
     cout << "Gestionnaire de Rendez-Vous : " << endl;
@@ -195,10 +246,10 @@ void interface::menuPrincipal(LCPersonne &listeParticipantsPrincipale, LCRendezV
 		    switch(i)
 		    {
 		        case 1 :
-		            menuPersonnes(listeParticipantsPrincipale, r);
+		            menuPersonnes();
 		            break;
 		        case 2 :
-		            menuRendezVous(listeParticipantsPrincipale, r);
+		            menuRendezVous();
 		            break;
 		        case 0 :
 		        	break;
@@ -218,10 +269,8 @@ void interface::menuPrincipal(LCPersonne &listeParticipantsPrincipale, LCRendezV
 
 /**
 	Affiche le menu de modification des personnes
-	@param listeParticipantsPrincipale - La liste chainee principale de personne existante dans le programme
-	@param r - La liste chainee principale des rdv
  */
-void interface::menuPersonnes(LCPersonne &listeParticipantsPrincipale, LCRendezVous &r)
+void interface::menuPersonnes()
 {
     int i;
     cout << "Gestion des personnes : " << endl;
@@ -243,31 +292,31 @@ void interface::menuPersonnes(LCPersonne &listeParticipantsPrincipale, LCRendezV
     		switch(i)
 		    {
 		        case 1 :
-		        	ajouterPersonne(listeParticipantsPrincipale);
-		        	menuPersonnes(listeParticipantsPrincipale, r);
+		        	ajouterPersonne();
+		        	menuPersonnes();
 		            break;
 		        case 2 :
-		        	if (rechercherPersonne(listeParticipantsPrincipale, prsn))
+		        	if (rechercherPersonne(prsn))
 		        		{
 		        			prsn.afficherPersonne();
-		        			listeParticipantsPrincipale.Modifier(prsn);	
+		        			p.Modifier(prsn);	
 						}
-		        	menuPersonnes(listeParticipantsPrincipale, r);
+		        	menuPersonnes();
 		            break;
 		        case 3 :
-		        	if (rechercherPersonne(listeParticipantsPrincipale, prsn)) //penser a verifier que la personne n'a pas de rdv avant de la supprimer -->
+		        	if (rechercherPersonne(prsn)) //penser a verifier que la personne n'a pas de rdv avant de la supprimer -->
 		        		{
 		        			prsn.afficherPersonne();
-							listeParticipantsPrincipale.Supprimer(prsn);
+							p.Supprimer(prsn);
 		        		}
-		        	menuPersonnes(listeParticipantsPrincipale, r);
+		        	menuPersonnes();
 		        	break;
 		        case 4 :
 		        	
-		        	menuPrincipal(listeParticipantsPrincipale, r);
+		        	menuPrincipal();
 		        	break;
 		        case 0 :
-		        	menuPrincipal(listeParticipantsPrincipale, r);
+		        	menuPrincipal();
 		        	break;
 		        default :
 		            cout << "Veuillez selectionner une option valide" << endl;
@@ -287,10 +336,8 @@ void interface::menuPersonnes(LCPersonne &listeParticipantsPrincipale, LCRendezV
 
 /**
 	Affiche le menu de modification des rendez-vous
-	@param listeParticipantsPrincipale - La liste chainee principale de personne existante dans le programme
-	@param r - La liste chainee principale des rdv
  */
-void interface::menuRendezVous(LCPersonne &listeParticipantsPrincipale, LCRendezVous &r)
+void interface::menuRendezVous()
 {
     int i;
     cout << "Gestion des rendez-vous : " << endl;
@@ -314,22 +361,22 @@ void interface::menuRendezVous(LCPersonne &listeParticipantsPrincipale, LCRendez
 			switch(i)
 			{
 		    	case 1 :
-		    		ajouterRdv(listeParticipantsPrincipale, r);
-		    		menuRendezVous(listeParticipantsPrincipale, r);
+		    		ajouterRdv();
+		    		menuRendezVous();
 		        	break;
 		    	case 2 :
-		    		if(rechercherRdv(r, rdv))
+		    		if(rechercherRdv(rdv))
 		    		{
 		    			
 					}
-		    		menuRendezVous(listeParticipantsPrincipale, r);
+		    		menuRendezVous();
 		        	break;
 		    	case 3 :
-		    		if(rechercherRdv(r, rdv))
+		    		if(rechercherRdv(rdv))
 		    		{
 		    		
 					}
-		    		menuRendezVous(listeParticipantsPrincipale, r);
+		    		menuRendezVous();
 		    		break;
 		    	case 4 :
 		    		{
@@ -342,17 +389,17 @@ void interface::menuRendezVous(LCPersonne &listeParticipantsPrincipale, LCRendez
 			    		cout << "Annee : ";
 			    		cin >> annee;
 			    		Date rech{jour, mois, annee};
-			    		r.rechercherRendezVous(rech);
-			    		menuRendezVous(listeParticipantsPrincipale, r);
+			    		afficherTousLesRdv(rech);
+			    		menuRendezVous();
 		    		}
 		    	case 5 :
 		    		
-		    		menuRendezVous(listeParticipantsPrincipale, r);
+		    		menuRendezVous();
 		    	case 6 :
 		    		
-		    		menuRendezVous(listeParticipantsPrincipale, r);
+		    		menuRendezVous();
 		   		case 0 :
-		    		menuPrincipal(listeParticipantsPrincipale, r);
+		    		menuPrincipal();
 		    		break;
 		    	default :
 		        	cout << "Veuillez selectionner une option valide." << endl;

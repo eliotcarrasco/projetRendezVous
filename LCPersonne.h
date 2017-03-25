@@ -1,7 +1,6 @@
 #ifndef LCPERSONNE_H 
 #define LCPERSONNE_H
 #include "Personne.h"
-#include "LCPersonne.h"
 
 #include <string>
 
@@ -32,7 +31,10 @@ class LCPersonne
 		LCPersonne();
         LCPersonne(const LCPersonne& lcp);
 		~LCPersonne();
+    
         ChainonPersonne* getTete() const;
+        Personne getPersonneById(int pId) const;
+    
 		void Inserer(const Personne& pers);
 		void Supprimer(const Personne& pers);
 		void Modifier(const Personne& pers);

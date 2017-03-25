@@ -2,10 +2,10 @@
 #include "Date.h"
 #include "Heure.h"
 #include "globals.h"
+
 #include <iostream>
 
-
-
+using namespace std;
 
 /**
  Constructeur vide
@@ -74,7 +74,7 @@ Heure RendezVous::heureFin() const
      Renvoie la liste des personnes participants au rdv
      @return liste de personnes du rdv
  */
-LCPersonne RendezVous::listeParticipants()
+vector<int> RendezVous::listeParticipants()
 {
     return d_participants;
 }
@@ -133,7 +133,7 @@ void RendezVous::setHeure(const Heure& heureDeb, const Heure& heureFin)
  */
 void RendezVous::ajouterParticipant(const Personne& pers)
 {
-    d_participants.Inserer(pers);
+    d_participants.push_back(pers.Id());
 }
 
 /**
@@ -142,7 +142,13 @@ void RendezVous::ajouterParticipant(const Personne& pers)
  */
 void RendezVous::supprimerParticipant(const Personne& pers)
 {
-    d_participants.Supprimer(pers);
+    int i = 0;
+    
+    for(; i < d_participants.size() && d_participants[i] != pers.Id(); i++);
+    
+    if(d_participants[i] == pers.Id())
+        d_participants.erase(d_participants.begin() + i);
+        
 }
 
 /**
@@ -152,24 +158,6 @@ void RendezVous::supprimerParticipant(const Personne& pers)
 
 int RendezVous::nombreParticipants() const
 {
-    return d_participants.Compter();
+    return static_cast<int>(d_participants.size());
 }
-/**
-	Affiche les infos des particpant a une reunion
-*/
-void RendezVous::afficherParticipants() const
-{
-	ChainonPersonne* tmp = d_participants.getTete();
-	
-	if(tmp == 0)
-		std::cout << "Aucun participant pour ce rendez-vous" << endl <<endl;
-	else
-	{
-		std::cout << "Liste des particiants de ce rendez-vous : " << endl;
-		while(tmp != 0)
-		{
-			tmp->p.afficherPersonne();
-			tmp = tmp->suiv;
-		}
-	}
-}
+

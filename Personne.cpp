@@ -6,10 +6,13 @@
 #include <string>
 #include <iostream>
 
-Personne::Personne(const string& nom, const string& prenom, const string& telephone, const string& mail) : d_nom{convertToUpper(nom)},
-																			   d_prenom{convertForName(prenom)},
-																			   d_telephone{telephone}, 
-																			   d_mail{mail}
+using namespace std;
+
+Personne::Personne(const string& nom, const string& prenom, const string& telephone, const string& mail) :  d_id{id_suiv++},
+                                                                                                            d_nom{convertToUpper(nom)},
+                                                                                                            d_prenom{convertForName(prenom)},
+                                                                                                            d_telephone{telephone},
+                                                                                                            d_mail{mail}
 {}
 
 
@@ -20,10 +23,11 @@ Personne::Personne(const string& nom, const string& prenom, const string& teleph
     @param pers - une personne
  */
 
-Personne::Personne(const Personne& pers) : d_nom{convertToUpper(pers.Nom())},
-                                        d_prenom{convertForName(pers.Prenom())},
-                                        d_telephone{pers.Telephone()},
-                                        d_mail{pers.Mail()}
+Personne::Personne(const Personne& pers) :  d_id{pers.Id()},
+                                            d_nom{convertToUpper(pers.Nom())},
+                                            d_prenom{convertForName(pers.Prenom())},
+                                            d_telephone{pers.Telephone()},
+                                            d_mail{pers.Mail()}
 {}
 
 
@@ -31,23 +35,22 @@ Personne::Personne(const Personne& pers) : d_nom{convertToUpper(pers.Nom())},
  Constructeur vide
  */
 
-Personne::Personne() : d_nom{},
+Personne::Personne() :  d_id{id_suiv++},
+                        d_nom{},
                         d_prenom{},
                         d_telephone{},
                         d_mail{}
 {}
 
+
 /**
-	Verifie que la personne est occupee
-    @param date - une date
-    @param heureDeb - l'heure de début du creneau
-    @param heureFin - l'heure de fin du créneau
-	@return Vrai si la personne est deja a un rdv de prevu a la date d et pendant le creneau heureDeb/heureFin, Faux sinon
-*/
-/*bool Personne::aRendezVous(const Date& date, const Heure& heureDeb, const Heure& heureFin) const
+    Retourne l'id de la personne
+ */
+int Personne::Id() const
 {
-    return d_listeRdv->occupee(date, heureDeb, heureFin);
-}*/
+    return d_id;
+}
+
 
 /**
 	Retourne le nom de la personne interroge
@@ -111,7 +114,7 @@ void Personne::setMail(const string& mail)
 void Personne::afficherPersonne() const
 {
 	std::cout << "Nom : " << d_nom << endl;
-	std::cout << "Preom : " << d_prenom << endl;
+	std::cout << "Prenom : " << d_prenom << endl;
 	std::cout << "Numero de telephone : " << d_telephone << endl;
 	std::cout << "Adresse mail : " << d_mail << endl;
 }
