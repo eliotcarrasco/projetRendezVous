@@ -8,6 +8,8 @@
 
 using namespace std;
 
+int Personne::id_suiv = 0;
+
 Personne::Personne(const string& nom, const string& prenom, const string& telephone, const string& mail) :  d_id{id_suiv++},
                                                                                                             d_nom{convertToUpper(nom)},
                                                                                                             d_prenom{convertForName(prenom)},

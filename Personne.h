@@ -41,6 +41,5 @@ class Personne
     
 };
 
-int Personne::id_suiv = 0;
 
 #endif

@@ -172,14 +172,6 @@ int main(int argc, char** argv)
     for( int i = 0; i < vP.size(); i++)
         listePersonnes.Inserer(vP[i]);
     
-//    ChainonPersonne* tmp = listePersonnes.getTete();
-//    
-//    while(tmp != 0)
-//    {
-//        cout << "Test Insertion Personne : " << tmp->p.Nom() << " " << tmp->p.Prenom() <<  endl;
-//        tmp = tmp->suiv;
-//    }
-
     LCRendezVous listeRdv{};
     
     vector<RendezVous> vR {
@@ -195,42 +187,9 @@ int main(int argc, char** argv)
     for( int i = 0; i < vR.size(); i++)
         listeRdv.InsererRendezVous(vR[i]);
     
-    
-//    ChainonRdV* tmp2 = listeRdv.getTete();
-//    
-//    while(tmp2 != 0)
-//    {
-//        cout << "Test Insertion Rdv :  " << tmp2->RdV.nom() << endl;
-//        tmp2 = tmp2->suiv;
-//    }
-    
 
-//    listeRdv.getTete()->RdV.ajouterParticipant(Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"});
-//    listeRdv.getTete()->suiv->RdV.ajouterParticipant(Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"});
-//    
-//    LCRendezVous listeRVDaniel;
-//    
-//    listeRdv.getRendezVous(listeRVDaniel, Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"});
-//
-//    ChainonRdV* tmp3 = listeRVDaniel.getTete();
-//    
-//    if (tmp3==0)
-//        cout << "Fail";
-//    
-//    while(tmp3 != 0)
-//    {
-//        cout << "Test Rdv Daniel :  " << tmp3->RdV.nom() << endl;
-//        tmp3 = tmp3->suiv;
-//    }
-//    
-//    cout << "Test occupee" << listeRVDaniel.occupee(Date{16, 3, 2017}, Heure{16, 27}, Heure{16, 40}) << endl;
-
-    
-    //interface inter{listePersonnes, listeRdv};
-	//inter.menuPrincipal();
-//	testLCRendezVous();
-//testLCPersonne();
-//testParticipantsRDV();
+    interface inter{listePersonnes, listeRdv};
+	inter.menuPrincipal();
     
     
 	return 0;
