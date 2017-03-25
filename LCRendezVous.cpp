@@ -24,6 +24,19 @@ ChainonRdV::ChainonRdV(const RendezVous& rdv): RdV{rdv}, suiv{nullptr}
 LCRendezVous::LCRendezVous():t{nullptr}
 {}
 
+/**
+    Constructeur par recopie
+ */
+LCRendezVous::LCRendezVous(const LCRendezVous& lrv) : t{nullptr}
+{
+    ChainonRdV* tmp = lrv.getTete();
+    
+    while(tmp)
+    {
+        this->InsererRendezVous(tmp->RdV);
+        tmp = tmp->suiv;
+    }
+}
 
 
 /**

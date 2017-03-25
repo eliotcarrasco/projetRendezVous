@@ -237,7 +237,7 @@ int main(int argc, char** argv)
     
     LCRendezVous listeRVDaniel;
     
-listeRdv.getRendezVous(listeRVDaniel, Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"});
+    listeRdv.getRendezVous(listeRVDaniel, Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"});
 
     ChainonRdV* tmp3 = listeRVDaniel.getTete();
     

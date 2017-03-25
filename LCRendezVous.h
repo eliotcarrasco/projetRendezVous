@@ -32,7 +32,7 @@ class LCRendezVous
 {
 	public:
 		LCRendezVous();
-        //LCRendezVous(const LCRendezVous& lrv);
+        LCRendezVous(const LCRendezVous& lrv);
 		~LCRendezVous();
         ChainonRdV* getTete() const;
 		void InsererRendezVous(const RendezVous& r);
