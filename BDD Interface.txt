@@ -44,15 +44,3 @@ carrasco
 eliot
 pfund
 daniel
-1
-test2
-15
-11
-2017
-13
-00
-15
-00
-1
-hindi
-hassane

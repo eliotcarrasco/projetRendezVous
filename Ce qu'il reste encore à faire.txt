@@ -1,6 +1,6 @@
 Interface:
 	*Menu Personne:
-		-->Verifier que la personne ne participe à aucun rdv avant de la supprimer
+		-->Verifier que la personne ne participe a aucun rdv avant de la supprimer
 	*Menu Rdv:
 		-->Terminer d'ajouter les fonctions aux boutons coorespondant
 		-->Fonction ajouterRdv : manque l'ajout de la liste des participant au Rdv (en verifiant leurs disponibilites)
@@ -12,11 +12,11 @@ LCPersonne:
 
 LCRendezVous:
 	*Voir si on laisse tous les attributs des chainon en public ou pas
-	*Utiliser un rdv comme parametre pour Supprimer u rdv
+	*Utiliser un rdv comme parametre pour Supprimer un rdv
 	*Manque la fonction Modifier qui permet de modifier un Rdv (parametre: le rdv)
 
 Manipulation du carnet de rdv:
-	*Afficher tous les rdv pour une date donnée par l'user
+	-->Afficher tous les rdv pour une date donnee par l'user
 	*Afficher tous les rdv pour une personne dont le nom est donne par l'user
-	*Determiner si une personne n'a pas de rdv pour une date et une heure donnée par l'user (fonction aRendezVous)
-	->Afficher pour un Rdv les info des participants (utiliser la fonction afficherPersonne() )
+	-->Determiner si une personne n'a pas de rdv pour une date et une heure donnée par l'user (fonction aRendezVous)
+	-->Afficher pour un Rdv les info des participants (utiliser la fonction afficherPersonne() )

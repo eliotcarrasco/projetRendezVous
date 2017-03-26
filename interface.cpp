@@ -5,9 +5,9 @@
 #include "Heure.h"
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 
 using namespace std;
-
 
 /**
     Constructeur vide
@@ -144,11 +144,11 @@ void interface::ajouterRdv()
 			}
 			else
 			{
-				cout << "La personne est deja occupe a ce moment" << endl;
+				cout << "La personne est deja occupee a ce moment" << endl;
 				string ajoutperson;
 				do
 				{
-					cout << "Voulez-vous ajouter une autre personne ? (O/N) : ";
+					cout << "Voulez-vous remplacer cette personne par une autre ? (O/N) : ";
 					cin >> ajoutperson;
 				}
 				while( ajoutperson != "O" && ajoutperson != "o" && ajoutperson != "N" && ajoutperson != "n");
@@ -239,6 +239,7 @@ void interface::afficherParticipants(RendezVous &rdv)
  */
 void interface::menuPrincipal()
 {
+	system("cls");
     int i;
     cout << "Gestionnaire de Rendez-Vous : " << endl;
     cout << "Action sur les : " << endl;
@@ -282,6 +283,7 @@ void interface::menuPrincipal()
  */
 void interface::menuPersonnes()
 {
+	system("cls");
     int i;
     cout << "Gestion des personnes : " << endl;
     cout << "Veuillez selectionner une action : " << endl;
@@ -314,16 +316,53 @@ void interface::menuPersonnes()
 		        	menuPersonnes();
 		            break;
 		        case 3 :
-		        	if (rechercherPersonne(person)) //penser a verifier que la personne n'a pas de rdv avant de la supprimer -->
+		        	if (rechercherPersonne(person))
 		        		{
-		        			person.afficherPersonne();
-							lcprincp.Supprimer(person);
+		        			LCRendezVous rdvDePersonne;
+		        			lcprincr.getRendezVous( rdvDePersonne, person);
+		        			if( rdvDePersonne.getTete() == nullptr)
+		        			{
+			        			person.afficherPersonne();
+								lcprincp.Supprimer(person);
+							}
+							else
+								cout << "Suppression impossible : la personne fait partie d'au moins un rdv" << endl << endl;
 		        		}
 		        	menuPersonnes();
 		        	break;
 		        case 4 :
-		        	
-		        	menuPrincipal();
+		        	if( rechercherPersonne(person) )
+		        	{
+		        		int jour, mois, annee, hdeb, mindeb, hfin, minfin;
+					    
+					    cout << "Jour (1-31) : ";
+					    cin >> jour;
+					    cout << "Mois (1-12) : ";
+					    cin >> mois;
+					    cout << "Annee (ex : 2017) : ";
+					    cin >> annee;
+					    Date date{jour, mois, annee};
+					    
+					    cout << "Horaire du debut : " << endl << "	Heure : ";
+					    cin >> hdeb;
+					    cout << "	Minute : ";
+					    cin >> mindeb;
+					    Heure heuredeb{hdeb, mindeb};
+					    
+					    cout << "Horaire de fin : " << endl << "	Heure : ";
+					    cin >> hfin;
+					    cout << "	Minute : ";
+					    cin >> minfin;
+					    Heure heurefin{hfin, minfin};
+					    
+		        		LCRendezVous listeRdvDeLaPersonne;
+						lcprincr.getRendezVous(listeRdvDeLaPersonne, person);
+						if( listeRdvDeLaPersonne.occupee(date, heuredeb, heurefin) )
+							cout << "Cette personne est occupee a cette date" << endl << endl;
+						else
+							cout << "Cette personne n'a rien de prevu pour cette date" << endl << endl;
+					}
+		        	menuPersonnes();
 		        	break;
 		        case 0 :
 		        	menuPrincipal();
@@ -349,13 +388,14 @@ void interface::menuPersonnes()
  */
 void interface::menuRendezVous()
 {
+	system("cls");
     int i;
     cout << "Gestion des rendez-vous : " << endl;
     cout << "Veuillez selectionner une action : " << endl;
     cout << "1. Ajouter un rendez-vous" << endl;
     cout << "2. Modifier un rendez-vous" << endl;
     cout << "3. Supprimer un rendez-vous" << endl;
-    cout << "4. Afficher les rendez-vous pour une date donee" << endl;
+    cout << "4. Afficher les rendez-vous pour une date donnee" << endl;
     cout << "5. Afficher les rendez-vous d'une personne" << endl;
     cout << "6. Afficher les participants a un rendez-vous" << endl;
     cout << "0. Retour" << endl;
@@ -377,14 +417,14 @@ void interface::menuRendezVous()
 		    	case 2 :
 		    		if(rechercherRdv(rdv))
 		    		{
-		    			
+//		    			lcprincr.ModifierRendezVous(rdv);
 					}
 		    		menuRendezVous();
 		        	break;
 		    	case 3 :
 		    		if(rechercherRdv(rdv))
 		    		{
-		    		
+//		    			lcprincr.SupprimerRendezVous(rdv);
 					}
 		    		menuRendezVous();
 		    		break;
