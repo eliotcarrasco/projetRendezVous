@@ -197,7 +197,7 @@ bool LCRendezVous::occupee(const Date& date, const Heure& heureDeb, const Heure&
     return false;
 }
 
-void LCRendezVous::rechercherRendezVous(Date d)
+/*void LCRendezVous::rechercherRendezVous(Date d)
 {
 	bool rdv = false;
 	if(t == 0)
@@ -272,4 +272,4 @@ void LCRendezVous::modifierRendezVous(RendezVous& rdv)
 		}
 	}
 	
-}
+}*/

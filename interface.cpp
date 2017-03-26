@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -246,6 +247,7 @@ void interface::menuRendezVous()
 		    		{
 		    			afficherParticipants(rdv);
 					}
+					system("PAUSE");
 					menuRendezVous();
 		    		break;
 		   		case 0 :
