@@ -19,6 +19,7 @@ class interface
         bool rechercherRdv(RendezVous &rdv);
         void afficherTousLesRdv(Date d);
         void afficherParticipants(RendezVous &rdv);
+        void modifierRendezVous(RendezVous& rdv);
     
     private:
         LCPersonne lcprincp;

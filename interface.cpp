@@ -235,6 +235,55 @@ void interface::afficherParticipants(RendezVous &rdv)
 }
 
 /**
+	
+*/
+void LCRendezVous::modifierRendezVous(RendezVous& rdv)
+{
+	ChainonRdV* tmp = t;
+	while(tmp != nullptr && tmp->RdV != rdv)
+		tmp = tmp->suiv;
+		
+	if(tmp->RdV == rdv)
+	{
+		int i = -1;;
+		do
+		{
+			cout << "1. Modifier la date." << endl;
+			cout << "2. Modifier l'heure de debut." << endl;
+			cout << "3. Modifier l'heure de fin." << endl;
+			cout << "0. Retour." << endl;
+		}
+		while(i > 3 || i < 0);
+			
+		switch(i)
+		{
+			case 1:
+				{
+					int jour, mois, annee;
+			    	cout << "Entrez la date recherchee : " << endl;
+			    	cout << "Jour : ";
+			    	cin >> jour;
+			    	cout << "Mois : ";
+			    	cin >> mois;
+			    	cout << "Annee : ";
+			    	cin >> annee;
+			    	rdv.setDate({jour, mois, annee});
+				}
+				//modif date
+			case 2:
+				//modif heure debut
+			case 3:
+				//modif heure fin
+			case 0:
+				//retour
+			default:
+				//retour ?
+		}
+	}
+	
+}
+
+/**
 	Affiche le menu principal de l'application
  */
 void interface::menuPrincipal()
