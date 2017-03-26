@@ -43,6 +43,8 @@ class LCRendezVous
         void getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const;
 
 		void rechercherRendezVous(Date d);
+		
+		void modifierRendezVous(RendezVous& rdv);
 
 
 		
