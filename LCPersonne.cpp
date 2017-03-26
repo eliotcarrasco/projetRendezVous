@@ -107,7 +107,7 @@ void LCPersonne::Inserer(const Personne& pers)
 		c1->suiv = nouv;
 		nouv->suiv = c2;
 	}
-	cout << "La personne a ete ajoute avec succes" << endl;
+//	cout << "La personne a ete ajoute avec succes" << endl;
 }
 
 /**

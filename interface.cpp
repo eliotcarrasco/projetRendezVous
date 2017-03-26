@@ -43,7 +43,7 @@ void interface::ajouterPersonne()
     cin >> mail;
     
     lcprincp.Inserer(Personne{nom, prenom, telephone, mail});    
-	cout << /*"La personne a ete ajoute avec succes" << endl <<*/ endl;
+	cout << "La personne a ete ajoute avec succes" << endl << endl;
 }
 
 /**
@@ -108,10 +108,10 @@ void interface::ajouterRdv()
     
     RendezVous rdv{nom, date, heuredeb, heurefin};
     
-    //manque l'ajout des particiapants (ne pas oublier de verifier les disponibilité de chaques participants)
     Personne person;
     LCPersonne participants;
     int nbparticipants;
+    
     cout << "Combien de participants pour ce rendez-vous? " << endl;
     do
     {
@@ -124,8 +124,10 @@ void interface::ajouterRdv()
 			nbparticipants = -1;
 		}
 	}while( nbparticipants <= -1 );
+	
 	if( nbparticipants > lcprincp.Compter() )
 		nbparticipants = lcprincp.Compter();
+		
 	int i = 0;
 	do
 	{
@@ -133,7 +135,6 @@ void interface::ajouterRdv()
 
 		if( rechercherPersonne(person) )
 		{
-			cout << "Personne trouve" << endl;
 			LCRendezVous listeRdvDuParticipant;
 			lcprincr.getRendezVous(listeRdvDuParticipant, person);
 			if( !listeRdvDuParticipant.occupee(date, heuredeb, heurefin) )
@@ -144,6 +145,15 @@ void interface::ajouterRdv()
 			else
 			{
 				cout << "La personne est deja occupe a ce moment" << endl;
+				string ajoutperson;
+				do
+				{
+					cout << "Voulez-vous ajouter une autre personne ? (O/N) : ";
+					cin >> ajoutperson;
+				}
+				while( ajoutperson != "O" && ajoutperson != "o" && ajoutperson != "N" && ajoutperson != "n");
+				if( ajoutperson == "N" || ajoutperson == "n" )
+					i++;
 			}
 		}
 	}
@@ -352,7 +362,7 @@ void interface::menuRendezVous()
     
 	do
     {	
-		cout << "Choix2 : ";
+		cout << "Choix : ";
 		cin >> i;
 		cout << endl;
 		RendezVous rdv;
