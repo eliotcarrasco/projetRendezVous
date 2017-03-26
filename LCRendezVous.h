@@ -1,12 +1,11 @@
 #ifndef LCRENDEZVOUS_H
 #define LCRENDEZVOUS_H
+#include <string>
 #include "Date.h"
 #include "Heure.h"
-#include <string>
 #include "RendezVous.h"
 #include "Personne.h"
 
-using namespace std;
 
 class ChainonRdV
 {
@@ -36,12 +35,10 @@ class LCRendezVous
 		~LCRendezVous();
         ChainonRdV* getTete() const;
 		void InsererRendezVous(const RendezVous& r);
-        void SupprimerRendezVous(const string& nom); //utiliser un rdv comme parametre --> manque operateur pour rdv
+        void SupprimerRendezVous(const std::string& nom); //utiliser un rdv comme parametre --> manque operateur pour rdv
         											 //manque la fonction qui permet de modifier les rdv
         bool occupee(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
-
         void getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const;
-
 		void rechercherRendezVous(Date d);
 		
 		void modifierRendezVous(RendezVous& rdv);

@@ -1,8 +1,9 @@
-#include <iostream>
 #include "LCRendezVous.h"
 #include "RendezVous.h"
 #include "Personne.h"
 #include "globals.h"
+
+#include <iostream>
 
 using namespace std;
 
@@ -134,39 +135,25 @@ void LCRendezVous::SupprimerRendezVous(const string& nom)
 
 void LCRendezVous::getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const
 {
-    
-    
     if (t)
     {
         ChainonRdV *tmp = t; // tete de la LCRendezVous dans une variable
         while(tmp)
         {
-            //LCPersonne listPartRdv; // liste des participants de chaque rdv de la LCRendezVous
-            ChainonPersonne* tmpLCPart = tmp->RdV.listeParticipants().getTete(); // tete de la liste des participants
+            vector<int> vPart = tmp->RdV.listeParticipants();
             
-            while (tmpLCPart)
+            for (int i = 0; i < vPart.size(); i++)
             {
-                if(tmpLCPart->p == pers)
+                if(vPart[i] == pers.Id())
                 {
                     ChainonRdV* nc = tmp;
                     listeRdv.InsererRendezVous(nc->RdV); // insere le nouveau chainon dans la liste des rdv
                 }
-                
-                tmpLCPart = tmpLCPart->suiv;
             }
             
             tmp = tmp->suiv;
         }
     }
-    
-//    ChainonRdV* test =  listeRdv.getTete();
-//    
-//    while(test != 0)
-//    {
-//        cout << "Test 1 :  " << test->RdV.nom() << endl;
-//        test = test->suiv;
-//    }
-    
 }
 
 
@@ -180,8 +167,6 @@ void LCRendezVous::getRendezVous(LCRendezVous& listeRdv, const Personne& pers) c
  */
 bool LCRendezVous::occupee(const Date& date, const Heure& heureDeb, const Heure& heureFin) const
 {
-    
-    
     
     if(t == nullptr)
     {
