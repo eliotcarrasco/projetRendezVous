@@ -8,13 +8,13 @@ using namespace std;
 /**
     Constructeur ChainonPersonne
  */
-ChainonPersonne::ChainonPersonne() : p{}, suiv{nullptr}
+ChainonPersonne::ChainonPersonne() : prsn{}, suiv{nullptr}
 {}
 
-ChainonPersonne::ChainonPersonne(const Personne& pers) : p{pers}, suiv{nullptr}
+ChainonPersonne::ChainonPersonne(const Personne& pers) : prsn{pers}, suiv{nullptr}
 {}
 
-//ChainonPersonne::ChainonPersonne(const ChainonPersonne& cp) : p{cp.p}, suiv{cp.suiv}
+//ChainonPersonne::ChainonPersonne(const ChainonPersonne& cp) : prsn{cp.p}, suiv{cp.suiv}
 //{}
 
 
@@ -31,7 +31,7 @@ LCPersonne::LCPersonne(const LCPersonne& lcp) : t{nullptr}
     
     while(tmp)
     {
-        this->Inserer(tmp->p);
+        this->Inserer(tmp->prsn);
         tmp = tmp->suiv;
     }
 }
@@ -71,11 +71,11 @@ Personne LCPersonne::getPersonneById(int pId) const
     
     ChainonPersonne* tmp = t;
     
-    while (tmp && tmp->p.Id() != pId)
+    while (tmp && tmp->prsn.Id() != pId)
         tmp = tmp->suiv;
     
     if(tmp)
-        return tmp->p;
+        return tmp->prsn;
     
     return Personne{};
 }
@@ -91,7 +91,7 @@ void LCPersonne::Inserer(const Personne& pers)
 
 	if(t == nullptr)
 		t = nouv;
-	else if( pers < t->p )
+	else if( pers < t->prsn )
 	{
 		nouv->suiv = t;
 		t = nouv;
@@ -99,7 +99,7 @@ void LCPersonne::Inserer(const Personne& pers)
 	else
 	{
 		ChainonPersonne *c1 = t, *c2 = t->suiv;
-		while( c2 != 0 && ( pers > c2->p ) )
+		while( c2 != 0 && ( pers > c2->prsn ) )
 		{
 			c1 = c2;
 			c2 = c2->suiv;
@@ -116,7 +116,7 @@ void LCPersonne::Inserer(const Personne& pers)
 */
 void LCPersonne::Supprimer(const Personne& pers)
 {
-	if(t->p == pers)
+	if(t->prsn == pers)
 	{
 		ChainonPersonne* tmp = t;
 		t = t->suiv;
@@ -126,7 +126,7 @@ void LCPersonne::Supprimer(const Personne& pers)
 	else
 	{
 		ChainonPersonne *c1 = t, *c2 = t->suiv;
-		while(c2->p != pers)
+		while(c2->prsn != pers)
 		{
 			c1 = c2;
 			c2 = c2->suiv;
@@ -144,9 +144,9 @@ void LCPersonne::Supprimer(const Personne& pers)
 void LCPersonne::Modifier(const Personne& pers)
 {
 	ChainonPersonne* tmp = t;
-    while(tmp != nullptr && tmp->p != pers)
+    while(tmp != nullptr && tmp->prsn != pers)
 		tmp = tmp->suiv;
-	if(tmp->p == pers)
+	if(tmp->prsn == pers)
 	{
 		string c;
 		
@@ -162,7 +162,7 @@ void LCPersonne::Modifier(const Personne& pers)
 			string tel;
 			cout << "Veuillez inscrire le nouveau numero : ";
 			cin >> tel;
-			tmp->p.setTelephone(tel);
+			tmp->prsn.setTelephone(tel);
 		}
 		
 		do
@@ -177,7 +177,7 @@ void LCPersonne::Modifier(const Personne& pers)
 			string mail;
 			cout << "Veuillez inscrire le nouveau mail : ";
 			cin >> mail;
-			tmp->p.setMail(mail);
+			tmp->prsn.setMail(mail);
 		}
 	}
 	cout << "Modifications enregistrees avec succees" << endl << endl;

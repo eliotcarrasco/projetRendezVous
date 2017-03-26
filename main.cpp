@@ -35,7 +35,7 @@ void testLCPersonne()
 
     while(tmp != 0)
     {
-        cout << "Test Insertion Personne : " << tmp->p.Nom() << " " << tmp->p.Prenom() <<  endl;
+        cout << "Test Insertion Personne : " << tmp->prsn.Nom() << " " << tmp->prsn.Prenom() <<  endl;
         tmp = tmp->suiv;
     }
 
@@ -46,7 +46,7 @@ void testLCPersonne()
 
     while(tmp != 0)
     {
-        cout << "Test Modification Personne : " << tmp->p.Nom() << endl << tmp->p.Prenom() << endl << tmp->p.Telephone() << endl << tmp->p.Mail() <<  endl;
+        cout << "Test Modification Personne : " << tmp->prsn.Nom() << endl << tmp->prsn.Prenom() << endl << tmp->prsn.Telephone() << endl << tmp->prsn.Mail() <<  endl;
         tmp = tmp->suiv;
     }
 

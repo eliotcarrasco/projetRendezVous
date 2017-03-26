@@ -21,8 +21,8 @@ class interface
         void afficherParticipants(RendezVous &rdv);
     
     private:
-        LCPersonne p;
-        LCRendezVous r;
+        LCPersonne lcprincp;
+        LCRendezVous lcprincr;
 };
 
 

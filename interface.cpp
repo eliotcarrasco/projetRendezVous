@@ -12,13 +12,13 @@ using namespace std;
 /**
     Constructeur vide
  */
-interface::interface() :p{}, r{}
+interface::interface() :lcprincp{}, lcprincr{}
 {}
 
 /**
     Constructeur
  */
-interface::interface(LCPersonne &listePersonnes, LCRendezVous &listeRdv) : p{listePersonnes}, r{listeRdv}
+interface::interface(LCPersonne &listePersonnes, LCRendezVous &listeRdv) : lcprincp{listePersonnes}, lcprincr{listeRdv}
 {}
 
 
@@ -42,7 +42,7 @@ void interface::ajouterPersonne()
     cout << "Mail de la personne : ";
     cin >> mail;
     
-    p.Inserer(Personne{nom, prenom, telephone, mail});    
+    lcprincp.Inserer(Personne{nom, prenom, telephone, mail});    
 	cout << /*"La personne a ete ajoute avec succes" << endl <<*/ endl;
 }
 
@@ -61,14 +61,14 @@ bool interface::rechercherPersonne(Personne& person)
     cout << "Prenom de la personne : ";
     cin >> prenom;
     
-    ChainonPersonne* tmp = p.getTete();
-    while(tmp != 0 && (tmp->p.Nom() != convertToUpper(nom) || tmp->p.Prenom() != convertForName(prenom) ) )
+    ChainonPersonne* tmp = lcprincp.getTete();
+    while(tmp != 0 && (tmp->prsn.Nom() != convertToUpper(nom) || tmp->prsn.Prenom() != convertForName(prenom) ) )
     {
         tmp = tmp->suiv;
     }
     if(tmp != 0)
     {
-        person = tmp->p;
+        person = tmp->prsn;
         return true;
     }
     cout << "Cette personne n'existe pas" << endl << endl;
@@ -124,8 +124,8 @@ void interface::ajouterRdv()
 			nbparticipants = -1;
 		}
 	}while( nbparticipants <= -1 );
-	if( nbparticipants > p.Compter() )
-		nbparticipants = p.Compter();
+	if( nbparticipants > lcprincp.Compter() )
+		nbparticipants = lcprincp.Compter();
 	int i = 0;
 	do
 	{
@@ -135,7 +135,7 @@ void interface::ajouterRdv()
 		{
 			cout << "Personne trouve" << endl;
 			LCRendezVous listeRdvDuParticipant;
-			r.getRendezVous(listeRdvDuParticipant, person);
+			lcprincr.getRendezVous(listeRdvDuParticipant, person);
 			if( !listeRdvDuParticipant.occupee(date, heuredeb, heurefin) )
 			{
 				rdv.ajouterParticipant(person);
@@ -149,7 +149,7 @@ void interface::ajouterRdv()
 	}
 	while( i != nbparticipants );
     
-    r.InsererRendezVous(rdv);
+    lcprincr.InsererRendezVous(rdv);
     
     cout << "Rendez-vous ajoute avec succees" << endl << endl;
 }
@@ -165,7 +165,7 @@ bool interface::rechercherRdv(RendezVous &rdv)
     cout << "Nom du rendez-vous : ";
     cin >> nom;
     
-    ChainonRdV *tmp = r.getTete();
+    ChainonRdV *tmp = lcprincr.getTete();
     while(tmp != 0 && tmp->RdV.nom() != nom)
     {
         tmp = tmp->suiv;
@@ -185,7 +185,7 @@ bool interface::rechercherRdv(RendezVous &rdv)
  */
 void interface::afficherTousLesRdv(Date d)
 {
-    ChainonRdV* tmp = r.getTete();
+    ChainonRdV* tmp = lcprincr.getTete();
     
     bool rdv = false;
     
@@ -220,7 +220,7 @@ void interface::afficherParticipants(RendezVous &rdv)
     
     for (int i = 0; i < vPart.size(); i++)
     {
-        p.getPersonneById(vPart[i]).afficherPersonne();
+        lcprincp.getPersonneById(vPart[i]).afficherPersonne();
     }
 }
 
@@ -286,7 +286,7 @@ void interface::menuPersonnes()
     	cout << "Choix : ";
     	cin >> i;
     	cout << endl;
-    	Personne prsn;
+    	Personne person;
     	if( !cin.fail() )
     	{
     		switch(i)
@@ -296,18 +296,18 @@ void interface::menuPersonnes()
 		        	menuPersonnes();
 		            break;
 		        case 2 :
-		        	if (rechercherPersonne(prsn))
+		        	if (rechercherPersonne(person))
 		        		{
-		        			prsn.afficherPersonne();
-		        			p.Modifier(prsn);	
+		        			person.afficherPersonne();
+		        			lcprincp.Modifier(person);	
 						}
 		        	menuPersonnes();
 		            break;
 		        case 3 :
-		        	if (rechercherPersonne(prsn)) //penser a verifier que la personne n'a pas de rdv avant de la supprimer -->
+		        	if (rechercherPersonne(person)) //penser a verifier que la personne n'a pas de rdv avant de la supprimer -->
 		        		{
-		        			prsn.afficherPersonne();
-							p.Supprimer(prsn);
+		        			person.afficherPersonne();
+							lcprincp.Supprimer(person);
 		        		}
 		        	menuPersonnes();
 		        	break;

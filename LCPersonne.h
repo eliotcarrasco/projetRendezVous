@@ -11,7 +11,7 @@ class ChainonPersonne
         ChainonPersonne();
         ChainonPersonne(const Personne& pers);
 //        ChainonPersonne(const ChainonPersonne&);
-        Personne p;
+        Personne prsn;
         ChainonPersonne* suiv;
 //    friend class LCPersonne;
 //    friend class LCRendezVous;
