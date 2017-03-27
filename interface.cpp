@@ -27,7 +27,7 @@ interface::interface(LCPersonne &listePersonnes, LCRendezVous &listeRdv) : lcpri
  */
 void interface::menuPrincipal()
 {
-	system("cls");
+//	system("cls");
     int i;
     cout << "Gestionnaire de Rendez-Vous : " << endl;
     cout << "Action sur les : " << endl;
@@ -71,7 +71,7 @@ void interface::menuPrincipal()
  */
 void interface::menuPersonnes()
 {
-	system("cls");
+//	system("cls");
     int i;
     cout << "Gestion des personnes : " << endl;
     cout << "Veuillez selectionner une action : " << endl;
@@ -176,7 +176,7 @@ void interface::menuPersonnes()
  */
 void interface::menuRendezVous()
 {
-	system("cls");
+//	system("cls");
     int i;
     cout << "Gestion des rendez-vous : " << endl;
     cout << "Veuillez selectionner une action : " << endl;
@@ -234,10 +234,20 @@ void interface::menuRendezVous()
 		    	case 5 :
 		    		{
 			    		Personne person;
+			    		int cmpt = 1;
 			    		if( rechercherPersonne(person) )
 			    		{
 				    		LCRendezVous rdvperson;
 				    		lcprincr.getRendezVous( rdvperson, person);
+				    		ChainonRdV *tmp = rdvperson.getTete();
+				    		while(tmp != nullptr)
+				    		{
+				    			cout << "Rendez-vous " << cmpt << " : ";
+				    			tmp->RdV.afficherRendezVous();
+				    			tmp = tmp->suiv;
+				    			cmpt++;
+				    			cout << endl;
+							}
 				    	}
 			    		menuRendezVous();
 			    	}
@@ -247,7 +257,7 @@ void interface::menuRendezVous()
 		    		{
 		    			afficherParticipants(rdv);
 					}
-					system("PAUSE");
+//					system("PAUSE");
 					menuRendezVous();
 		    		break;
 		   		case 0 :
