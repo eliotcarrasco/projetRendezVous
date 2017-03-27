@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -20,7 +21,6 @@ interface::interface() :lcprincp{}, lcprincr{}
  */
 interface::interface(LCPersonne &listePersonnes, LCRendezVous &listeRdv) : lcprincp{listePersonnes}, lcprincr{listeRdv}
 {}
-
 
 /**
 	Affiche le menu principal de l'application
@@ -230,12 +230,26 @@ void interface::menuRendezVous()
 			    		afficherTousLesRdv(rech);
 			    		menuRendezVous();
 		    		}
+		    		break;
 		    	case 5 :
-		    		
-		    		menuRendezVous();
+		    		{
+			    		Personne person;
+			    		if( rechercherPersonne(person) )
+			    		{
+				    		LCRendezVous rdvperson;
+				    		lcprincr.getRendezVous( rdvperson, person);
+				    	}
+			    		menuRendezVous();
+			    	}
+		    		break;
 		    	case 6 :
-		    		
-		    		menuRendezVous();
+		    		if( rechercherRdv(rdv) )
+		    		{
+		    			afficherParticipants(rdv);
+					}
+					system("PAUSE");
+					menuRendezVous();
+		    		break;
 		   		case 0 :
 		    		menuPrincipal();
 		    		break;
