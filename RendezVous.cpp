@@ -161,6 +161,13 @@ int RendezVous::nombreParticipants() const
     return static_cast<int>(d_participants.size());
 }
 
+void RendezVous::afficherRendezVous()
+{
+	cout << "Nom : " << d_nom << endl;
+	cout << "Date : " << d_date << endl;
+	cout << "Heure de debut : " << d_heureDeb << endl;
+	cout << "Heure de fin : " << d_heureFin << endl;
+}
 
 bool RendezVous::operator!=(const RendezVous& rdv) const
 {

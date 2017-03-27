@@ -190,6 +190,12 @@ int main(int argc, char** argv)
 
     interface inter{listePersonnes, listeRdv};
 	inter.menuPrincipal();
+
+//	for(int i = 0; i < vR.size(); i++)
+//	{
+//		vR[i].afficherRendezVous();
+//	}
+	
     
     
 	return 0;

@@ -1,6 +1,9 @@
 #ifndef HEURE_H
 #define HEURE_H
 #include <string>
+#include <iostream>
+
+using namespace std;
 
 class Heure
 {
@@ -26,6 +29,8 @@ class Heure
         bool operator>=(const Heure& h) const;
         bool operator==(const Heure& h) const;
         bool operator!=(const Heure& h) const;
+        
+        friend ostream& operator<<(ostream& os, const Heure& h);
     
     
     

@@ -178,3 +178,9 @@ bool Date::operator<=(const Date& d) const
 {
 	return ( (*this < d) || (*this == d));
 }
+
+ostream& operator<<(ostream& os, const Date& d)
+{
+	os << d.d_jour << "/" << d.d_mois << "/" << d.d_annee;
+	return os;
+}

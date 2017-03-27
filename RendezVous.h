@@ -33,6 +33,8 @@ class RendezVous
         void supprimerParticipant(const Personne& pers);
         int nombreParticipants() const;
         
+        void afficherRendezVous();
+        
         bool operator!=(const RendezVous& rdv) const;
         bool operator==(const RendezVous& rdv) const;
         

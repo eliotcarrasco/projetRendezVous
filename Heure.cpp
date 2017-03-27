@@ -154,3 +154,9 @@ bool Heure::operator!=(const Heure& h) const
 {
 	return (d_heures != h.d_heures && d_minutes != h.d_minutes);
 }
+
+ostream& operator<<(ostream& os, const Heure& h)
+{
+	os << h.d_heures << ":" << h.d_minutes;
+	return os;
+}
