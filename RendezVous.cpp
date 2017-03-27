@@ -161,3 +161,13 @@ int RendezVous::nombreParticipants() const
     return static_cast<int>(d_participants.size());
 }
 
+
+bool RendezVous::operator!=(const RendezVous& rdv) const
+{
+	return (d_nom != rdv.d_nom || d_date != rdv.d_date || d_heureDeb != rdv.d_heureDeb || d_heureFin != rdv.d_heureFin || d_participants != rdv.d_participants);
+}
+
+bool RendezVous::operator==(const RendezVous& rdv) const
+{
+	return (d_nom == rdv.d_nom && d_date == rdv.d_date && d_heureDeb == rdv.d_heureDeb && d_heureFin == rdv.d_heureFin && d_participants == rdv.d_participants);	
+}

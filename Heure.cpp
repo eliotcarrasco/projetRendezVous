@@ -149,3 +149,8 @@ bool Heure::operator==(const Heure& h) const
 {
     return (d_heures == h.d_heures && d_minutes == h.d_minutes);
 }
+
+bool Heure::operator!=(const Heure& h) const
+{
+	return (d_heures != h.d_heures && d_minutes != h.d_minutes);
+}

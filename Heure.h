@@ -25,6 +25,7 @@ class Heure
         bool operator<=(const Heure& h) const;
         bool operator>=(const Heure& h) const;
         bool operator==(const Heure& h) const;
+        bool operator!=(const Heure& h) const;
     
     
     

@@ -33,6 +33,9 @@ class RendezVous
         void supprimerParticipant(const Personne& pers);
         int nombreParticipants() const;
         
+        bool operator!=(const RendezVous& rdv) const;
+        bool operator==(const RendezVous& rdv) const;
+        
         //manque les surcharges d'operateurs pour utiliser les fonction modifier et supprimer de LCRendezVous avec des rdv
     
 

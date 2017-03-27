@@ -463,9 +463,38 @@ void interface::afficherParticipants(RendezVous &rdv)
     }
 }
 
-/**
+void interface::rechercherRendezVous(Date d)
+{
+	bool rdv = false;
+	if(lcprincp.getTete() == 0)
+	 return;
+	 
+	ChainonRdV* tmp = lcprincr.getTete();
 	
-*//*
+	while(tmp != 0 && tmp->RdV.date() <= d )
+	{
+		if(tmp->RdV.date() == d)
+		{
+			rdv = true;
+			//afficher tmp->RdV
+			cout << "Nom du rendez-vous : " << tmp->RdV.nom() << endl;
+			
+//			A voir si on affiche les heures !
+//			cout << "Heure de debut : " << tmp->RdV.heureDeb() << endl;
+//			cout << "Heure de fin : " << tmp->RdV.heureFin() <<endl;
+
+			afficherParticipants(tmp->RdV);
+		}
+		tmp = tmp->suiv;
+	}
+	
+	if(!rdv)
+	{
+		cout << "Aucun rendez-vous pour cette date.";
+	}
+}
+
+
 void LCRendezVous::modifierRendezVous(RendezVous& rdv)
 {
 	ChainonRdV* tmp = t;
@@ -474,7 +503,7 @@ void LCRendezVous::modifierRendezVous(RendezVous& rdv)
 		
 	if(tmp->RdV == rdv)
 	{
-		int i = -1;;
+		int i = -1;
 		do
 		{
 			cout << "1. Modifier la date." << endl;
@@ -489,7 +518,7 @@ void LCRendezVous::modifierRendezVous(RendezVous& rdv)
 			case 1:
 				{
 					int jour, mois, annee;
-			    	cout << "Entrez la date recherchee : " << endl;
+			    	cout << "Entrez la nouvelle date : " << endl;
 			    	cout << "Jour : ";
 			    	cin >> jour;
 			    	cout << "Mois : ";
@@ -498,17 +527,29 @@ void LCRendezVous::modifierRendezVous(RendezVous& rdv)
 			    	cin >> annee;
 			    	rdv.setDate({jour, mois, annee});
 				}
-				//modif date
 			case 2:
-				//modif heure debut
+				int heureDeb, minutesDeb;
+				cout << "Entrez la nouvelle heure :";
+				cout << "Heure : ";
+				cin >> heureDeb;
+				cout << "Minutes : ";
+				cin >> minutesDeb;
+				rdv.setHeureDeb({heureDeb, minutesDeb});
 			case 3:
-				//modif heure fin
+				int heureFin, minutesFin;
+				cout << "Entrez la nouvelle heure :";
+				cout << "Heure : ";
+				cin >> heureFin;
+				cout << "Minutes : ";
+				cin >> minutesFin;
+				rdv.setHeureFin({heureFin, minutesFin});
 			case 0:
-				//retour
+				break;
 			default:
-				//retour ?
+				break;
 		}
+			
 	}
 	
-}*/
+}
 
