@@ -205,7 +205,7 @@ void interface::menuRendezVous()
 		    	case 2 :
 		    		if(rechercherRdv(rdv))
 		    		{
-//		    			lcprincr.ModifierRendezVous(rdv);
+		    			modifierRendezVous(rdv);
 					}
 		    		menuRendezVous();
 		        	break;
@@ -500,12 +500,9 @@ void interface::rechercherRendezVous(Date d)
 		if(tmp->RdV.date() == d)
 		{
 			rdv = true;
-			//afficher tmp->RdV
 			cout << "Nom du rendez-vous : " << tmp->RdV.nom() << endl;
-			
-//			A voir si on affiche les heures !
-//			cout << "Heure de debut : " << tmp->RdV.heureDeb() << endl;
-//			cout << "Heure de fin : " << tmp->RdV.heureFin() <<endl;
+			cout << "Heure de debut : " << tmp->RdV.heureDeb() << endl;
+			cout << "Heure de fin : " << tmp->RdV.heureFin() <<endl;
 
 			afficherParticipants(tmp->RdV);
 		}
@@ -519,9 +516,9 @@ void interface::rechercherRendezVous(Date d)
 }
 
 
-void LCRendezVous::modifierRendezVous(RendezVous& rdv)
+void interface::modifierRendezVous(RendezVous& rdv)
 {
-	ChainonRdV* tmp = t;
+	ChainonRdV* tmp = lcprincr.getTete();
 	while(tmp != nullptr && tmp->RdV != rdv)
 		tmp = tmp->suiv;
 		
@@ -533,24 +530,26 @@ void LCRendezVous::modifierRendezVous(RendezVous& rdv)
 			cout << "1. Modifier la date." << endl;
 			cout << "2. Modifier l'heure de debut." << endl;
 			cout << "3. Modifier l'heure de fin." << endl;
+			cout << "4. Ajouter un participant." << endl;
+			cout << "5. Supprimer un participant" << endl;
 			cout << "0. Retour." << endl;
+			cin >> i;
 		}
-		while(i > 3 || i < 0);
+		while(i > 5 || i < 0);
 			
 		switch(i)
 		{
 			case 1:
-				{
-					int jour, mois, annee;
-			    	cout << "Entrez la nouvelle date : " << endl;
-			    	cout << "Jour : ";
-			    	cin >> jour;
-			    	cout << "Mois : ";
-			    	cin >> mois;
-			    	cout << "Annee : ";
-			    	cin >> annee;
-			    	rdv.setDate({jour, mois, annee});
-				}
+				int jour, mois, annee;
+		    	cout << "Entrez la nouvelle date : " << endl;
+		    	cout << "Jour : ";
+		    	cin >> jour;
+		    	cout << "Mois : ";
+		    	cin >> mois;
+		    	cout << "Annee : ";
+		    	cin >> annee;
+		    	tmp->RdV.setDate({jour, mois, annee});
+		    	break;
 			case 2:
 				int heureDeb, minutesDeb;
 				cout << "Entrez la nouvelle heure :";
@@ -558,7 +557,8 @@ void LCRendezVous::modifierRendezVous(RendezVous& rdv)
 				cin >> heureDeb;
 				cout << "Minutes : ";
 				cin >> minutesDeb;
-				rdv.setHeureDeb({heureDeb, minutesDeb});
+				tmp->RdV.setHeureDeb({heureDeb, minutesDeb});
+				break;
 			case 3:
 				int heureFin, minutesFin;
 				cout << "Entrez la nouvelle heure :";
@@ -566,8 +566,35 @@ void LCRendezVous::modifierRendezVous(RendezVous& rdv)
 				cin >> heureFin;
 				cout << "Minutes : ";
 				cin >> minutesFin;
-				rdv.setHeureFin({heureFin, minutesFin});
+				tmp->RdV.setHeureFin({heureFin, minutesFin});
+				break;
+			case 4:
+				{
+					Personne ajout;
+					bool existe;
+					existe = rechercherPersonne(ajout);
+					if(existe)
+					{
+						tmp->RdV.ajouterParticipant(ajout);
+						cout << "Participant ajoute.";
+					}	
+					break;
+				}
+				
+			case 5:
+				{
+					Personne suppr;
+					bool existant;
+					existant = rechercherPersonne(suppr);
+					if(existant)
+					{
+						tmp->RdV.supprimerParticipant(suppr);
+						cout << "Participant supprime.";
+					}
+					break;
+				}
 			case 0:
+				//retour en arriere
 				break;
 			default:
 				break;

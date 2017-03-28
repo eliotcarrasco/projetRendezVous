@@ -20,7 +20,7 @@ class interface
         void afficherTousLesRdv(Date d);
         void rechercherRendezVous(Date d);
         void afficherParticipants(RendezVous &rdv);
-//        void modifierRendezVous(RendezVous& rdv);
+        void modifierRendezVous(RendezVous& rdv);
     
     private:
         LCPersonne lcprincp;
