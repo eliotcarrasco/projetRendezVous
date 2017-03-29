@@ -39,10 +39,6 @@ class LCRendezVous
         											 //manque la fonction qui permet de modifier les rdv
         bool occupee(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
         void getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const;
-		void rechercherRendezVous(Date d);
-		
-		void modifierRendezVous(RendezVous& rdv);
-
 
 		
 	private:

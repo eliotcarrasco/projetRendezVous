@@ -144,16 +144,6 @@ void testParticipantsRDV()
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv)
@@ -161,32 +151,32 @@ int main(int argc, char** argv)
 
     LCPersonne listePersonnes{};
     
-//    vector<Personne> vP {
-//        Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"},
-//        Personne{"Pfund", "aRnoLd", "0646231902", "dany.pfd@gmail.com"},
-//        Personne{"Hindi", "Hassane", "0646231902", "rppalestine@gmail.com"},
-//        Personne{"Carrasco", "Eliot", "0646121902", "insectsforlife@gmail.com"},
-//        Personne{"Machin", "Alexandre", "0646352413", "al@yahoo.fr"}
-//    };
-//    
-//    for( int i = 0; i < vP.size(); i++)
-//        listePersonnes.Inserer(vP[i]);
+    vector<Personne> vP {
+        Personne{"Pfund", "Daniel", "0646231902", "dany.pfd@gmail.com"},
+        Personne{"Pfund", "aRnoLd", "0646231902", "dany.pfd@gmail.com"},
+        Personne{"Hindi", "Hassane", "0646231902", "rppalestine@gmail.com"},
+        Personne{"Carrasco", "Eliot", "0646121902", "insectsforlife@gmail.com"},
+        Personne{"Machin", "Alexandre", "0646352413", "al@yahoo.fr"}
+    };
+    
+    for( int i = 0; i < vP.size(); i++)
+        listePersonnes.Inserer(vP[i]);
     
     LCRendezVous listeRdv{};
-//    
-//    vector<RendezVous> vR {
-//        RendezVous{"Business", Date{16, 3, 2017}, Heure{15, 27}, Heure{17, 30}},
-//        RendezVous{"Business 6", Date{17, 3, 2017}, Heure{15, 31}, Heure{16,30}},
-//        RendezVous{"Business 2", Date{17, 3, 2017}, Heure{14, 00}, Heure{15, 30}},
-//        RendezVous{"Business 3", Date{17, 3, 2017}, Heure{15, 00}, Heure{15, 30}},
-//        RendezVous{"Business meeting 4", Date{19, 3, 2017}, Heure{14, 00}, Heure{15, 30}},
-//        RendezVous{"Business meeting 3", Date{18, 3, 2017}, Heure{14, 00}, Heure{15, 30}}
-//        
-//    };
-//    
-//    for( int i = 0; i < vR.size(); i++)
-//        listeRdv.InsererRendezVous(vR[i]);
-//    
+    
+    vector<RendezVous> vR {
+        RendezVous{"Business", Date{16, 3, 2017}, Heure{15, 27}, Heure{17, 30}},
+        RendezVous{"Business 6", Date{17, 3, 2017}, Heure{15, 31}, Heure{16,30}},
+        RendezVous{"Business 2", Date{17, 3, 2017}, Heure{14, 00}, Heure{15, 30}},
+        RendezVous{"Business 3", Date{17, 3, 2017}, Heure{15, 00}, Heure{15, 30}},
+        RendezVous{"Business meeting 4", Date{19, 3, 2017}, Heure{14, 00}, Heure{15, 30}},
+        RendezVous{"Business meeting 3", Date{18, 3, 2017}, Heure{14, 00}, Heure{15, 30}}
+        
+    };
+    
+    for( int i = 0; i < vR.size(); i++)
+        listeRdv.InsererRendezVous(vR[i]);
+    
 
     interface inter{listePersonnes, listeRdv};
 	inter.menuPrincipal();
@@ -195,8 +185,6 @@ int main(int argc, char** argv)
 //	{
 //		vR[i].afficherRendezVous();
 //	}
-	
-    
     
 	return 0;
 

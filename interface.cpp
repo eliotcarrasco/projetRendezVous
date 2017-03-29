@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <cstdlib>
 
+
 using namespace std;
 
 /**
@@ -485,34 +486,6 @@ void interface::afficherParticipants(RendezVous &rdv)
     {
         lcprincp.getPersonneById(vPart[i]).afficherPersonne();
     }
-}
-
-void interface::rechercherRendezVous(Date d)
-{
-	bool rdv = false;
-	if(lcprincp.getTete() == 0)
-	 return;
-	 
-	ChainonRdV* tmp = lcprincr.getTete();
-	
-	while(tmp != 0 && tmp->RdV.date() <= d )
-	{
-		if(tmp->RdV.date() == d)
-		{
-			rdv = true;
-			cout << "Nom du rendez-vous : " << tmp->RdV.nom() << endl;
-			cout << "Heure de debut : " << tmp->RdV.heureDeb() << endl;
-			cout << "Heure de fin : " << tmp->RdV.heureFin() <<endl;
-
-			afficherParticipants(tmp->RdV);
-		}
-		tmp = tmp->suiv;
-	}
-	
-	if(!rdv)
-	{
-		cout << "Aucun rendez-vous pour cette date.";
-	}
 }
 
 
