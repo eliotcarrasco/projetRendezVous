@@ -18,9 +18,9 @@ class interface
         void ajouterRdv();
         bool rechercherRdv(RendezVous &rdv);
         void afficherTousLesRdv(Date d);
-        void rechercherRendezVous(Date d);
         void afficherParticipants(RendezVous &rdv);
         void modifierRendezVous(RendezVous& rdv);
+        int testInt(const string& s);
     
     private:
         LCPersonne lcprincp;

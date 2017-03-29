@@ -94,29 +94,32 @@ void interface::menuPersonnes()
 		    {
 		        case 1 :
 		        	ajouterPersonne();
+//		        	system("PAUSE");
 		        	menuPersonnes();
 		            break;
 		        case 2 :
 		        	if (rechercherPersonne(person))
-		        		{
-		        			person.afficherPersonne();
-		        			lcprincp.Modifier(person);	
-						}
+	        		{
+	        			person.afficherPersonne();
+	        			lcprincp.Modifier(person);	
+					}
+//					system("PAUSE");
 		        	menuPersonnes();
 		            break;
 		        case 3 :
 		        	if (rechercherPersonne(person))
-		        		{
-		        			LCRendezVous rdvDePersonne;
-		        			lcprincr.getRendezVous( rdvDePersonne, person);
-		        			if( rdvDePersonne.getTete() == nullptr)
-		        			{
-			        			person.afficherPersonne();
-								lcprincp.Supprimer(person);
-							}
-							else
-								cout << "Suppression impossible : la personne fait partie d'au moins un rdv" << endl << endl;
-		        		}
+	        		{
+	        			LCRendezVous rdvDePersonne;
+	        			lcprincr.getRendezVous( rdvDePersonne, person);
+	        			if( rdvDePersonne.getTete() == nullptr)
+	        			{
+		        			person.afficherPersonne();
+							lcprincp.Supprimer(person);
+						}
+						else
+							cout << "Suppression impossible : la personne fait partie d'au moins un rdv" << endl << endl;
+	        		}
+//		        	system("PAUSE");
 		        	menuPersonnes();
 		        	break;
 		        case 4 :
@@ -124,24 +127,19 @@ void interface::menuPersonnes()
 		        	{
 		        		int jour, mois, annee, hdeb, mindeb, hfin, minfin;
 					    
-					    cout << "Jour (1-31) : ";
-					    cin >> jour;
-					    cout << "Mois (1-12) : ";
-					    cin >> mois;
-					    cout << "Annee (ex : 2017) : ";
-					    cin >> annee;
+					    jour = testInt("Jour (1-31) : ");
+						mois = testInt("Mois (1-12) : ");
+						annee = testInt("Annee (ex : 2017) : ");
 					    Date date{jour, mois, annee};
 					    
-					    cout << "Horaire du debut : " << endl << "	Heure : ";
-					    cin >> hdeb;
-					    cout << "	Minute : ";
-					    cin >> mindeb;
+					    cout << "Horaire du debut : " << endl;
+						hdeb = testInt("	Heure : ");
+						mindeb = testInt("	Minute : ");
 					    Heure heuredeb{hdeb, mindeb};
 					    
-					    cout << "Horaire de fin : " << endl << "	Heure : ";
-					    cin >> hfin;
-					    cout << "	Minute : ";
-					    cin >> minfin;
+					    cout << "Horaire de fin : " << endl;
+						hfin = testInt("	Heure : ");
+						minfin = testInt("	Minute : ");
 					    Heure heurefin{hfin, minfin};
 					    
 		        		LCRendezVous listeRdvDeLaPersonne;
@@ -151,6 +149,7 @@ void interface::menuPersonnes()
 						else
 							cout << "Cette personne n'a rien de prevu pour cette date" << endl << endl;
 					}
+//					system("PAUSE");
 		        	menuPersonnes();
 		        	break;
 		        case 0 :
@@ -201,6 +200,7 @@ void interface::menuRendezVous()
 			{
 		    	case 1 :
 		    		ajouterRdv();
+//		    		system("PAUSE");
 		    		menuRendezVous();
 		        	break;
 		    	case 2 :
@@ -208,6 +208,7 @@ void interface::menuRendezVous()
 		    		{
 		    			modifierRendezVous(rdv);
 					}
+//					system("PAUSE");
 		    		menuRendezVous();
 		        	break;
 		    	case 3 :
@@ -215,20 +216,19 @@ void interface::menuRendezVous()
 		    		{
 		    			lcprincr.SupprimerRendezVous(rdv.nom());
 					}
+//					system("PAUSE");
 		    		menuRendezVous();
 		    		break;
 		    	case 4 :
 		    		{
 			    		int jour, mois, annee;
 			    		cout << "Entrez la date recherchee : " << endl;
-			    		cout << "Jour : ";
-			    		cin >> jour;
-			    		cout << "Mois : ";
-			    		cin >> mois;
-			    		cout << "Annee : ";
-			    		cin >> annee;
+						jour = testInt("Jour : ");
+						mois = testInt("Mois : ");
+						annee = testInt("Annee : ");
 			    		Date rech{jour, mois, annee};
 			    		afficherTousLesRdv(rech);
+//			    		system("PAUSE");
 			    		menuRendezVous();
 		    		}
 		    		break;
@@ -250,6 +250,7 @@ void interface::menuRendezVous()
 				    			cout << endl;
 							}
 				    	}
+//				    	system("PAUSE");
 			    		menuRendezVous();
 			    	}
 		    		break;
@@ -341,44 +342,27 @@ void interface::ajouterRdv()
     cout << "Nom du rendez-vous : ";
     cin >> nom;
     
-    cout << "Jour (1-31) : ";
-    cin >> j;
-    cout << "Mois (1-12) : ";
-    cin >> m;
-    cout << "Annee (ex : 2017) : ";
-    cin >> a;
+    j = testInt("Jour (1-31) : ");
+    m = testInt("Mois (1-12) : ");
+    a = testInt("Annee (ex : 2017) : ");
     Date date{j, m, a};
     
-    cout << "Horaire du debut : " << endl << "	Heure : ";
-    cin >> hdeb;
-    cout << "	Minute : ";
-    cin >> mindeb;
+    cout << "Horaire du debut : " << endl;
+    hdeb = testInt( "	Heure : ");
+    mindeb = testInt("	Minute : ");
     Heure heuredeb{hdeb, mindeb};
     
-    cout << "Horaire de fin : " << endl << "	Heure : ";
-    cin >> hfin;
-    cout << "	Minute : ";
-    cin >> minfin;
+    cout << "Horaire de fin : " << endl;
+	hfin = testInt("	Heure : ");
+    minfin = testInt("	Minute : ");
     Heure heurefin{hfin, minfin};
     
     RendezVous rdv{nom, date, heuredeb, heurefin};
     
     Personne person;
     LCPersonne participants;
-    int nbparticipants;
-    
     cout << "Combien de participants pour ce rendez-vous? " << endl;
-    do
-    {
-    	cout << "Nombre de participants : ";
-	    cin >> nbparticipants;
-    	if( cin.fail() )
-    	{
-	    	cin.clear();
-			cin.ignore(256,'\n');
-			nbparticipants = -1;
-		}
-	}while( nbparticipants <= -1 );
+    int nbparticipants = testInt("Nombre de participants : ");
 	
 	if( nbparticipants > lcprincp.Compter() )
 		nbparticipants = lcprincp.Compter();
@@ -500,12 +484,12 @@ void interface::modifierRendezVous(RendezVous& rdv)
 		int i = -1;
 		do
 		{
-			cout << "1. Modifier la date." << endl;
-			cout << "2. Modifier l'heure de debut." << endl;
-			cout << "3. Modifier l'heure de fin." << endl;
-			cout << "4. Ajouter un participant." << endl;
+			cout << "1. Modifier la date" << endl;
+			cout << "2. Modifier l'heure de debut" << endl;
+			cout << "3. Modifier l'heure de fin" << endl;
+			cout << "4. Ajouter un participant" << endl;
 			cout << "5. Supprimer un participant" << endl;
-			cout << "0. Retour." << endl;
+			cout << "0. Retour" << endl;
 			cin >> i;
 		}
 		while(i > 5 || i < 0);
@@ -515,41 +499,39 @@ void interface::modifierRendezVous(RendezVous& rdv)
 			case 1:
 				int jour, mois, annee;
 		    	cout << "Entrez la nouvelle date : " << endl;
-		    	cout << "Jour : ";
-		    	cin >> jour;
-		    	cout << "Mois : ";
-		    	cin >> mois;
-		    	cout << "Annee : ";
-		    	cin >> annee;
+				jour = testInt("Jour : ");
+				mois = testInt("Mois : ");
+				annee = testInt("Annee : ");
 		    	tmp->RdV.setDate({jour, mois, annee});
 		    	break;
 			case 2:
 				int heureDeb, minutesDeb;
 				cout << "Entrez la nouvelle heure :";
-				cout << "Heure : ";
-				cin >> heureDeb;
-				cout << "Minutes : ";
-				cin >> minutesDeb;
+				heureDeb = testInt("Heure : ");
+				minutesDeb = testInt("Minutes : ");
 				tmp->RdV.setHeureDeb({heureDeb, minutesDeb});
 				break;
 			case 3:
 				int heureFin, minutesFin;
 				cout << "Entrez la nouvelle heure :";
-				cout << "Heure : ";
-				cin >> heureFin;
-				cout << "Minutes : ";
-				cin >> minutesFin;
+				heureFin = testInt("Heure : ");
+				minutesFin = testInt("Minutes : ");
 				tmp->RdV.setHeureFin({heureFin, minutesFin});
 				break;
 			case 4:
 				{
 					Personne ajout;
-					bool existe;
-					existe = rechercherPersonne(ajout);
-					if(existe)
+					if( rechercherPersonne(ajout) )
 					{
-						tmp->RdV.ajouterParticipant(ajout);
-						cout << "Participant ajoute.";
+						LCRendezVous rdvparticipants;
+						lcprincr.getRendezVous(rdvparticipants, ajout);
+						if( !rdvparticipants.occupee( tmp->RdV.date(), tmp->RdV.heureDeb(), tmp->RdV.heureFin() ) )
+						{
+							tmp->RdV.ajouterParticipant(ajout);
+							cout << "Participant ajoute" << endl << endl;
+						}
+						else
+							cout << "Cette personne est occupee et ne peut donc pas etre ajoutee" << endl << endl;
 					}	
 					break;
 				}
@@ -557,12 +539,10 @@ void interface::modifierRendezVous(RendezVous& rdv)
 			case 5:
 				{
 					Personne suppr;
-					bool existant;
-					existant = rechercherPersonne(suppr);
-					if(existant)
+					if( rechercherPersonne(suppr) )
 					{
 						tmp->RdV.supprimerParticipant(suppr);
-						cout << "Participant supprime.";
+						cout << "Participant supprime" << endl << endl;
 					}
 					break;
 				}
@@ -575,5 +555,23 @@ void interface::modifierRendezVous(RendezVous& rdv)
 			
 	}
 	
+}
+
+int interface::testInt(const string& s)
+{
+	int i;
+	do
+    {
+	    cout << s;
+	    cin >> i;
+		if( cin.fail() )
+	    {
+			cin.clear();
+			cin.ignore(256,'\n');
+			i = -1;
+		}
+	}
+	while( i == -1 );
+	return i;
 }
 
