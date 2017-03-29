@@ -176,8 +176,6 @@ bool LCRendezVous::occupee(const Date& date, const Heure& heureDeb, const Heure&
     {
         ChainonRdV* tmp = t;
         
-        //cout << "Tete " << tmp->RdV.date().getStringDate() << endl;
-        
         while(tmp != nullptr && tmp->RdV.date() != date)
         {
             tmp = tmp->suiv;
@@ -197,3 +195,28 @@ bool LCRendezVous::occupee(const Date& date, const Heure& heureDeb, const Heure&
     return false;
 }
 
+/**
+ Verifie si le nom d'un rendez-vous est deja pris ou pas
+ @param nomRdv - un nom
+ @return Vrai si le nom n'est pas deja pris par un rendez-vous, Faux sinon
+ */
+bool LCRendezVous::nomRdvDisponible(const string & nomRdv)
+{
+    string lowerNomRdv = convertToLower(nomRdv);
+    
+    if(t)
+    {
+        ChainonRdV* tmp = t;
+        
+        while(tmp != nullptr && tmp->RdV.nom() != lowerNomRdv)
+        {
+            tmp = tmp->suiv;
+        }
+        
+        if(tmp)
+            return false;
+    }
+    
+    return true;
+    
+}

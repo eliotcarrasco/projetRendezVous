@@ -176,7 +176,6 @@ int main(int argc, char** argv)
     
     for( int i = 0; i < vR.size(); i++)
         listeRdv.InsererRendezVous(vR[i]);
-    
 
     interface inter{listePersonnes, listeRdv};
 	inter.menuPrincipal();

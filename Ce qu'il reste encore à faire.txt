@@ -1,17 +1,14 @@
-Interface:
+Interface:Verifier a lÕajout dÕun rdv que son nom nÕest pas deja pris
 RendezVous:
-	*Manque les surcharges d'operateurs pour pouvoir utiliser les fonction Modifier et Supprimer avec des Rdv (comme pour les Personnes)
 
 LCPersonne:
-	*Voir si on laisse tous les attributs des chainon en public ou pas
+	*Passer les chainonPersonne en private et tout ce que a implique
 
 LCRendezVous:
-	*Voir si on laisse tous les attributs des chainon en public ou pas
-	*Utiliser un rdv comme parametre pour Supprimer un rdv
-	*Manque la fonction Modifier qui permet de modifier un Rdv (parametre: le rdv)
+	*Passer les chainonRdv en private et tout ce que a implique
+
 
 Manipulation du carnet de rdv:
-	-->Afficher tous les rdv pour une date donnee par l'user
 	*Afficher tous les rdv pour une personne dont le nom est donne par l'user
 	-->Determiner si une personne n'a pas de rdv pour une date et une heure donnée par l'user (fonction aRendezVous)
 	-->Afficher pour un Rdv les info des participants (utiliser la fonction afficherPersonne() )

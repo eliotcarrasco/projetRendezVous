@@ -35,10 +35,12 @@ class LCRendezVous
 		~LCRendezVous();
         ChainonRdV* getTete() const;
 		void InsererRendezVous(const RendezVous& r);
-        void SupprimerRendezVous(const std::string& nom); //utiliser un rdv comme parametre --> manque operateur pour rdv
+        void SupprimerRendezVous(const std::string& nom);
         											 //manque la fonction qui permet de modifier les rdv
-        bool occupee(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
+    
         void getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const;
+        bool occupee(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
+        bool nomRdvDisponible(const string & nomRdv);
 
 		
 	private:

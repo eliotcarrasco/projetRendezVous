@@ -213,7 +213,7 @@ void interface::menuRendezVous()
 		    	case 3 :
 		    		if(rechercherRdv(rdv))
 		    		{
-//		    			lcprincr.SupprimerRendezVous(rdv);
+		    			lcprincr.SupprimerRendezVous(rdv.nom());
 					}
 		    		menuRendezVous();
 		    		break;
@@ -435,7 +435,7 @@ bool interface::rechercherRdv(RendezVous &rdv)
     {
         tmp = tmp->suiv;
     }
-    if(tmp != 0)
+    if(tmp)
     {
         rdv = tmp->RdV;
         return true;
