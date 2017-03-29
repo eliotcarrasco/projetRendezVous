@@ -38,30 +38,20 @@ void interface::menuPrincipal()
     
     do
     {
-    	cout << "Choix : ";
-    	cin >> i;
-    	cout << endl;
-		if( !cin.fail() )
-		{   
-		    switch(i)
-		    {
-		        case 1 :
-		            menuPersonnes();
-		            break;
-		        case 2 :
-		            menuRendezVous();
-		            break;
-		        case 0 :
-		        	break;
-		        default :
-		            cout << "Veuillez selectionner une option valide." << endl;
-		    }
-		}
-		else
-		{
-			cin.clear();
-			cin.ignore(256,'\n');
-			i = -1;
+    	i = testInt("Choix : ");
+		cout << endl;
+		switch(i)
+	    {
+	        case 1 :
+	            menuPersonnes();
+	            break;
+	        case 2 :
+	            menuRendezVous();
+	            break;
+	        case 0 :
+	        	break;
+	        default :
+	            cout << "Veuillez selectionner une option valide." << endl;
 		}
 	}
 	while( i != 0 && i != 1 && i != 2 );
@@ -87,132 +77,123 @@ void interface::menuPersonnes()
     
 	do
     {
-    	cout << "Choix : ";
-    	cin >> i;
-    	cout << endl;
+		i = testInt("Choix : ");
+		cout << endl;
     	Personne person;
-    	if( !cin.fail() )
-    	{
-    		switch(i)
-		    {
-		        case 1 :
-		        	ajouterPersonne();
+		switch(i)
+	    {
+	        case 1 :
+	        	ajouterPersonne();
 //		        	system("PAUSE");
-		        	menuPersonnes();
-		            break;
-		        case 2 :
-		        	if (rechercherPersonne(person))
-	        		{
+	        	menuPersonnes();
+	            break;
+	        case 2 :
+	        	if (rechercherPersonne(person))
+        		{
+        			person.afficherPersonne();
+        			lcprincp.Modifier(person);	
+				}
+//					system("PAUSE");
+	        	menuPersonnes();
+	            break;
+	        case 3 :
+	        	if (rechercherPersonne(person))
+        		{
+        			LCRendezVous rdvDePersonne;
+        			lcprincr.getRendezVous( rdvDePersonne, person);
+        			if( rdvDePersonne.getTete() == nullptr)
+        			{
 	        			person.afficherPersonne();
-	        			lcprincp.Modifier(person);	
+                        string rep;
+                        cout << "Voulez-vous vraiment supprimer cette personne ? (O/N) ";
+                        cin >> rep ;
+                        if(rep == "O" || rep == "o")
+                        {
+                            lcprincp.Supprimer(person);
+                        }
+                        else
+                        	cout << "Suppression annulee" << endl << endl;
 					}
-//					system("PAUSE");
-		        	menuPersonnes();
-		            break;
-		        case 3 :
-		        	if (rechercherPersonne(person))
-	        		{
-	        			LCRendezVous rdvDePersonne;
-	        			lcprincr.getRendezVous( rdvDePersonne, person);
-	        			if( rdvDePersonne.getTete() == nullptr)
-	        			{
-		        			person.afficherPersonne();
-                            string rep;
-                            cout << "Voulez-vous vraiment supprimer cette personne ? (O/N)" << endl;
-                            cin >> rep ;
-                            if(rep == "O" || rep == "o")
-                            {
-                                lcprincp.Supprimer(person);
-                            }
-						}
-						else
-							cout << "Suppression impossible : la personne fait partie d'au moins un rdv" << endl << endl;
-	        		}
+					else
+						cout << "Suppression impossible : la personne fait partie d'au moins un rdv" << endl << endl;
+        		}
 //		        	system("PAUSE");
-		        	menuPersonnes();
-		        	break;
-                case 4:
-                    if(rechercherPersonne(person))
-                    {
-                        person.afficherPersonne();
-                    }
+	        	menuPersonnes();
+	        	break;
+            case 4:
+                if(rechercherPersonne(person))
+                {
+                    person.afficherPersonne();
+                }
 //					system("PAUSE");
-                    menuPersonnes();
-                    break;
-		        case 5 :
-		        	if( rechercherPersonne(person) )
-		        	{
-		        		int jour, mois, annee, hdeb, mindeb, hfin, minfin;
-					    
-					    jour = testInt("Jour (1-31) : ");
-						mois = testInt("Mois (1-12) : ");
-						annee = testInt("Annee (ex : 2017) : ");
-					    Date date{jour, mois, annee};
-					    
-					    cout << "Horaire du debut : " << endl;
-						hdeb = testInt("	Heure : ");
-						mindeb = testInt("	Minute : ");
-					    Heure heuredeb{hdeb, mindeb};
-					    
-					    cout << "Horaire de fin : " << endl;
-						hfin = testInt("	Heure : ");
-						minfin = testInt("	Minute : ");
-					    Heure heurefin{hfin, minfin};
-					    
-		        		LCRendezVous listeRdvDeLaPersonne;
-						lcprincr.getRendezVous(listeRdvDeLaPersonne, person);
-						if( listeRdvDeLaPersonne.occupee(date, heuredeb, heurefin) )
-							cout << "Cette personne est occupee a cette date" << endl << endl;
-						else
-							cout << "Cette personne n'a rien de prevu pour cette date" << endl << endl;
-					}
+                menuPersonnes();
+                break;
+	        case 5 :
+	        	if( rechercherPersonne(person) )
+	        	{
+	        		int jour, mois, annee, hdeb, mindeb, hfin, minfin;
+				    
+				    jour = testInt("Jour (1-31) : ");
+					mois = testInt("Mois (1-12) : ");
+					annee = testInt("Annee (ex : 2017) : ");
+				    Date date{jour, mois, annee};
+				    
+				    cout << "Horaire du debut : " << endl;
+					hdeb = testInt("	Heure : ");
+					mindeb = testInt("	Minute : ");
+				    Heure heuredeb{hdeb, mindeb};
+				    
+				    cout << "Horaire de fin : " << endl;
+					hfin = testInt("	Heure : ");
+					minfin = testInt("	Minute : ");
+				    Heure heurefin{hfin, minfin};
+				    
+	        		LCRendezVous listeRdvDeLaPersonne;
+					lcprincr.getRendezVous(listeRdvDeLaPersonne, person);
+					if( listeRdvDeLaPersonne.occupee(date, heuredeb, heurefin) )
+						cout << "Cette personne est occupee a cette date" << endl << endl;
+					else
+						cout << "Cette personne n'a rien de prevu pour cette date" << endl << endl;
+				}
 //					system("PAUSE");
-		        	menuPersonnes();
-		        	break;
-		        case 6 :
+	        	menuPersonnes();
+	        	break;
+	        case 6 :
+	    		{
+		    		Personne person;
+		    		int cmpt = 1;
+		    		if( rechercherPersonne(person) )
 		    		{
-			    		Personne person;
-			    		int cmpt = 1;
-			    		if( rechercherPersonne(person) )
-			    		{
-				    		LCRendezVous rdvperson;
-				    		lcprincr.getRendezVous( rdvperson, person);
-                            
-                            ChainonRdV *tmp = rdvperson.getTete();
-                            
-                            if(tmp == nullptr) cout << "Aucun rendez-vous de prevu pour cette personne" << endl << endl;
-                            while(tmp != nullptr)
-                            {
-                                cout << "Rendez-vous " << cmpt << " : ";
-                                tmp->RdV.afficherRendezVous();
-                                tmp = tmp->suiv;
-                                cmpt++;
-                                cout << endl;
-                            }
-				    	}
-//				    	system("PAUSE");
-			    		menuPersonnes();
+			    		LCRendezVous rdvperson;
+			    		lcprincr.getRendezVous( rdvperson, person);
+                        
+                        ChainonRdV *tmp = rdvperson.getTete();
+                        
+                        if(tmp == nullptr) cout << "Aucun rendez-vous de prevu pour cette personne" << endl << endl;
+                        while(tmp != nullptr)
+                        {
+                            cout << "Rendez-vous " << cmpt << " : ";
+                            tmp->RdV.afficherRendezVous();
+                            tmp = tmp->suiv;
+                            cmpt++;
+                            cout << endl;
+                        }
 			    	}
-		    		break;
-                case 7:
-                    afficherToutesLesPersonnes();
-                    menuPersonnes();
-                    break;
-		        case 0 :
-		        	menuPrincipal();
-		        	break;
-		        default :
-		            cout << "Veuillez selectionner une option valide" << endl;
-		    }
-		}
-		else
-		{
-			cin.clear();
-			cin.ignore(256,'\n');
-			i = -1;
-			
-		}
-	    
+//				    	system("PAUSE");
+		    		menuPersonnes();
+		    	}
+	    		break;
+            case 7:
+                afficherToutesLesPersonnes();
+//					system("PAUSE");
+                menuPersonnes();
+                break;
+	        case 0 :
+	        	menuPrincipal();
+	        	break;
+	        default :
+	            cout << "Veuillez selectionner une option valide" << endl;
+	    }
 	}
 	while( i != 0 && i != 1 && i != 2 && i != 3 && i != 4 && i != 5 );
 }
@@ -237,81 +218,72 @@ void interface::menuRendezVous()
     
 	do
     {	
-		cout << "Choix : ";
-		cin >> i;
+		i = testInt("Choix : ");
 		cout << endl;
 		RendezVous rdv;
-		if( !cin.fail() )
+		switch(i)
 		{
-			switch(i)
-			{
-		    	case 1 :
-		    		ajouterRdv();
+	    	case 1 :
+	    		ajouterRdv();
 //		    		system("PAUSE");
-		    		menuRendezVous();
-		        	break;
-		    	case 2 :
-		    		if(rechercherRdv(rdv))
-		    		{
-		    			modifierRendezVous(rdv);
-					}
+	    		menuRendezVous();
+	        	break;
+	    	case 2 :
+	    		if(rechercherRdv(rdv))
+	    		{
+	    			modifierRendezVous(rdv);
+				}
+				menuRendezVous();
 //					system("PAUSE");
-		    		menuRendezVous();
-		        	break;
-		    	case 3 :
-		    		if(rechercherRdv(rdv))
-		    		{
-		    			lcprincr.SupprimerRendezVous(rdv.nom());
-					}
+	        	break;
+	    	case 3 :
+	    		if(rechercherRdv(rdv))
+	    		{
+	    			lcprincr.SupprimerRendezVous(rdv.nom());
+				}
 //					system("PAUSE");
-		    		menuRendezVous();
-		    		break;
-                case 4:
-                    if(rechercherRdv(rdv))
-                    {
-                        rdv.afficherRendezVous();
-                        afficherParticipants(rdv);
-                    }
+	    		menuRendezVous();
+	    		break;
+            case 4:
+                if(rechercherRdv(rdv))
+                {
+                    rdv.afficherRendezVous();
+                    afficherParticipants(rdv);
+                }
 //					system("PAUSE");
-                    menuRendezVous();
-                    break;
-		    	case 5 :
-		    		{
-			    		int jour, mois, annee;
-			    		cout << "Entrez la date recherchee : " << endl;
-						jour = testInt("Jour : ");
-						mois = testInt("Mois : ");
-						annee = testInt("Annee : ");
-                        cout << endl;
-			    		Date rech{jour, mois, annee};
-			    		afficherTousLesRdv(rech);
+                menuRendezVous();
+                break;
+	    	case 5 :
+	    		{
+		    		int jour, mois, annee;
+		    		cout << "Entrez la date recherchee : " << endl;
+					jour = testInt("Jour : ");
+					mois = testInt("Mois : ");
+					annee = testInt("Annee : ");
+                    cout << endl;
+		    		Date rech{jour, mois, annee};
+		    		afficherTousLesRdv(rech);
 //			    		system("PAUSE");
-			    		menuRendezVous();
-		    		}
-		    		break;
-		    	case 6 :
-		    		if( rechercherRdv(rdv) )
-		    		{
-		    			afficherParticipants(rdv);
-					}
+		    		menuRendezVous();
+	    		}
+	    		break;
+	    	case 6 :
+	    		if( rechercherRdv(rdv) )
+	    		{
+	    			afficherParticipants(rdv);
+				}
 //					system("PAUSE");
-					menuRendezVous();
-		    		break;
-                case 7:
-                    afficherTousLesRdv();
-                    menuRendezVous();
-		   		case 0 :
-		    		menuPrincipal();
-		    		break;
-		    	default :
-		        	cout << "Veuillez selectionner une option valide." << endl;
-			}
-		}
-		else
-		{
-			cin.clear();
-			cin.ignore(256,'\n');
-			i = -1;
+				menuRendezVous();
+	    		break;
+            case 7:
+                afficherTousLesRdv();
+//					system("PAUSE");
+                menuRendezVous();
+	   		case 0 :
+	    		menuPrincipal();
+	    		break;
+	    	default :
+	        	cout << "Veuillez selectionner une option valide." << endl;
 		}
 	}
 	while( i != 0 && i != 1 && i != 2 && i != 3 && i != 4 && i != 5 );
@@ -550,6 +522,7 @@ void interface::modifierRendezVous(RendezVous& rdv)
 		
 	if(tmp->RdV == rdv)
 	{
+//		system("cls");
 		int i = -1;
         
             cout << "1. Afficher les informations du rendez-vous" << endl;
@@ -569,6 +542,7 @@ void interface::modifierRendezVous(RendezVous& rdv)
                 case 1:
                     tmp->RdV.afficherRendezVous();
                     afficherParticipants(tmp->RdV);
+//					system("PAUSE");
                     modifierRendezVous(tmp->RdV);
                     break;
                 case 2:
@@ -579,24 +553,27 @@ void interface::modifierRendezVous(RendezVous& rdv)
                     annee = testInt("Annee : ");
                     cout << endl;
                     tmp->RdV.setDate({jour, mois, annee});
+//					system("PAUSE");
                     modifierRendezVous(tmp->RdV);
                     break;
                 case 3:
                     int heureDeb, minutesDeb;
                     cout << "Entrez la nouvelle heure :" << endl;
-                    heureDeb = testInt("Heure : ");
-                    minutesDeb = testInt("Minutes : ");
+                    heureDeb = testInt("	Heure : ");
+                    minutesDeb = testInt("	Minutes : ");
                     cout << endl;
                     tmp->RdV.setHeureDeb({heureDeb, minutesDeb});
+//					system("PAUSE");
                     modifierRendezVous(tmp->RdV);
                     break;
                 case 4:
                     int heureFin, minutesFin;
                     cout << "Entrez la nouvelle heure :" << endl;
-                    heureFin = testInt("Heure : ");
-                    minutesFin = testInt("Minutes : ");
+                    heureFin = testInt("	Heure : ");
+                    minutesFin = testInt("	Minutes : ");
                     cout << endl;
                     tmp->RdV.setHeureFin({heureFin, minutesFin});
+//					system("PAUSE");
                     modifierRendezVous(tmp->RdV);
                     break;
                 case 5:
@@ -614,6 +591,7 @@ void interface::modifierRendezVous(RendezVous& rdv)
                             else
                                 cout << "Cette personne est deja occupee et ne peut donc pas etre ajoutee" << endl << endl;
                         }
+//						system("PAUSE");
                         modifierRendezVous(tmp->RdV);
                         break;
                     }
@@ -631,14 +609,14 @@ void interface::modifierRendezVous(RendezVous& rdv)
                                     cout << "Participant supprime" << endl << endl;
                             }
                         }
-                        
+//						system("PAUSE");
                         modifierRendezVous(tmp->RdV);
                         break;
                     }
                 case 0:
-                    menuRendezVous();
                     break;
                 default:
+                	cout << "Veuillez selectionner une option valide" << endl;
                     break;
             }
         }
