@@ -166,11 +166,11 @@ int main(int argc, char** argv)
     
     vector<RendezVous> vR {
         RendezVous{"Business", Date{16, 3, 2017}, Heure{15, 27}, Heure{17, 30}},
-        RendezVous{"Business 6", Date{17, 3, 2017}, Heure{15, 31}, Heure{16,30}},
-        RendezVous{"Business 2", Date{17, 3, 2017}, Heure{14, 00}, Heure{15, 30}},
-        RendezVous{"Business 3", Date{17, 3, 2017}, Heure{15, 00}, Heure{15, 30}},
-        RendezVous{"Business meeting 4", Date{19, 3, 2017}, Heure{14, 00}, Heure{15, 30}},
-        RendezVous{"Business meeting 3", Date{18, 3, 2017}, Heure{14, 00}, Heure{15, 30}}
+        RendezVous{"Business_6", Date{17, 3, 2017}, Heure{15, 31}, Heure{16,30}},
+        RendezVous{"Business_2", Date{17, 3, 2017}, Heure{14, 00}, Heure{15, 30}},
+        RendezVous{"Business_3", Date{17, 3, 2017}, Heure{15, 00}, Heure{15, 30}},
+        RendezVous{"Business_meeting_4", Date{19, 3, 2017}, Heure{14, 00}, Heure{15, 30}},
+        RendezVous{"Business_meeting_3", Date{18, 3, 2017}, Heure{14, 00}, Heure{15, 30}}
         
     };
     

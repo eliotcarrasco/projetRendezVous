@@ -1,5 +1,6 @@
 #include "LCPersonne.h"
 #include "Personne.h"
+#include "globals.h"
 #include <iostream>
 #include <string>
 
@@ -207,6 +208,37 @@ int LCPersonne::Compter() const
     }
 }
 
+
+/**
+ Verifie si le nom d'une personne est deja pris ou pas
+ @param nomPers - un nom
+ @param prenomPers - un prenom
+ @return Vrai si le nom n'est pas deja pris par une personne, Faux sinon
+ */
+bool LCPersonne::nomPersonneDisponible(const string & nomPers, const string & prenomPers)
+{
+    string lowerNomPers = convertToUpper(nomPers);
+    string lowerPrenomPers = convertForName(prenomPers);
+    
+    if(t)
+    {
+        ChainonPersonne* tmp = t;
+        
+        while(tmp != nullptr && (tmp->prsn.Nom() != lowerNomPers || tmp->prsn.Prenom() != lowerPrenomPers) )
+        {
+            tmp = tmp->suiv;
+        }
+        
+        if(tmp)
+        {
+            cout << "Il existe deja une personne de meme nom et de meme prenom" << endl << endl;
+            return false;
+        }
+    }
+    
+    return true;
+    
+}
 
 
 

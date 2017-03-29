@@ -104,7 +104,8 @@ void RendezVous::setDate(const Date& date)
  */
 void RendezVous::setHeureDeb(const Heure& heureDeb)
 {
-    d_heureDeb = heureDeb;
+    if(heureDeb.valide())
+        d_heureDeb = heureDeb;
 }
 
 /**
@@ -113,7 +114,8 @@ void RendezVous::setHeureDeb(const Heure& heureDeb)
  */
 void RendezVous::setHeureFin(const Heure& heureFin)
 {
-    d_heureFin = heureFin;
+    if(heureFin.valide())
+        d_heureFin = heureFin;
 }
 
 /**
@@ -123,8 +125,8 @@ void RendezVous::setHeureFin(const Heure& heureFin)
  */
 void RendezVous::setHeure(const Heure& heureDeb, const Heure& heureFin)
 {
-    d_heureDeb = heureDeb;
-    d_heureFin = heureFin;
+    setHeureDeb(heureDeb);
+    setHeureFin(heureFin);
 }
 
 /**
@@ -171,7 +173,7 @@ void RendezVous::afficherRendezVous()
 	cout << "Nom : " << d_nom << endl;
 	cout << "Date : " << d_date << endl;
 	cout << "Heure de debut : " << d_heureDeb << endl;
-	cout << "Heure de fin : " << d_heureFin << endl;
+	cout << "Heure de fin : " << d_heureFin << endl << endl;
 }
 
 /**

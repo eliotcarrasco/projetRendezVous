@@ -18,6 +18,7 @@ class interface
         void ajouterRdv();
         bool rechercherRdv(RendezVous &rdv);
         void afficherTousLesRdv(Date d);
+        void afficherTousLesRdv();
         void afficherToutesLesPersonnes();
         void afficherParticipants(RendezVous &rdv);
         void modifierRendezVous(RendezVous& rdv);

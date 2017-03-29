@@ -208,7 +208,7 @@ bool LCRendezVous::nomRdvDisponible(const string & nomRdv)
     {
         ChainonRdV* tmp = t;
         
-        while(tmp != nullptr && tmp->RdV.nom() != lowerNomRdv)
+        while(tmp != nullptr && tmp->RdV.nom() != nomRdv)
         {
             tmp = tmp->suiv;
         }

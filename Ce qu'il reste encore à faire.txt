@@ -10,3 +10,6 @@ LCRendezVous:
 
 Manipulation du carnet de rdv:
 	
+
+
+supprimer participant qui n’existe pas

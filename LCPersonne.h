@@ -39,7 +39,9 @@ class LCPersonne
 		void Supprimer(const Personne& pers);
 		void Modifier(const Personne& pers);
         int Compter() const;
-		
+    
+        bool nomPersonneDisponible(const std::string & nomPers, const std::string & prenomPers);
+    
 	private:
 		ChainonPersonne* t;
     

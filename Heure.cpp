@@ -71,8 +71,8 @@ void Heure::setMinutes(int m)
 bool Heure::valide() const {
     
     
-    if(d_heures < 0 || d_heures > 24) return false;
-    if(d_minutes < 0 || d_minutes > 60) return false;
+    if(d_heures <= 0 || d_heures > 24) return false;
+    if(d_minutes <= 0 || d_minutes > 60) return false;
     
     return true;
 }
@@ -157,6 +157,6 @@ bool Heure::operator!=(const Heure& h) const
 
 ostream& operator<<(ostream& os, const Heure& h)
 {
-	os << h.d_heures << ":" << h.d_minutes;
+	os << h.getStringHeure();
 	return os;
 }
