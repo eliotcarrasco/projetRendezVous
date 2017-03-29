@@ -561,6 +561,19 @@ void interface::modifierRendezVous(RendezVous& rdv)
 	
 }
 
+/**
+    Afficher toutes les personnes de la liste principale
+ */
+void interface::afficherToutesLesPersonnes()
+{
+    ChainonPersonne* tmp = lcprincp.getTete();
+    while(tmp)
+    {
+        tmp->prsn.afficherPersonne();
+        tmp = tmp->suiv;
+    }
+}
+
 int interface::testInt(const string& s)
 {
 	int i;

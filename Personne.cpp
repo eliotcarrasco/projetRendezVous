@@ -118,7 +118,7 @@ void Personne::afficherPersonne() const
 	std::cout << "Nom : " << d_nom << endl;
 	std::cout << "Prenom : " << d_prenom << endl;
 	std::cout << "Numero de telephone : " << d_telephone << endl;
-	std::cout << "Adresse mail : " << d_mail << endl;
+	std::cout << "Adresse mail : " << d_mail << endl << endl;
 }
 
 
