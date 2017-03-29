@@ -24,9 +24,9 @@ class Personne
 		void setMail(const std::string& mail);
 		void afficherPersonne() const;
     
-        //operateur de comparaison
-        bool operator==(const Personne& pers) const; // à modifier avec id
-        bool operator!=(const Personne& pers) const; // à modifier avec id
+        //operateurs de comparaison
+        bool operator==(const Personne& pers) const;
+        bool operator!=(const Personne& pers) const;
         bool operator<(const Personne& pers) const;
         bool operator>(const Personne& pers) const;
     

@@ -34,13 +34,14 @@ class RendezVous
         int nombreParticipants() const;
         
         void afficherRendezVous();
-        
+    
+        //operateurs de comparaison
         bool operator!=(const RendezVous& rdv) const;
         bool operator==(const RendezVous& rdv) const;
-        
-        //manque les surcharges d'operateurs pour utiliser les fonction modifier et supprimer de LCRendezVous avec des rdv
-    
+        bool operator<(const RendezVous& rdv) const;
+        bool operator>(const RendezVous& rdv) const;
 
+    
 	private:
         std::string d_nom;
 		Date d_date;

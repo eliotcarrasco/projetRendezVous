@@ -1,9 +1,4 @@
 Interface:
-	*Menu Personne:
-		-->Verifier que la personne ne participe a aucun rdv avant de la supprimer
-	*Menu Rdv:
-		-->Terminer d'ajouter les fonctions aux boutons coorespondant
-		-->Fonction ajouterRdv : manque l'ajout de la liste des participant au Rdv (en verifiant leurs disponibilites)
 RendezVous:
 	*Manque les surcharges d'operateurs pour pouvoir utiliser les fonction Modifier et Supprimer avec des Rdv (comme pour les Personnes)
 

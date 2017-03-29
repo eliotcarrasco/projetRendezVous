@@ -133,7 +133,12 @@ void RendezVous::setHeure(const Heure& heureDeb, const Heure& heureFin)
  */
 void RendezVous::ajouterParticipant(const Personne& pers)
 {
-    d_participants.push_back(pers.Id());
+    int i = 0;
+    
+    for (; i < d_participants.size() && d_participants[i] != pers.Id() ; i++);
+    
+    if(i == d_participants.size())
+        d_participants.push_back(pers.Id());
 }
 
 /**
@@ -169,12 +174,42 @@ void RendezVous::afficherRendezVous()
 	cout << "Heure de fin : " << d_heureFin << endl;
 }
 
+/**
+    Surcharge de l'operateur != pour les rendez-vous
+    @param rdv - un rdv
+    @return Vrai si les deux rendez-vous sont differents, Faux sinon
+ */
 bool RendezVous::operator!=(const RendezVous& rdv) const
 {
 	return (d_nom != rdv.d_nom || d_date != rdv.d_date || d_heureDeb != rdv.d_heureDeb || d_heureFin != rdv.d_heureFin || d_participants != rdv.d_participants);
 }
 
+/**
+     Surcharge de l'operateur == pour les rendez-vous
+     @param rdv - un rdv
+     @return Vrai si les deux rendez-vous sont egaux, Faux sinon
+ */
 bool RendezVous::operator==(const RendezVous& rdv) const
 {
 	return (d_nom == rdv.d_nom && d_date == rdv.d_date && d_heureDeb == rdv.d_heureDeb && d_heureFin == rdv.d_heureFin && d_participants == rdv.d_participants);	
+}
+
+/**
+ Surcharge de l'operateur < pour les rendez-vous
+ @param rdv - un rdv
+ @return Vrai si le rendez-vous a lieu avant le rendez-vous passe en parametre, Faux sinon
+ */
+bool RendezVous::operator<(const RendezVous& rdv) const
+{
+    return (d_date < rdv.date()) || (d_date == rdv.date() && d_heureDeb < rdv.heureDeb());
+}
+
+/**
+ Surcharge de l'operateur != pour les rendez-vous
+ @param rdv - un rdv
+ @return Vrai si le rendez-vous a lieu apres le rendez-vous passe en parametre, Faux sinon
+ */
+bool RendezVous::operator>(const RendezVous& rdv) const
+{
+    return (d_date > rdv.date()) || (d_date == rdv.date() && d_heureDeb > rdv.heureDeb());
 }
