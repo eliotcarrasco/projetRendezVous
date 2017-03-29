@@ -338,9 +338,14 @@ void interface::ajouterRdv()
 {
     string nom;
     int j, m, a, hdeb, mindeb, hfin, minfin;
-    
-    cout << "Nom du rendez-vous : ";
-    cin >> nom;
+	
+	do
+	{
+		cout << "Nom du rendez-vous : ";
+	    cin >> nom;
+	    if(!lcprincr.nomRdvDisponible(nom))
+	    	cout << "Ce nom de rendez-vous est deja pris" << endl;
+	}while( !lcprincr.nomRdvDisponible(nom) );
     
     j = testInt("Jour (1-31) : ");
     m = testInt("Mois (1-12) : ");
@@ -368,7 +373,7 @@ void interface::ajouterRdv()
 		nbparticipants = lcprincp.Compter();
 		
 	int i = 0;
-	do
+	while( i < nbparticipants )
 	{
 		cout << endl << "Personne " << i+1 << " : " << endl;
 
@@ -396,7 +401,6 @@ void interface::ajouterRdv()
 			}
 		}
 	}
-	while( i != nbparticipants );
     
     lcprincr.InsererRendezVous(rdv);
     

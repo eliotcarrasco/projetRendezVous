@@ -1,4 +1,4 @@
-Interface:Verifier a lÕajout dÕun rdv que son nom nÕest pas deja pris
+Interface:
 RendezVous:
 
 LCPersonne:
@@ -9,6 +9,4 @@ LCRendezVous:
 
 
 Manipulation du carnet de rdv:
-	*Afficher tous les rdv pour une personne dont le nom est donne par l'user
-	-->Determiner si une personne n'a pas de rdv pour une date et une heure donnée par l'user (fonction aRendezVous)
-	-->Afficher pour un Rdv les info des participants (utiliser la fonction afficherPersonne() )
+	
