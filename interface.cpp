@@ -79,7 +79,9 @@ void interface::menuPersonnes()
     cout << "1. Ajouter une personne" << endl;
     cout << "2. Modifier une personne" << endl;
     cout << "3. Supprimer une personne" << endl;
-    cout << "4. Voir si une personne a un rendez-vous prevu a une certaine date" << endl;
+    cout << "4. Voir si une personne a un rendez-vous prevu a une date et un horaire donne" << endl;
+    cout << "5. Afficher les rendez-vous d'une personne" << endl;
+    cout << "6. Afficher la liste des personnes" << endl;
     cout << "0. Retour" << endl;
     
 	do
@@ -152,6 +154,28 @@ void interface::menuPersonnes()
 //					system("PAUSE");
 		        	menuPersonnes();
 		        	break;
+		        case 5 :
+		    		{
+			    		Personne person;
+			    		int cmpt = 1;
+			    		if( rechercherPersonne(person) )
+			    		{
+				    		LCRendezVous rdvperson;
+				    		lcprincr.getRendezVous( rdvperson, person);
+				    		ChainonRdV *tmp = rdvperson.getTete();
+				    		while(tmp != nullptr)
+				    		{
+				    			cout << "Rendez-vous " << cmpt << " : ";
+				    			tmp->RdV.afficherRendezVous();
+				    			tmp = tmp->suiv;
+				    			cmpt++;
+				    			cout << endl;
+							}
+				    	}
+//				    	system("PAUSE");
+			    		menuRendezVous();
+			    	}
+		    		break;
 		        case 0 :
 		        	menuPrincipal();
 		        	break;
@@ -168,7 +192,7 @@ void interface::menuPersonnes()
 		}
 	    
 	}
-	while( i != 0 && i != 1 && i != 2 && i != 3 && i != 4 );
+	while( i != 0 && i != 1 && i != 2 && i != 3 && i != 4 && i != 5 );
 }
 
 /**
@@ -184,8 +208,7 @@ void interface::menuRendezVous()
     cout << "2. Modifier un rendez-vous" << endl;
     cout << "3. Supprimer un rendez-vous" << endl;
     cout << "4. Afficher les rendez-vous pour une date donnee" << endl;
-    cout << "5. Afficher les rendez-vous d'une personne" << endl;
-    cout << "6. Afficher les participants a un rendez-vous" << endl;
+    cout << "5. Afficher les participants a un rendez-vous" << endl;
     cout << "0. Retour" << endl;
     
 	do
@@ -233,28 +256,6 @@ void interface::menuRendezVous()
 		    		}
 		    		break;
 		    	case 5 :
-		    		{
-			    		Personne person;
-			    		int cmpt = 1;
-			    		if( rechercherPersonne(person) )
-			    		{
-				    		LCRendezVous rdvperson;
-				    		lcprincr.getRendezVous( rdvperson, person);
-				    		ChainonRdV *tmp = rdvperson.getTete();
-				    		while(tmp != nullptr)
-				    		{
-				    			cout << "Rendez-vous " << cmpt << " : ";
-				    			tmp->RdV.afficherRendezVous();
-				    			tmp = tmp->suiv;
-				    			cmpt++;
-				    			cout << endl;
-							}
-				    	}
-//				    	system("PAUSE");
-			    		menuRendezVous();
-			    	}
-		    		break;
-		    	case 6 :
 		    		if( rechercherRdv(rdv) )
 		    		{
 		    			afficherParticipants(rdv);
@@ -276,7 +277,7 @@ void interface::menuRendezVous()
 			i = -1;
 		}
 	}
-	while( i != 0 && i != 1 && i != 2 && i != 3 && i != 4 && i != 5 && i != 6 );
+	while( i != 0 && i != 1 && i != 2 && i != 3 && i != 4 && i != 5 );
 }
 
 /**
@@ -561,6 +562,11 @@ void interface::modifierRendezVous(RendezVous& rdv)
 	
 }
 
+/**
+	Test si ce que l'utilisateur a rentre est bien un entier
+	@param s - La chaine de caractere que l'on veut afficher avant la saisie
+	@return L'entier saisie
+*/
 int interface::testInt(const string& s)
 {
 	int i;
