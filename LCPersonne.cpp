@@ -12,13 +12,35 @@ using namespace std;
 ChainonPersonne::ChainonPersonne() : prsn{}, suiv{nullptr}
 {}
 
+/**
+    Constructeur de recopie
+ */
 ChainonPersonne::ChainonPersonne(const Personne& pers) : prsn{pers}, suiv{nullptr}
 {}
 
-//ChainonPersonne::ChainonPersonne(const ChainonPersonne& cp) : prsn{cp.p}, suiv{cp.suiv}
-//{}
+
+/**
+    Retourne la personne du chainon
+    @return la personne
+ */
+Personne& ChainonPersonne::getPersonne()
+{
+    return prsn;
+}
+
+/**
+    Retourne le chainon suivant
+    @return le chainon suivant
+ */
+ChainonPersonne* ChainonPersonne::getSuiv()
+{
+    return suiv;
+}
 
 
+/**
+    Constructeur par defaut
+ */
 LCPersonne::LCPersonne():t{nullptr}
 {}
 

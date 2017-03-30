@@ -135,13 +135,18 @@ void interface::menuPersonnes()
                     Date date;
                     cin >> date;
                     
-                    cout << "Entrez une heure de debut : ";
-                    Heure heureDeb;
-                    cin >> heureDeb;
-				    
-                    cout << "Entrez une heure de fin : ";
-                    Heure heureFin;
-                    cin >> heureFin;
+                    Heure heureDeb, heureFin;
+                    
+                    do{
+                        cout << "Entrez une heure de debut : ";
+                        cin >> heureDeb;
+                        
+                        cout << "Entrez une heure de fin : ";
+                        cin >> heureFin;
+                    }
+                    while(!horaireValide(heureDeb, heureFin));
+                    
+                    
 				    
 	        		LCRendezVous listeRdvDeLaPersonne;
 					lcprincr.getRendezVous(listeRdvDeLaPersonne, person);
@@ -168,8 +173,8 @@ void interface::menuPersonnes()
                         while(tmp != nullptr)
                         {
                             cout << "Rendez-vous " << cmpt << " : ";
-                            tmp->RdV.afficherRendezVous();
-                            tmp = tmp->suiv;
+                            tmp->getRdV().afficherRendezVous();
+                            tmp = tmp->getSuiv();
                             cmpt++;
                             cout << endl;
                         }
@@ -234,7 +239,17 @@ void interface::menuRendezVous()
 	    	case 3 :
 	    		if(rechercherRdv(rdv))
 	    		{
-	    			lcprincr.SupprimerRendezVous(rdv.nom());
+                    
+                    string rep;
+                    cout << "Voulez-vous vraiment supprimer " << rdv.nom() << " ? (O/N) : ";
+                    cin >> rep;
+                    if( rep == "O" || rep == "o" )
+                    {
+                        lcprincr.SupprimerRendezVous(rdv.nom());
+                        cout << endl;
+                    }
+                    else
+                        cout << "Suppression annulee" << endl << endl;
 				}
 //					system("PAUSE");
 	    		menuRendezVous();
@@ -324,13 +339,13 @@ bool interface::rechercherPersonne(Personne& person)
     cout << endl;
     
     ChainonPersonne* tmp = lcprincp.getTete();
-    while(tmp != 0 && (tmp->prsn.Nom() != convertToUpper(nom) || tmp->prsn.Prenom() != convertForName(prenom) ) )
+    while(tmp != 0 && (tmp->getPersonne().Nom() != convertToUpper(nom) || tmp->getPersonne().Prenom() != convertForName(prenom) ) )
     {
-        tmp = tmp->suiv;
+        tmp = tmp->getSuiv();
     }
     if(tmp != 0)
     {
-        person = tmp->prsn;
+        person = tmp->getPersonne();
         return true;
     }
     cout << "Cette personne n'existe pas" << endl << endl;
@@ -421,13 +436,13 @@ bool interface::rechercherRdv(RendezVous &rdv)
     cin >> nom;
     
     ChainonRdV *tmp = lcprincr.getTete();
-    while(tmp != 0 && tmp->RdV.nom() != nom)
+    while(tmp != 0 && tmp->getRdV().nom() != nom)
     {
-        tmp = tmp->suiv;
+        tmp = tmp->getSuiv();
     }
     if(tmp)
     {
-        rdv = tmp->RdV;
+        rdv = tmp->getRdV();
         return true;
     }
     cout << "Ce rendez-vous n'existe pas" << endl << endl;
@@ -444,8 +459,8 @@ void interface::afficherTousLesRdv()
     ChainonRdV* tmp = lcprincr.getTete();
     while(tmp)
     {
-        tmp->RdV.afficherRendezVous();
-        tmp = tmp->suiv;
+        tmp->getRdV().afficherRendezVous();
+        tmp = tmp->getSuiv();
     }
 }
 
@@ -461,16 +476,16 @@ void interface::afficherTousLesRdv(Date d)
     
     bool rdv = false;
     
-    while(tmp != 0 && tmp->RdV.date() <= d ) //puisque les rdv sont classes par ordre chronologique
+    while(tmp != 0 && tmp->getRdV().date() <= d ) //puisque les rdv sont classes par ordre chronologique
     {
-        if(tmp->RdV.date() == d)
+        if(tmp->getRdV().date() == d)
         {
             rdv = true;
-            tmp->RdV.afficherRendezVous();
+            tmp->getRdV().afficherRendezVous();
             
-            afficherParticipants(tmp->RdV);
+            afficherParticipants(tmp->getRdV());
         }
-        tmp = tmp->suiv;
+        tmp = tmp->getSuiv();
     }
     
     if(!rdv)
@@ -508,10 +523,10 @@ void interface::afficherParticipants(RendezVous &rdv)
 void interface::modifierRendezVous(RendezVous& rdv)
 {
 	ChainonRdV* tmp = lcprincr.getTete();
-	while(tmp != nullptr && tmp->RdV != rdv)
-		tmp = tmp->suiv;
+	while(tmp != nullptr && tmp->getRdV() != rdv)
+		tmp = tmp->getSuiv();
 		
-	if(tmp->RdV == rdv)
+	if(tmp->getRdV() == rdv)
 	{
 //		system("cls");
 		int i = -1;
@@ -532,44 +547,58 @@ void interface::modifierRendezVous(RendezVous& rdv)
             {
                 case 1:
                 {
-                    tmp->RdV.afficherRendezVous();
-                    afficherParticipants(tmp->RdV);
+                    tmp->getRdV().afficherRendezVous();
+                    afficherParticipants(tmp->getRdV());
 //					system("PAUSE");
-                    modifierRendezVous(tmp->RdV);
+                    modifierRendezVous(tmp->getRdV());
                     break;
                     
                 }
                 case 2:
                 {
-                    cout << "Entrez la nouvelle date : ";
+                    cout << "Entrez la nouvelle date (jj/mm//2017+): ";
                     Date date;
                     cin >> date;
-                    cout << endl;
-                    tmp->RdV.setDate(date);
+                    cout << "La date a bien ete modifiee" << endl << endl;
+                    tmp->getRdV().setDate(date);
 //					system("PAUSE");
-                    modifierRendezVous(tmp->RdV);
+                    modifierRendezVous(tmp->getRdV());
                     break;
                 }
                 case 3:
                 {
-                    cout << "Entrez la nouvelle heure de debut : ";
+                    cout << "Entrez la nouvelle heure de debut (hh:mm) : ";
                     Heure heureDeb;
                     cin >> heureDeb;
-                    cout << endl;
-                    tmp->RdV.setHeureDeb(heureDeb);
+                    
+                    while(!horaireValide(heureDeb, tmp->getRdV().heureFin()))
+                    {
+                        cout << "Heure de fin : " << tmp->getRdV().heureFin() << endl << "Reessayer : ";
+                        cin >> heureDeb;
+                    }
+                          
+                    cout << "L'heure de debut a bien ete modifiee" << endl << endl;
+                    tmp->getRdV().setHeureDeb(heureDeb);
 //					system("PAUSE");
-                    modifierRendezVous(tmp->RdV);
+                    modifierRendezVous(tmp->getRdV());
                     break;
                 }
                 case 4:
                 {
-                    cout << "Entrez la nouvelle heure de fin : ";
+                    cout << "Entrez la nouvelle heure de fin (hh:mm) : ";
                     Heure heureFin;
                     cin >> heureFin;
-                    cout << endl;
-                    tmp->RdV.setHeureFin(heureFin);
+                    
+                    while(!horaireValide(tmp->getRdV().heureDeb(), heureFin))
+                    {
+                        cout << "Heure de debut : " << tmp->getRdV().heureDeb() << endl << "Reessayer : ";
+                        cin >> heureFin;
+                    }
+                    
+                    cout << "L'heure de fin a bien ete modifiee" << endl << endl;
+                    tmp->getRdV().setHeureFin(heureFin);
 //					system("PAUSE");
-                    modifierRendezVous(tmp->RdV);
+                    modifierRendezVous(tmp->getRdV());
                     break;
                 }
                 case 5:
@@ -579,42 +608,42 @@ void interface::modifierRendezVous(RendezVous& rdv)
                     {
                         LCRendezVous rdvparticipants;
                         lcprincr.getRendezVous(rdvparticipants, ajout);
-                        if( !rdvparticipants.occupee( tmp->RdV.date(), tmp->RdV.heureDeb(), tmp->RdV.heureFin() ) )
+                        if( !rdvparticipants.occupee( tmp->getRdV().date(), tmp->getRdV().heureDeb(), tmp->getRdV().heureFin() ) )
                         {
-                            tmp->RdV.ajouterParticipant(ajout);
+                            tmp->getRdV().ajouterParticipant(ajout);
                             cout << "Participant ajoute" << endl << endl;
                         }
                         else
                             cout << "Cette personne est deja occupee et ne peut donc pas etre ajoutee" << endl << endl;
                     }
 //						system("PAUSE");
-                    modifierRendezVous(tmp->RdV);
+                    modifierRendezVous(tmp->getRdV());
                     break;
                 }
                 case 6:
                 {
-                    afficherParticipants(tmp->RdV);
+                    afficherParticipants(tmp->getRdV());
                     
-                    if(tmp->RdV.nombreParticipants() != 0)
+                    if(tmp->getRdV().nombreParticipants() != 0)
                     {
                         Personne suppr;
                         if( rechercherPersonne(suppr) )
                         {
                             string rep;
-                            cout << "Voulez-vous vraiment supprimer cette personne ? (O/N) : ";
+                            cout << "Voulez-vous vraiment supprimer " << suppr.Nom() << " " << suppr.Prenom() << " ? (O/N) : ";
                             cin >> rep;
                             if( rep == "O" || rep == "o" )
                             {
-                                tmp->RdV.supprimerParticipant(suppr);
+                                tmp->getRdV().supprimerParticipant(suppr);
                                 cout << "Participant supprime" << endl << endl;
                             }
                             else
-                                cout << "Suppression annulé" << endl;
+                                cout << "Suppression annulee" << endl << endl;
                         }
 
                     }
 //						system("PAUSE");
-                    modifierRendezVous(tmp->RdV);
+                    modifierRendezVous(tmp->getRdV());
                     break;
                 }
                 case 0:
@@ -638,8 +667,8 @@ void interface::afficherToutesLesPersonnes()
     ChainonPersonne* tmp = lcprincp.getTete();
     while(tmp)
     {
-        tmp->prsn.afficherPersonne();
-        tmp = tmp->suiv;
+        tmp->getPersonne().afficherPersonne();
+        tmp = tmp->getSuiv();
     }
 }
 
@@ -675,7 +704,10 @@ int interface::testInt(const string& s)
 bool interface::horaireValide(const Heure &heureDeb, const Heure &heureFin)
 {
     if(heureDeb>=heureFin)
+    {
+        cout << "L'horaire n'est pas valide" << endl;
         return false;
+    }
     return true;
 }
 

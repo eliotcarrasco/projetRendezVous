@@ -6,21 +6,16 @@
 
 class ChainonPersonne
 {
-//    private:
     public:
         ChainonPersonne();
         ChainonPersonne(const Personne& pers);
-//        ChainonPersonne(const ChainonPersonne&);
+        Personne& getPersonne();
+        ChainonPersonne* getSuiv();
+    private:
         Personne prsn;
         ChainonPersonne* suiv;
-//    friend class LCPersonne;
-//    friend class LCRendezVous;
-//    friend class interface;
-//    friend class RendezVous;
-//    friend void testLCRendezVous();
-//    friend void testLCPersonne();
-//    friend void testParticipantsRDV();
-//    friend int main(int argc, char** argv);
+    
+    friend class LCPersonne;
     
 };
 

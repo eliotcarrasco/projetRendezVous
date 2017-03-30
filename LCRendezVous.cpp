@@ -14,13 +14,33 @@ using namespace std;
 ChainonRdV::ChainonRdV(): RdV{}, suiv{nullptr}
 {}
 
-
+/**
+    Constructeur de recopie
+ */
 ChainonRdV::ChainonRdV(const RendezVous& rdv): RdV{rdv}, suiv{nullptr}
 {}
 
+/**
+    Retourne le rendez-vous du chainon
+    @return le rendez-vous
+ */
+RendezVous& ChainonRdV::getRdV()
+{
+    return RdV;
+}
 
 /**
-	Constructeur
+    Retourne le poiteur vers le chainon suivant
+    @return le chainon suivant
+ */
+ChainonRdV* ChainonRdV::getSuiv()
+{
+    return suiv;
+}
+
+
+/**
+	Constructeur par defaut
 */
 LCRendezVous::LCRendezVous():t{nullptr}
 {}
@@ -187,7 +207,7 @@ bool LCRendezVous::occupee(const Date& date, const Heure& heureDeb, const Heure&
                 return true;
             else if (heureFin >= tmp->RdV.heureDeb() && heureFin <= tmp->RdV.heureFin())// heure de fin compris dans un creneau
                 return true;
-            else if(heureDeb < tmp->RdV.heureDeb() && heureFin > tmp->RdV.heureFin()) // creneau heureDeb...heureFin englobe un autre creneau
+            else if(heureDeb <= tmp->RdV.heureDeb() && heureFin >= tmp->RdV.heureFin()) // creneau heureDeb...heureFin englobe un autre creneau et ou les creneaux sont les memes
                 return true;
         }
     }

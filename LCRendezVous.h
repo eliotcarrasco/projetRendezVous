@@ -9,22 +9,18 @@
 
 class ChainonRdV
 {
-//    private:
-public:
+    public:
         ChainonRdV();
         ChainonRdV(const RendezVous& rdv);
-        //~ChainonRdV();
+        RendezVous& getRdV();
+        ChainonRdV* getSuiv();
+    
+    private:
         RendezVous RdV;
         ChainonRdV* suiv;
-//friend class LCPersonne;
-//    friend class LCRendezVous;
-//    friend class RendezVous;
-//    friend class interface;
-//    friend class Personne;
-//    friend void testLCRendezVous();
-//    friend void testLCPersonne();
-//    friend void testParticipantsRDV();
-//    friend int main(int argc, char** argv);
+
+    friend class LCRendezVous;
+
 };
 
 class LCRendezVous
@@ -33,11 +29,10 @@ class LCRendezVous
 		LCRendezVous();
         LCRendezVous(const LCRendezVous& lrv);
 		~LCRendezVous();
+    
         ChainonRdV* getTete() const;
 		void InsererRendezVous(const RendezVous& r);
         void SupprimerRendezVous(const std::string& nom);
-        											 //manque la fonction qui permet de modifier les rdv
-    
         void getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const;
         bool occupee(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
         bool nomRdvDisponible(const string & nomRdv);
