@@ -131,17 +131,17 @@ void interface::menuPersonnes()
 	        case 5 :
 	        	if( rechercherPersonne(person) )
 	        	{
-                    cout << "Entrez une date : ";
+                    cout << "Entrez une date (jj/mm//2017+) : ";
                     Date date;
                     cin >> date;
                     
                     Heure heureDeb, heureFin;
                     
                     do{
-                        cout << "Entrez une heure de debut : ";
+                        cout << "Entrez une heure de debut (hh:mm) : ";
                         cin >> heureDeb;
                         
-                        cout << "Entrez une heure de fin : ";
+                        cout << "Entrez une heure de fin (hh:mm) : ";
                         cin >> heureFin;
                     }
                     while(!horaireValide(heureDeb, heureFin));
@@ -265,7 +265,7 @@ void interface::menuRendezVous()
                 break;
 	    	case 5 :
 	    		{
-		    		cout << "Entrez la date recherchee : ";
+		    		cout << "Entrez la date recherchee (jj/mm//2017+) : ";
 		    		Date rech;
                     cin >> rech;
 		    		afficherTousLesRdv(rech);
@@ -367,17 +367,20 @@ void interface::ajouterRdv()
 	    	cout << "Ce nom de rendez-vous est deja pris" << endl;
 	}while( !lcprincr.nomRdvDisponible(nom) );
     
-    cout << "Entrez une date : ";
+    cout << "Entrez une date (jj/mm//2017+) : ";
     Date date;
     cin >> date;
     
-    cout << "Entrez une heure de debut : ";
-    Heure heureDeb;
-    cin >> heureDeb;
+    Heure heureDeb, heureFin;
     
-    cout << "Entrez une heure de fin : ";
-    Heure heureFin;
-    cin >> heureFin;
+    do{
+        cout << "Entrez une heure de debut (hh:mm) : ";
+        cin >> heureDeb;
+        
+        cout << "Entrez une heure de fin (hh:mm) : ";
+        cin >> heureFin;
+    }
+    while(!horaireValide(heureDeb, heureFin));
     
     RendezVous rdv{nom, date, heureDeb, heureFin};
     
@@ -490,7 +493,7 @@ void interface::afficherTousLesRdv(Date d)
     
     if(!rdv)
     {
-        cout << "Aucun rendez-vous pour cette date.";
+        cout << "Aucun rendez-vous pour cette date" << endl;
     }
 }
 
