@@ -49,7 +49,7 @@ void interface::menuPrincipal()
 	            menuRendezVous();
 	            break;
 	        case 0 :
-	        	break;
+                exit(0);
 	        default :
 	            cout << "Veuillez selectionner une option valide." << endl;
 		}
