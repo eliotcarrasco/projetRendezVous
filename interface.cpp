@@ -494,6 +494,7 @@ void interface::afficherTousLesRdv(Date d)
 
 /**
     Affiche tous les participants a un rendez-vous
+    @param rdv - un rendez-vous
  */
 void interface::afficherParticipants(RendezVous &rdv)
 {
@@ -513,7 +514,10 @@ void interface::afficherParticipants(RendezVous &rdv)
     }
 }
 
-
+/**
+	Modifie un rendez-vous
+	@param rdv - un rendez-vous
+*/
 void interface::modifierRendezVous(RendezVous& rdv)
 {
 	ChainonRdV* tmp = lcprincr.getTete();

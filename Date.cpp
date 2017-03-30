@@ -95,7 +95,6 @@ void Date::setAnnee(int a)
     Retourne la date sous la forme d'une chaine de caracteres
     @return s - la date sous forme de chaine de caracteres
  */
-
 std::string Date::getStringDate() const
 {
     std::string s = "";
@@ -174,11 +173,20 @@ bool Date::operator>(const Date& d) const
     return ( (d_annee > d.d_annee) || (d_annee == d.d_annee && d_mois > d.d_mois) || (d_annee == d.d_annee && d_mois == d.d_mois && d_jour > d.d_jour) );
 }
 
+/**
+	Operateur <=
+	@param d - une date
+*/
 bool Date::operator<=(const Date& d) const
 {
 	return ( (*this < d) || (*this == d));
 }
 
+/**
+	Oerateur <<
+	@param os - un flux
+	@param d - une date
+*/
 ostream& operator<<(ostream& os, const Date& d)
 {
 	os << d.getStringDate();

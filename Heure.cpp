@@ -150,11 +150,20 @@ bool Heure::operator==(const Heure& h) const
     return (d_heures == h.d_heures && d_minutes == h.d_minutes);
 }
 
+/**
+	Operateur !=
+	@params h - une Heure
+ */
 bool Heure::operator!=(const Heure& h) const
 {
 	return (d_heures != h.d_heures && d_minutes != h.d_minutes);
 }
 
+/**
+	Operateur <<
+	@params os - un flux
+	@params h - une Heure
+ */
 ostream& operator<<(ostream& os, const Heure& h)
 {
 	os << h.getStringHeure();

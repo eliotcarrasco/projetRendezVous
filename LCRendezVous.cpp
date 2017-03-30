@@ -55,8 +55,8 @@ LCRendezVous::~LCRendezVous()
 
 
 /**
- Fonction qui retourne la tete de la liste
- @return t - la tete de la liste
+	Fonction qui retourne la tete de la liste
+	@return t - la tete de la liste
  */
 
 ChainonRdV* LCRendezVous::getTete() const
@@ -196,9 +196,9 @@ bool LCRendezVous::occupee(const Date& date, const Heure& heureDeb, const Heure&
 }
 
 /**
- Verifie si le nom d'un rendez-vous est deja pris ou pas
- @param nomRdv - un nom
- @return Vrai si le nom n'est pas deja pris par un rendez-vous, Faux sinon
+	Verifie si le nom d'un rendez-vous est deja pris ou pas
+	@param nomRdv - un nom
+	@return Vrai si le nom n'est pas deja pris par un rendez-vous, Faux sinon
  */
 bool LCRendezVous::nomRdvDisponible(const string & nomRdv)
 {

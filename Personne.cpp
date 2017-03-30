@@ -34,8 +34,8 @@ Personne::Personne(const Personne& pers) :  d_id{pers.Id()},
 
 
 /**
- Constructeur vide
- */
+	Constructeur vide
+*/
 
 Personne::Personne() :  d_id{id_suiv++},
                         d_nom{},
@@ -93,8 +93,8 @@ string Personne::Mail() const
 
 
 /**
-     Modifie le no de telephone
-     @param telephone - le no de telephone
+    Modifie le no de telephone
+    @param telephone - le no de telephone
  */
 void Personne::setTelephone(const string& telephone)
 {
@@ -136,30 +136,30 @@ bool Personne::operator==(const Personne& pers) const
 
 
 /**
- Operateur !=
- @param pers - une personne
- @return Vrai si les deux personnes sont differente, Faux sinon
- */
+	Operateur !=
+	@param pers - une personne
+	@return Vrai si les deux personnes sont differente, Faux sinon
+*/
 bool Personne::operator!=(const Personne& pers) const
 {
     return (d_nom != pers.Nom() || d_prenom != pers.Prenom());
 }
 
 /**
- Operateur <
- @param pers - une personne
- @return Vrai si la personne (this) se trouve avant (alphabetiquement) que la personne (pers), Faux sinon
- */
+	Operateur <
+	@param pers - une personne
+	@return Vrai si la personne (this) se trouve avant (alphabetiquement) que la personne (pers), Faux sinon
+*/
 bool Personne::operator<(const Personne& pers) const
 {
     return ( ( d_nom < pers.d_nom ) || ( d_nom == pers.d_nom && d_prenom < pers.d_nom ) );
 }
 
 /**
- Operateur >
- @param pers - une personne
- @return Vrai si la personne (this) se trouve apres (alphabetiquement) que la personne (pers), Faux sinon
- */
+	Operateur >
+	@param pers - une personne
+	@return Vrai si la personne (this) se trouve apres (alphabetiquement) que la personne (pers), Faux sinon
+*/
 bool Personne::operator>(const Personne& pers) const
 {
     return ( ( d_nom > pers.d_nom ) || ( d_nom == pers.d_nom && d_prenom > pers.d_nom ) );

@@ -210,11 +210,11 @@ int LCPersonne::Compter() const
 
 
 /**
- Verifie si le nom d'une personne est deja pris ou pas
- @param nomPers - un nom
- @param prenomPers - un prenom
- @return Vrai si le nom n'est pas deja pris par une personne, Faux sinon
- */
+	Verifie si le nom d'une personne est deja pris ou pas
+	@param nomPers - un nom
+	@param prenomPers - un prenom
+	@return Vrai si le nom n'est pas deja pris par une personne, Faux sinon
+*/
 bool LCPersonne::nomPersonneDisponible(const string & nomPers, const string & prenomPers)
 {
     string lowerNomPers = convertToUpper(nomPers);

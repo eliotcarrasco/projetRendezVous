@@ -43,26 +43,26 @@ string RendezVous::nom() const
 
 
 /**
- Renvoie la date du rdv
- @return date du rdv
- */
+	Renvoie la date du rdv
+	@return date du rdv
+*/
 Date RendezVous::date() const
 {
     return d_date;
 }
 
 /**
- Renvoie l'heure de debut du rdv
- @return heure de debut du rdv
- */
+	Renvoie l'heure de debut du rdv
+	@return heure de debut du rdv
+*/
 Heure RendezVous::heureDeb() const
 {
     return d_heureDeb;
 }
 
 /**
- Renvoie l'heure de fin du rdv
- @return heure de fin du rdv
+	Renvoie l'heure de fin du rdv
+	@return heure de fin du rdv
  */
 Heure RendezVous::heureFin() const
 {
@@ -71,8 +71,8 @@ Heure RendezVous::heureFin() const
 
 
 /**
-     Renvoie la liste des personnes participants au rdv
-     @return liste de personnes du rdv
+    Renvoie la liste des personnes participants au rdv
+    @return liste de personnes du rdv
  */
 vector<int> RendezVous::listeParticipants()
 {
@@ -90,8 +90,8 @@ void RendezVous::setNom(const string& nom)
 }
 
 /**
-     Modifie la date du rdv
-     @param date - date du rdv
+    Modifie la date du rdv
+    @param date - date du rdv
  */
 void RendezVous::setDate(const Date& date)
 {
@@ -99,8 +99,8 @@ void RendezVous::setDate(const Date& date)
 }
 
 /**
-     Modifie l'heure de debut du rdv
-     @param heureDeb - heure de debut du rdv
+    Modifie l'heure de debut du rdv
+    @param heureDeb - heure de debut du rdv
  */
 void RendezVous::setHeureDeb(const Heure& heureDeb)
 {
@@ -109,8 +109,8 @@ void RendezVous::setHeureDeb(const Heure& heureDeb)
 }
 
 /**
-     Modifie l'heure de fin du rdv
-     @param heureFin - heure de fin du rdv
+    Modifie l'heure de fin du rdv
+    @param heureFin - heure de fin du rdv
  */
 void RendezVous::setHeureFin(const Heure& heureFin)
 {
@@ -119,9 +119,9 @@ void RendezVous::setHeureFin(const Heure& heureFin)
 }
 
 /**
-     Modifie l'heure du rdv
-     @param heureDeb - heure de debut du rdv
-     @param heureFin - heure de fin du rdv
+    Modifie l'heure du rdv
+    @param heureDeb - heure de debut du rdv
+    @param heureFin - heure de fin du rdv
  */
 void RendezVous::setHeure(const Heure& heureDeb, const Heure& heureFin)
 {
@@ -187,9 +187,9 @@ bool RendezVous::operator!=(const RendezVous& rdv) const
 }
 
 /**
-     Surcharge de l'operateur == pour les rendez-vous
-     @param rdv - un rdv
-     @return Vrai si les deux rendez-vous sont egaux, Faux sinon
+    Surcharge de l'operateur == pour les rendez-vous
+    @param rdv - un rdv
+    @return Vrai si les deux rendez-vous sont egaux, Faux sinon
  */
 bool RendezVous::operator==(const RendezVous& rdv) const
 {
@@ -197,20 +197,20 @@ bool RendezVous::operator==(const RendezVous& rdv) const
 }
 
 /**
- Surcharge de l'operateur < pour les rendez-vous
- @param rdv - un rdv
- @return Vrai si le rendez-vous a lieu avant le rendez-vous passe en parametre, Faux sinon
- */
+	Surcharge de l'operateur < pour les rendez-vous
+	@param rdv - un rdv
+	@return Vrai si le rendez-vous a lieu avant le rendez-vous passe en parametre, Faux sinon
+*/
 bool RendezVous::operator<(const RendezVous& rdv) const
 {
     return (d_date < rdv.date()) || (d_date == rdv.date() && d_heureDeb < rdv.heureDeb());
 }
 
 /**
- Surcharge de l'operateur != pour les rendez-vous
- @param rdv - un rdv
- @return Vrai si le rendez-vous a lieu apres le rendez-vous passe en parametre, Faux sinon
- */
+	Surcharge de l'operateur != pour les rendez-vous
+	@param rdv - un rdv
+	@return Vrai si le rendez-vous a lieu apres le rendez-vous passe en parametre, Faux sinon
+*/
 bool RendezVous::operator>(const RendezVous& rdv) const
 {
     return (d_date > rdv.date()) || (d_date == rdv.date() && d_heureDeb > rdv.heureDeb());
