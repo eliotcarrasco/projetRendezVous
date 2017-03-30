@@ -8,7 +8,7 @@
 using namespace std;
 
 /**
- Constructeur vide
+ Constructeur par defaut
  */
 RendezVous::RendezVous() : d_nom{}, d_date{}, d_heureDeb{}, d_heureFin{}, d_participants{}
 {}
@@ -28,9 +28,6 @@ RendezVous::RendezVous(const string& nom, Date date, Heure heureDeb, Heure heure
                                                                                 d_participants{}
 {}
 
-
-RendezVous::~RendezVous()
-{}
 
 /**
     Renvoie le nom du rdv
@@ -71,8 +68,8 @@ Heure RendezVous::heureFin() const
 
 
 /**
-    Renvoie la liste des personnes participants au rdv
-    @return liste de personnes du rdv
+    Renvoie le vecteur contenant les id des participants au rdv
+    @return le vecteur d'id des participants
  */
 vector<int> RendezVous::listeParticipants()
 {
@@ -167,6 +164,9 @@ int RendezVous::nombreParticipants() const
     return static_cast<int>(d_participants.size());
 }
 
+/**
+    Affiche les attributs d'un rendez-vous dans la console (sans les participants)
+ */
 void RendezVous::afficherRendezVous()
 {
 	cout << "Nom : " << d_nom << endl;

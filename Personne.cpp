@@ -10,14 +10,35 @@ using namespace std;
 
 int Personne::id_suiv = 0;
 
+
+
+
+/**
+	Constructeur par defaut
+ */
+
+Personne::Personne() :  d_id{id_suiv++},
+                        d_nom{},
+                        d_prenom{},
+                        d_telephone{},
+                        d_mail{}
+{}
+
+
+
+/**
+    Constructeur
+    @param nom - un nom
+    @param prenom - un prenom
+    @param telephone - un numero de telephone
+    @param mail - une adresse e-mail
+ */
 Personne::Personne(const string& nom, const string& prenom, const string& telephone, const string& mail) :  d_id{id_suiv++},
                                                                                                             d_nom{convertToUpper(nom)},
                                                                                                             d_prenom{convertForName(prenom)},
                                                                                                             d_telephone{telephone},
                                                                                                             d_mail{mail}
 {}
-
-
 
 
 /**
@@ -33,20 +54,10 @@ Personne::Personne(const Personne& pers) :  d_id{pers.Id()},
 {}
 
 
-/**
-	Constructeur vide
-*/
-
-Personne::Personne() :  d_id{id_suiv++},
-                        d_nom{},
-                        d_prenom{},
-                        d_telephone{},
-                        d_mail{}
-{}
-
 
 /**
     Retourne l'id de la personne
+    @return d_id - le numero id de la personne
  */
 int Personne::Id() const
 {
@@ -93,7 +104,7 @@ string Personne::Mail() const
 
 
 /**
-    Modifie le no de telephone
+    Modifie le numero de telephone
     @param telephone - le no de telephone
  */
 void Personne::setTelephone(const string& telephone)
@@ -110,8 +121,9 @@ void Personne::setMail(const string& mail)
      d_mail = mail;
 }
 
+
 /**
-	Afficher les informations de la personne concerne
+	Afficher les informations de la personne concerne dans la console
 */
 void Personne::afficherPersonne() const
 {
@@ -148,7 +160,7 @@ bool Personne::operator!=(const Personne& pers) const
 /**
 	Operateur <
 	@param pers - une personne
-	@return Vrai si la personne (this) se trouve avant (alphabetiquement) que la personne (pers), Faux sinon
+	@return Vrai si la personne courante se trouve avant (alphabetiquement) que la personne (pers), Faux sinon
 */
 bool Personne::operator<(const Personne& pers) const
 {
@@ -158,7 +170,7 @@ bool Personne::operator<(const Personne& pers) const
 /**
 	Operateur >
 	@param pers - une personne
-	@return Vrai si la personne (this) se trouve apres (alphabetiquement) que la personne (pers), Faux sinon
+	@return Vrai si la personne courante se trouve apres (alphabetiquement) que la personne (pers), Faux sinon
 */
 bool Personne::operator>(const Personne& pers) const
 {

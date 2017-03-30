@@ -12,16 +12,19 @@
 using namespace std;
 
 /**
-    Constructeur vide
+    Constructeur par defaut
  */
 interface::interface() :lcprincp{}, lcprincr{}
 {}
 
 /**
     Constructeur
+    @param listePersonnes - la liste de principale des personnes
+    @param listeRdv - la liste principale des rendez-vous
  */
 interface::interface(LCPersonne &listePersonnes, LCRendezVous &listeRdv) : lcprincp{listePersonnes}, lcprincr{listeRdv}
 {}
+
 
 /**
 	Affiche le menu principal de l'application
@@ -145,7 +148,7 @@ void interface::menuPersonnes()
 	        case 5 :
 	        	if( rechercherPersonne(person) )
 	        	{
-                    cout << "Entrez une date (jj/mm//2017+) : ";
+                    cout << "Entrez une date (jj/mm/2017+) : ";
                     Date date;
                     cin >> date;
                     
@@ -279,7 +282,7 @@ void interface::menuRendezVous()
                 break;
 	    	case 5 :
 	    		{
-		    		cout << "Entrez la date recherchee (jj/mm//2017+) : ";
+		    		cout << "Entrez la date recherchee (jj/mm/2017+) : ";
 		    		Date rech;
                     cin >> rech;
 		    		afficherTousLesRdv(rech);
@@ -338,7 +341,7 @@ void interface::ajouterPersonne()
 
 /**
 	Regarde a partir du nom et du prenom si la personne recherchee existe
-	@param person - La personne recherchee (intialement vide puis remplit grace a cette fonction)
+	@param person - La personne recherchee (intialement vide puis remplie grace a cette fonction)
 	@return Vrai si la personne existe, Faux sinon
  */
 bool interface::rechercherPersonne(Personne& person)
@@ -381,7 +384,7 @@ void interface::ajouterRdv()
 	    	cout << "Ce nom de rendez-vous est deja pris" << endl;
 	}while( !lcprincr.nomRdvDisponible(nom) );
     
-    cout << "Entrez une date (jj/mm//2017+) : ";
+    cout << "Entrez une date (jj/mm/2017+) : ";
     Date date;
     cin >> date;
     
@@ -573,7 +576,7 @@ void interface::modifierRendezVous(RendezVous& rdv)
                 }
                 case 2:
                 {
-                    cout << "Entrez la nouvelle date (jj/mm//2017+): ";
+                    cout << "Entrez la nouvelle date (jj/mm/2017+): ";
                     Date date;
                     cin >> date;
                     cout << "La date a bien ete modifiee" << endl << endl;
@@ -693,7 +696,7 @@ void interface::afficherToutesLesPersonnes()
 /**
 	Test si ce que l'utilisateur a rentre est bien un entier
 	@param s - La chaine de caractere que l'on veut afficher avant la saisie
-	@return L'entier saisie
+	@return L'entier saisi
 */
 int interface::testInt(const string& s)
 {
@@ -716,7 +719,10 @@ int interface::testInt(const string& s)
 
 
 /**
-    Verifie si un horaire entre une heure de debut et une heure de fin est valide
+    Verifie si un horaire est valide
+    @param heureDeb - une heure de debut
+    @param heureFin - une heure de fin
+    @return Vrai si l'horaire est valide c-a-d si l'heure de debut est avant l'heure de fin, Faux sinon
  */
 bool interface::horaireValide(const Heure &heureDeb, const Heure &heureFin)
 {

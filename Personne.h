@@ -10,9 +10,10 @@
 class Personne
 {
 	public:
+        Personne();
         Personne(const std::string& nom, const std::string& prenom, const std::string& telephone, const std::string& mail);
         Personne(const Personne& pers);
-        Personne();
+    
     
         int Id() const;
 		std::string Nom() const;

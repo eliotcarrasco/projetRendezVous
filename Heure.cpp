@@ -1,8 +1,9 @@
 #include "Heure.h"
 
+using namespace std;
 
 /**
-	Constructeur vide
+	Constructeur par defaut
  */
 Heure::Heure(): d_heures{}, d_minutes{}
 {}
@@ -46,7 +47,7 @@ int Heure::minutes() const
 /**
 	Modifie le nombre d'heures
 	@param h - le nombre d'heures
-	@return Vrai si l'heure est compris entre 0 et 24
+	@return Vrai si l'heure est compris entre 0 inclu et 24 exclu
 */
 bool Heure::setHeures(int h)
 {
@@ -61,7 +62,7 @@ bool Heure::setHeures(int h)
 /**
 	Modifie les minutes
 	@param m - une minutes
-	@return Vrai si les minutes sont comprises entre 0 et 60
+	@return Vrai si les minutes sont comprises entre 0 inclu et 60 exclu
  */
 bool Heure::setMinutes(int m)
 {
@@ -131,6 +132,7 @@ void Heure::lit(istream& ist)
 /**
 	Operateur <
 	@params h - une Heure
+    @return Vrai si l'heure courante est inferieure a l'heure passee en parametre, Faux sinon
 */
 bool Heure::operator<(const Heure& h) const
 {
@@ -140,6 +142,7 @@ bool Heure::operator<(const Heure& h) const
 /**
 	Operateur >
 	@params h - une Heure
+    @return Vrai si l'heure courante est superieure a l'heure passee en parametre, Faux sinon
 */
 bool Heure::operator>(const Heure& h) const
 {
@@ -150,6 +153,7 @@ bool Heure::operator>(const Heure& h) const
 /**
 	Operateur >=
 	@params h - une Heure
+    @return Vrai si l'heure courante est superieure ou egale a l'heure passee en parametre, Faux sinon
  */
 bool Heure::operator>=(const Heure& h) const
 {
@@ -160,6 +164,7 @@ bool Heure::operator>=(const Heure& h) const
 /**
 	Operateur <=
 	@params h - une Heure
+    @return Vrai si l'heure courante est inferieure ou egale a l'heure passee en parametre, Faux sinon
  */
 bool Heure::operator<=(const Heure& h) const
 {
@@ -170,6 +175,7 @@ bool Heure::operator<=(const Heure& h) const
 /**
 	Operateur ==
 	@params h - une Heure
+    @return Vrai si l'heure courante est egale a l'heure passee en parametre, Faux sinon
  */
 bool Heure::operator==(const Heure& h) const
 {
@@ -179,6 +185,7 @@ bool Heure::operator==(const Heure& h) const
 /**
 	Operateur !=
 	@params h - une Heure
+    @return Vrai si l'heure courante est differente a l'heure passee en parametre, Faux sinon
  */
 bool Heure::operator!=(const Heure& h) const
 {
@@ -186,8 +193,8 @@ bool Heure::operator!=(const Heure& h) const
 }
 
 /**
-	Operateur <<
-	@params os - un flux
+	Surcharge de l'operateur <<
+	@params os - un flot de sortie
 	@params h - une Heure
  */
 ostream& operator<<(ostream& os, const Heure& h)
@@ -197,7 +204,9 @@ ostream& operator<<(ostream& os, const Heure& h)
 }
 
 /**
-	
+	Surcharge de l'operateur >>
+	@params ist - un flot d'entree
+	@params h - une Heure
 */
 istream& operator>>(istream& ist, Heure& h)
 {

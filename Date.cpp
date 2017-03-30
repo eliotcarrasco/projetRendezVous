@@ -1,10 +1,10 @@
 #include "Date.h"
 #include <ctime>
 
-
+using namespace std;
 
 /**
-	Constructeur vide
+	Constructeur par defaut
  */
 Date::Date(): d_jour{}, d_mois{}, d_annee{}
 {}
@@ -57,6 +57,7 @@ int Date::annee() const
 /**
 	Modifie le jour
 	@param j - un jour
+    @return Vrai si le jour a bien ete modifie (compris entre 1 et 31 inclus), Faux sinon
 */
 bool Date::setJour(int j)
 {
@@ -72,6 +73,7 @@ bool Date::setJour(int j)
 /**
 	Modifie le mois
 	@param m - un mois
+    @return Vrai si le mois a bien ete modifie (compris entre 1 et 12 inclus), Faux sinon
 */
 bool Date::setMois(int m)
 {
@@ -87,6 +89,7 @@ bool Date::setMois(int m)
 /**
 	Modifie l'annee si elle est superieure ou egale a l'annee courante
 	@param a - une annee
+    @return Vrai si l'annee a bien ete modifiee (superieure ou egale a l'annee courante), Faux sinon
 */
 bool Date::setAnnee(int a)
 {
@@ -176,6 +179,7 @@ bool Date::valide() const {
 /**
 	Operateur !=
 	@params d - une Date
+    @return Vrai si la date courante est differente a celle passee en parametre, Faux sinon
 */
 bool Date::operator!=(const Date& d) const
 {
@@ -185,6 +189,7 @@ bool Date::operator!=(const Date& d) const
 /**
 	Operateur ==
 	@params d - une Date
+    @return Vrai si la date courante est egale a celle passee en parametre, Faux sinon
 */
 bool Date::operator==(const Date& d) const
 {
@@ -194,6 +199,7 @@ bool Date::operator==(const Date& d) const
 /**
 	Operateur <
 	@params d - une Date
+    @return Vrai si la date courante est inferieure a celle passee en parametre, Faux sinon
 */
 bool Date::operator<(const Date& d) const
 {
@@ -204,6 +210,7 @@ bool Date::operator<(const Date& d) const
 /**
 	Operateur >
 	@params d - une Date
+    @return Vrai si la date courante est superieure a celle passee en parametre, Faux sinon
  */
 bool Date::operator>(const Date& d) const
 {
@@ -221,8 +228,9 @@ bool Date::operator<=(const Date& d) const
 
 /**
 	Surcharge de l'operateur d'ecriture
-	@param os - un flux
+	@param os - un flot de sortie
 	@param d - une date
+    @return le flot
 */
 ostream& operator<<(ostream& os, const Date& d)
 {
@@ -233,6 +241,9 @@ ostream& operator<<(ostream& os, const Date& d)
 
 /**
     Surcharge de l'operateur de lecture
+    @param ist - un flot d'entree
+	@param d - une date
+    @return le flot
  */
 istream& operator>>(istream &ist, Date& d)
 {

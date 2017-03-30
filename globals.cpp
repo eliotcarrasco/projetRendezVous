@@ -11,7 +11,7 @@ using namespace std;
 
 
 /**
-     Converti une chaine entierement en minuscule
+     Convertit une chaine entierement en minuscule
      @param chaine - une chaine de caractere
      @return c - la chaine en minuscule
  */
@@ -25,7 +25,7 @@ string convertToLower(const string& chaine)
 }
 
 /**
-    Converti une chaine entierement en majuscules
+    Convertit une chaine entierement en majuscules
     @param chaine - une chaine de caractere
     @return c - la chaine en majuscule
  */
@@ -40,9 +40,9 @@ string convertToUpper(const string& chaine)
 
 
 /**
-     Converti une chaine entierement en minuscule
+     Convertit une chaine entierement en minuscule avec la premiere lettre en majuscule
      @param chaine - une chaine de caractere
-     @return c - la chaine en minuscule
+     @return c - la chaine au format specifique
  */
 string convertForName(const string& chaine)
 {

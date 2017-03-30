@@ -13,7 +13,6 @@ class RendezVous
 	public:
         RendezVous();
         RendezVous(const std::string& nom, Date date, Heure heureDeb, Heure heureFin);
-        ~RendezVous();
     
         // getters
         std::string nom() const;

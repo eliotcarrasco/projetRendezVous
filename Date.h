@@ -3,7 +3,6 @@
 #include <string>
 #include <iostream>
 
-using namespace std;
 
 class Date
 {
@@ -22,7 +21,7 @@ class Date
 		bool setAnnee(int a);
     
         std::string getStringDate() const;
-        void lit(istream& ist);
+        void lit(std::istream& ist);
     
 		//operators
 		bool operator==(const Date& d) const;
@@ -30,10 +29,9 @@ class Date
 		bool operator<(const Date& d) const;
         bool operator>(const Date& d) const;
         bool operator<=(const Date& d) const;
-        //faire >=
     
-        friend ostream& operator<<(ostream& os, const Date& d);
-        friend istream& operator>>(istream &ist, Date& d);
+        friend std::ostream& operator<<(std::ostream& os, const Date& d);
+        friend std::istream& operator>>(std::istream &ist, Date& d);
 		
 		bool valide() const;
 

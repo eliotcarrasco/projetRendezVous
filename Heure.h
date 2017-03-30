@@ -3,8 +3,6 @@
 #include <string>
 #include <iostream>
 
-using namespace std;
-
 class Heure
 {
 	public:
@@ -22,7 +20,7 @@ class Heure
         bool valide() const;
         std::string getStringHeure() const;
         
-        void lit(istream& ist);
+        void lit(std::istream& ist);
     
     	//operateurs
     	bool operator<(const Heure& h) const;
@@ -32,8 +30,8 @@ class Heure
         bool operator==(const Heure& h) const;
         bool operator!=(const Heure& h) const;
         
-        friend ostream& operator<<(ostream& os, const Heure& h);
-        friend istream& operator>>(istream& ist, Heure& h);
+        friend std::ostream& operator<<(std::ostream& os, const Heure& h);
+        friend std::istream& operator>>(std::istream& ist, Heure& h);
     
     
     

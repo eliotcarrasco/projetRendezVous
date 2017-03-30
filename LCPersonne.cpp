@@ -7,7 +7,7 @@
 using namespace std;
 
 /**
-    Constructeur ChainonPersonne
+    Constructeur par defaut de ChainonPersonne
  */
 ChainonPersonne::ChainonPersonne() : prsn{}, suiv{nullptr}
 {}
@@ -70,7 +70,6 @@ LCPersonne::~LCPersonne()
 		ChainonPersonne* s = t->suiv;
 		delete t;
 		t = s;
-        
 	}
 }
 
@@ -87,6 +86,7 @@ ChainonPersonne* LCPersonne::getTete() const
 
 /**
     Retourne une instance de personne à partir de son identifiant
+    @return une personne
     @pre - la personne doit exister
  */
 Personne LCPersonne::getPersonneById(int pId) const
@@ -100,7 +100,7 @@ Personne LCPersonne::getPersonneById(int pId) const
     if(tmp)
         return tmp->prsn;
     
-    return Personne{};
+    return Personne{}; //renvoie une personne vide si n'existe pas
 }
 
 
@@ -110,7 +110,7 @@ Personne LCPersonne::getPersonneById(int pId) const
 */
 void LCPersonne::Inserer(const Personne& pers)
 {
-    ChainonPersonne* nouv = new ChainonPersonne{pers}; //CreerUnChainon()
+    ChainonPersonne* nouv = new ChainonPersonne{pers};
 
 	if(t == nullptr)
 		t = nouv;
@@ -130,11 +130,10 @@ void LCPersonne::Inserer(const Personne& pers)
 		c1->suiv = nouv;
 		nouv->suiv = c2;
 	}
-//	cout << "La personne a ete ajoute avec succes" << endl;
 }
 
 /**
-	Enlever une personne 
+	Supprime une personne
 	@param pers - la personne a supprimer
 */
 void LCPersonne::Supprimer(const Personne& pers)
@@ -144,7 +143,6 @@ void LCPersonne::Supprimer(const Personne& pers)
 		ChainonPersonne* tmp = t;
 		t = t->suiv;
 		delete tmp;
-        //DetruireMonChainon(tmp);
 	}
 	else
 	{
@@ -209,7 +207,7 @@ void LCPersonne::Modifier(const Personne& pers)
 
 /**
     Compte le nombre de chainon dans la liste
-    @return nb le nombre de chainon
+    @return nb le nombre de chainon c-a-d la taille de la liste
 */
 int LCPersonne::Compter() const
 {

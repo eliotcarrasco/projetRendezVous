@@ -9,7 +9,7 @@ using namespace std;
 
 
 /**
-	Constructeur ChainonRdV
+	Constructeur par defaut ChainonRdV
  */
 ChainonRdV::ChainonRdV(): RdV{}, suiv{nullptr}
 {}
@@ -149,8 +149,9 @@ void LCRendezVous::SupprimerRendezVous(const string& nom)
 
 
 /**
-    Renvoie la liste des rdv pour une personne donnée
-    @listeRdv - la liste des rdv
+    Rempli une liste des rdv passee en parametre, pour une personne donnée
+    @param listeRdv - la liste des rdv
+    @param pers - la personne
  */
 
 void LCRendezVous::getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const
@@ -179,7 +180,7 @@ void LCRendezVous::getRendezVous(LCRendezVous& listeRdv, const Personne& pers) c
 
 
 /**
-    Verifie si la personne a deja un rdv a une date et une heure donnee
+    Verifie si la personne a deja un rdv a une date et un creneau horaire donne
     @param date - une date
     @param heureDeb - une heure de début
     @param heureFin - une heure de fin

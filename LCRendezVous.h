@@ -35,7 +35,7 @@ class LCRendezVous
         void SupprimerRendezVous(const std::string& nom);
         void getRendezVous(LCRendezVous& listeRdv, const Personne& pers) const;
         bool occupee(const Date& date, const Heure& heureDeb, const Heure& heureFin) const;
-        bool nomRdvDisponible(const string & nomRdv);
+        bool nomRdvDisponible(const std::string & nomRdv);
 
 		
 	private:
