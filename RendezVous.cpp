@@ -150,11 +150,21 @@ void RendezVous::ajouterParticipant(const Personne& pers)
 void RendezVous::supprimerParticipant(const Personne& pers)
 {
     int i = 0;
+    string rep;
     
     for(; i < d_participants.size() && d_participants[i] != pers.Id(); i++);
     
     if(d_participants[i] == pers.Id())
-        d_participants.erase(d_participants.begin() + i);
+    {
+    	cout << "Etes vous sur de vouloir supprimer " + pers.Prenom() + " " + pers.Nom() + " ? O/N";
+    	cin >> rep;
+    	
+    	if(rep == "o" || rep =="O")
+    		d_participants.erase(d_participants.begin() + i);
+    	else
+    		cout << "Suppression annulee" << endl << endl;
+	}
+        
         
 }
 
