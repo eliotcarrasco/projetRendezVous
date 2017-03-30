@@ -28,7 +28,8 @@ interface::interface(LCPersonne &listePersonnes, LCRendezVous &listeRdv) : lcpri
  */
 void interface::menuPrincipal()
 {
-//	system("cls");
+	system("title Carnet de rendez-vous");
+	system("cls");
     int i;
     cout << "Gestionnaire de Rendez-Vous : " << endl;
     cout << "Action sur les : " << endl;
@@ -48,6 +49,19 @@ void interface::menuPrincipal()
 	        case 2 :
 	            menuRendezVous();
 	            break;
+	        case 42:
+	        	system("cls");
+	        	system("title Credits");
+	        	cout << endl << endl << endl << endl << endl;
+				cout << "                    CARRASCO Eliot" << endl;
+				cout << "                            &" << endl;
+				cout << "                      HINDI Hassane" << endl;
+				cout << "                             &" << endl;
+				cout << "                        PFUND Daniel" << endl;
+				cout << endl << endl << endl << endl << endl;
+				system("PAUSE");
+				menuPrincipal();
+	        	break;
 	        case 0 :
                 exit(0);
 	        default :
@@ -62,7 +76,7 @@ void interface::menuPrincipal()
  */
 void interface::menuPersonnes()
 {
-//	system("cls");
+	system("cls");
     int i;
     cout << "Gestion des personnes : " << endl;
     cout << "Veuillez selectionner une action : " << endl;
@@ -84,7 +98,7 @@ void interface::menuPersonnes()
 	    {
 	        case 1 :
 	        	ajouterPersonne();
-//		        	system("PAUSE");
+		        	system("PAUSE");
 	        	menuPersonnes();
 	            break;
 	        case 2 :
@@ -93,7 +107,7 @@ void interface::menuPersonnes()
         			person.afficherPersonne();
         			lcprincp.Modifier(person);	
 				}
-//					system("PAUSE");
+					system("PAUSE");
 	        	menuPersonnes();
 	            break;
 	        case 3 :
@@ -117,7 +131,7 @@ void interface::menuPersonnes()
 					else
 						cout << "Suppression impossible : la personne fait partie d'au moins un rdv" << endl << endl;
         		}
-//		        	system("PAUSE");
+		        	system("PAUSE");
 	        	menuPersonnes();
 	        	break;
             case 4:
@@ -125,7 +139,7 @@ void interface::menuPersonnes()
                 {
                     person.afficherPersonne();
                 }
-//					system("PAUSE");
+					system("PAUSE");
                 menuPersonnes();
                 break;
 	        case 5 :
@@ -155,7 +169,7 @@ void interface::menuPersonnes()
 					else
 						cout << "Cette personne n'a rien de prevu pour cette date" << endl << endl;
 				}
-//					system("PAUSE");
+					system("PAUSE");
 	        	menuPersonnes();
 	        	break;
 	        case 6 :
@@ -179,13 +193,13 @@ void interface::menuPersonnes()
                             cout << endl;
                         }
 			    	}
-//				    	system("PAUSE");
+				    	system("PAUSE");
 		    		menuPersonnes();
 		    	}
 	    		break;
             case 7:
                 afficherToutesLesPersonnes();
-//					system("PAUSE");
+					system("PAUSE");
                 menuPersonnes();
                 break;
 	        case 0 :
@@ -203,7 +217,7 @@ void interface::menuPersonnes()
  */
 void interface::menuRendezVous()
 {
-//	system("cls");
+	system("cls");
     int i;
     cout << "Gestion des rendez-vous : " << endl;
     cout << "Veuillez selectionner une action : " << endl;
@@ -225,7 +239,7 @@ void interface::menuRendezVous()
 		{
 	    	case 1 :
 	    		ajouterRdv();
-//		    		system("PAUSE");
+		    	system("PAUSE");
 	    		menuRendezVous();
 	        	break;
 	    	case 2 :
@@ -233,8 +247,8 @@ void interface::menuRendezVous()
 	    		{
 	    			modifierRendezVous(rdv);
 				}
+				system("PAUSE");
 				menuRendezVous();
-//					system("PAUSE");
 	        	break;
 	    	case 3 :
 	    		if(rechercherRdv(rdv))
@@ -251,7 +265,7 @@ void interface::menuRendezVous()
                     else
                         cout << "Suppression annulee" << endl << endl;
 				}
-//					system("PAUSE");
+				system("PAUSE");
 	    		menuRendezVous();
 	    		break;
             case 4:
@@ -260,7 +274,7 @@ void interface::menuRendezVous()
                     rdv.afficherRendezVous();
                     afficherParticipants(rdv);
                 }
-//					system("PAUSE");
+					system("PAUSE");
                 menuRendezVous();
                 break;
 	    	case 5 :
@@ -269,7 +283,7 @@ void interface::menuRendezVous()
 		    		Date rech;
                     cin >> rech;
 		    		afficherTousLesRdv(rech);
-//			    		system("PAUSE");
+			    	system("PAUSE");
 		    		menuRendezVous();
 	    		}
 	    		break;
@@ -278,12 +292,12 @@ void interface::menuRendezVous()
 	    		{
 	    			afficherParticipants(rdv);
 				}
-//					system("PAUSE");
+				system("PAUSE");
 				menuRendezVous();
 	    		break;
             case 7:
                 afficherTousLesRdv();
-//					system("PAUSE");
+				system("PAUSE");
                 menuRendezVous();
 	   		case 0 :
 	    		menuPrincipal();
@@ -531,7 +545,7 @@ void interface::modifierRendezVous(RendezVous& rdv)
 		
 	if(tmp->getRdV() == rdv)
 	{
-//		system("cls");
+		system("cls");
 		int i = -1;
         
             cout << "1. Afficher les informations du rendez-vous" << endl;
@@ -552,7 +566,7 @@ void interface::modifierRendezVous(RendezVous& rdv)
                 {
                     tmp->getRdV().afficherRendezVous();
                     afficherParticipants(tmp->getRdV());
-//					system("PAUSE");
+					system("PAUSE");
                     modifierRendezVous(tmp->getRdV());
                     break;
                     
@@ -564,7 +578,7 @@ void interface::modifierRendezVous(RendezVous& rdv)
                     cin >> date;
                     cout << "La date a bien ete modifiee" << endl << endl;
                     tmp->getRdV().setDate(date);
-//					system("PAUSE");
+					system("PAUSE");
                     modifierRendezVous(tmp->getRdV());
                     break;
                 }
@@ -582,7 +596,7 @@ void interface::modifierRendezVous(RendezVous& rdv)
                           
                     cout << "L'heure de debut a bien ete modifiee" << endl << endl;
                     tmp->getRdV().setHeureDeb(heureDeb);
-//					system("PAUSE");
+					system("PAUSE");
                     modifierRendezVous(tmp->getRdV());
                     break;
                 }
@@ -600,7 +614,7 @@ void interface::modifierRendezVous(RendezVous& rdv)
                     
                     cout << "L'heure de fin a bien ete modifiee" << endl << endl;
                     tmp->getRdV().setHeureFin(heureFin);
-//					system("PAUSE");
+					system("PAUSE");
                     modifierRendezVous(tmp->getRdV());
                     break;
                 }
@@ -619,7 +633,7 @@ void interface::modifierRendezVous(RendezVous& rdv)
                         else
                             cout << "Cette personne est deja occupee et ne peut donc pas etre ajoutee" << endl << endl;
                     }
-//						system("PAUSE");
+						system("PAUSE");
                     modifierRendezVous(tmp->getRdV());
                     break;
                 }
@@ -645,7 +659,7 @@ void interface::modifierRendezVous(RendezVous& rdv)
                         }
 
                     }
-//						system("PAUSE");
+						system("PAUSE");
                     modifierRendezVous(tmp->getRdV());
                     break;
                 }
