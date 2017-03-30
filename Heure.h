@@ -16,11 +16,13 @@ class Heure
         int heures() const;
         int minutes() const;
         // setters
-        void setHeures(int j);
-        void setMinutes(int m);
+        bool setHeures(int j);
+        bool setMinutes(int m);
     
         bool valide() const;
         std::string getStringHeure() const;
+        
+        void lit(istream& ist);
     
     	//operateurs
     	bool operator<(const Heure& h) const;
@@ -31,6 +33,7 @@ class Heure
         bool operator!=(const Heure& h) const;
         
         friend ostream& operator<<(ostream& os, const Heure& h);
+        friend istream& operator>>(istream& ist, Heure& h);
     
     
     

@@ -46,21 +46,31 @@ int Heure::minutes() const
 /**
 	Modifie le nombre d'heures
 	@param h - le nombre d'heures
- */
-void Heure::setHeures(int h)
+	@return Vrai si l'heure est compris entre 0 et 24
+*/
+bool Heure::setHeures(int h)
 {
-    if (h >= 0 && h <= 24)
-        d_heures = h;
+    if (h >= 0 && h < 24)
+    {    
+		d_heures = h;
+		return true;
+	}
+	return false;
 }
 
 /**
-	Modifie le mois
-	@param m - un mois
+	Modifie les minutes
+	@param m - une minutes
+	@return Vrai si les minutes sont comprises entre 0 et 60
  */
-void Heure::setMinutes(int m)
+bool Heure::setMinutes(int m)
 {
-    if (m >= 0 && m <= 60)
+    if (m >= 0 && m < 60)
+    {
         d_minutes = m;
+    	return true;
+	}
+	return false;
 }
 
 
@@ -99,6 +109,16 @@ std::string Heure::getStringHeure() const
     return s;
 }
 
+/**
+	
+*/
+void Heure::lit(istream& ist)
+{
+	int h, m;
+	char c;
+	cin >> h >> c >> m;
+	while( !setHeure(h) || !setMinutes(m) )
+}
 
 
 
@@ -168,4 +188,13 @@ ostream& operator<<(ostream& os, const Heure& h)
 {
 	os << h.getStringHeure();
 	return os;
+}
+
+/**
+	
+*/
+istream& operator>>(istream& ist, Heure& h)
+{
+	h.lit(ist);
+	return ist;
 }

@@ -377,6 +377,10 @@ void interface::ajouterRdv()
     minfin = testInt("	Minute : ");
     Heure heurefin{hfin, minfin};
     
+    
+    
+    
+    
     RendezVous rdv{nom, date, heuredeb, heurefin};
     
     Personne person;
