@@ -23,6 +23,7 @@ class interface
         void afficherParticipants(RendezVous &rdv);
         void modifierRendezVous(RendezVous& rdv);
         int testInt(const string& s);
+        bool horaireValide(const Heure &heureDeb, const Heure &heureFin);
     
     private:
         LCPersonne lcprincp;

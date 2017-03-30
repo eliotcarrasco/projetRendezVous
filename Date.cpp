@@ -145,7 +145,7 @@ void Date::lit(istream& ist)
         
         ist.clear();
         ist.ignore(256,'\n');
-        std::cout << "La date n'est pas au bon format (jj/mm/aaaa)" << endl;
+        std::cout << "La date n'est pas au bon format (jj/mm/2017+)" << endl;
         std::cout << "Reessayer: ";
         ist >> j >> c1 >> m >> c2 >> a;
     }
