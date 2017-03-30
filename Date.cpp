@@ -58,27 +58,37 @@ int Date::annee() const
 	Modifie le jour
 	@param j - un jour
 */
-void Date::setJour(int j)
+bool Date::setJour(int j)
 {
 	if (j <= 31 && j >= 1)
-		d_jour = j;
+    {
+        d_jour = j;
+        return true;
+    }
+    
+    return false;
 }
 
 /**
 	Modifie le mois
 	@param m - un mois
 */
-void Date::setMois(int m)
+bool Date::setMois(int m)
 {
 	if (m <= 12 && m >= 1)
-		d_mois = m;
+    {
+        d_mois = m;
+        return true;
+    }
+    
+    return false;
 }
 
 /**
 	Modifie l'annee si elle est superieure ou egale a l'annee courante
 	@param a - une annee
 */
-void Date::setAnnee(int a)
+bool Date::setAnnee(int a)
 {
 	time_t currentTime;
 	struct tm *localTime;
@@ -88,7 +98,12 @@ void Date::setAnnee(int a)
 	int year = localTime->tm_year + 1900;
   
 	if(a >= year)
-		d_annee = a;
+    {
+        d_annee = a;
+        return true;
+    }
+    
+    return false;
 }
 
 /**
@@ -113,6 +128,28 @@ std::string Date::getStringDate() const
     s += std::to_string(d_annee);
     
     return s;
+}
+
+/**
+    Fonction qui permet de lire une date
+    @param ist - le flot d'entree
+ */
+void Date::lit(istream& ist)
+{
+    int j, m, a;
+    char c1, c2;
+    
+    ist >> j >> c1 >> m >> c2 >> a;
+    
+    while (ist.fail() || !setJour(j) || c1 != '/' || !setMois(m) || c2 != '/' || !setAnnee(a))
+    {
+        
+        ist.clear();
+        ist.ignore(256,'\n');
+        std::cout << "La date n'est pas au bon format (jj/mm/aaaa)" << endl;
+        std::cout << "Reessayer: ";
+        ist >> j >> c1 >> m >> c2 >> a;
+    }
 }
 
 /**
@@ -179,8 +216,21 @@ bool Date::operator<=(const Date& d) const
 	return ( (*this < d) || (*this == d));
 }
 
+/**
+    Surcharge de l'operateur d'ecriture
+ */
 ostream& operator<<(ostream& os, const Date& d)
 {
 	os << d.getStringDate();
 	return os;
+}
+
+
+/**
+    Surcharge de l'operateur de lecture
+ */
+istream& operator>>(istream &ist, Date& d)
+{
+    d.lit(ist);
+    return ist;
 }

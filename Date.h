@@ -17,20 +17,23 @@ class Date
 		int mois() const;
 		int annee() const;
 		// setters
-		void setJour(int j);
-		void setMois(int m);
-		void setAnnee(int a);
+		bool setJour(int j);
+		bool setMois(int m);
+		bool setAnnee(int a);
     
         std::string getStringDate() const;
-		
+        void lit(istream& ist);
+    
 		//operators
 		bool operator==(const Date& d) const;
 		bool operator!=(const Date& d) const;
 		bool operator<(const Date& d) const;
         bool operator>(const Date& d) const;
         bool operator<=(const Date& d) const;
-        
+        //faire >=
+    
         friend ostream& operator<<(ostream& os, const Date& d);
+        friend istream& operator>>(istream &ist, Date& d);
 		
 		bool valide() const;
 
