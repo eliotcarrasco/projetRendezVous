@@ -613,8 +613,16 @@ void interface::modifierRendezVous(RendezVous& rdv)
                             Personne suppr;
                             if( rechercherPersonne(suppr) )
                             {
+                            	string rep;
+                            	cout << "Voulez-vous vraiment supprimer cette personne ? (O/N) : ";
+                            	cin >> rep;
+                            	if( rep == "O" || rep == "o" )
+                            	{
                                     tmp->RdV.supprimerParticipant(suppr);
                                     cout << "Participant supprime" << endl << endl;
+                                }
+                                else
+                                	cout << "Suppression annulé" << endl;
                             }
                         }
 //						system("PAUSE");

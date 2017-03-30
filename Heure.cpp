@@ -117,7 +117,7 @@ void Heure::lit(istream& ist)
 	int h, m;
 	char c;
 	ist >> h >> c >> m;
-	while (ist.fail() || !setHeures(h) || c != ':' || !setMinutes(m) ||)
+	while ( ist.fail() || !setHeures(h) || c != ':' || !setMinutes(m) )
     {
         
         ist.clear();
@@ -127,8 +127,6 @@ void Heure::lit(istream& ist)
 		ist >> h >> c >> m;
     }
 }
-
-
 
 /**
 	Operateur <
