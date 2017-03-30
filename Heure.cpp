@@ -116,8 +116,16 @@ void Heure::lit(istream& ist)
 {
 	int h, m;
 	char c;
-	cin >> h >> c >> m;
-	while( !setHeure(h) || !setMinutes(m) )
+	ist >> h >> c >> m;
+	while (ist.fail() || !setHeures(h) || c != ':' || !setMinutes(m) ||)
+    {
+        
+        ist.clear();
+        ist.ignore(256,'\n');
+        std::cout << "L'heure n'est pas au bon format (hh:mm)" << endl;
+        std::cout << "Reessayer: ";
+		ist >> h >> c >> m;
+    }
 }
 
 
