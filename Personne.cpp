@@ -141,7 +141,7 @@ void Personne::afficherPersonne() const
  */
 bool Personne::operator==(const Personne& pers) const
 {
-    if(this == &pers) return true; // que pour les listes chainee ou la aussi ?
+    if(this == &pers) return true;
     
     return (d_nom == pers.Nom() && d_prenom == pers.Prenom());
 }
