@@ -131,7 +131,7 @@ void Heure::lit(istream& ist)
 
 /**
 	Operateur <
-	@params h - une Heure
+	@param h - une Heure
     @return Vrai si l'heure courante est inferieure a l'heure passee en parametre, Faux sinon
 */
 bool Heure::operator<(const Heure& h) const
@@ -141,7 +141,7 @@ bool Heure::operator<(const Heure& h) const
 
 /**
 	Operateur >
-	@params h - une Heure
+	@param h - une Heure
     @return Vrai si l'heure courante est superieure a l'heure passee en parametre, Faux sinon
 */
 bool Heure::operator>(const Heure& h) const
@@ -152,7 +152,7 @@ bool Heure::operator>(const Heure& h) const
 
 /**
 	Operateur >=
-	@params h - une Heure
+	@param h - une Heure
     @return Vrai si l'heure courante est superieure ou egale a l'heure passee en parametre, Faux sinon
  */
 bool Heure::operator>=(const Heure& h) const
@@ -163,7 +163,7 @@ bool Heure::operator>=(const Heure& h) const
 
 /**
 	Operateur <=
-	@params h - une Heure
+	@param h - une Heure
     @return Vrai si l'heure courante est inferieure ou egale a l'heure passee en parametre, Faux sinon
  */
 bool Heure::operator<=(const Heure& h) const
@@ -174,7 +174,7 @@ bool Heure::operator<=(const Heure& h) const
 
 /**
 	Operateur ==
-	@params h - une Heure
+	@param h - une Heure
     @return Vrai si l'heure courante est egale a l'heure passee en parametre, Faux sinon
  */
 bool Heure::operator==(const Heure& h) const
@@ -184,7 +184,7 @@ bool Heure::operator==(const Heure& h) const
 
 /**
 	Operateur !=
-	@params h - une Heure
+	@param h - une Heure
     @return Vrai si l'heure courante est differente a l'heure passee en parametre, Faux sinon
  */
 bool Heure::operator!=(const Heure& h) const
@@ -194,8 +194,8 @@ bool Heure::operator!=(const Heure& h) const
 
 /**
 	Surcharge de l'operateur <<
-	@params os - un flot de sortie
-	@params h - une Heure
+	@param os - un flot de sortie
+	@param h - une Heure
  */
 ostream& operator<<(ostream& os, const Heure& h)
 {
@@ -205,8 +205,8 @@ ostream& operator<<(ostream& os, const Heure& h)
 
 /**
 	Surcharge de l'operateur >>
-	@params ist - un flot d'entree
-	@params h - une Heure
+	@param ist - un flot d'entree
+	@param h - une Heure
 */
 istream& operator>>(istream& ist, Heure& h)
 {

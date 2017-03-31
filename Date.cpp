@@ -178,7 +178,7 @@ bool Date::valide() const {
 
 /**
 	Operateur !=
-	@params d - une Date
+	@param d - une Date
     @return Vrai si la date courante est differente a celle passee en parametre, Faux sinon
 */
 bool Date::operator!=(const Date& d) const
@@ -188,7 +188,7 @@ bool Date::operator!=(const Date& d) const
 
 /**
 	Operateur ==
-	@params d - une Date
+	@param d - une Date
     @return Vrai si la date courante est egale a celle passee en parametre, Faux sinon
 */
 bool Date::operator==(const Date& d) const
@@ -198,7 +198,7 @@ bool Date::operator==(const Date& d) const
 
 /**
 	Operateur <
-	@params d - une Date
+	@param d - une Date
     @return Vrai si la date courante est inferieure a celle passee en parametre, Faux sinon
 */
 bool Date::operator<(const Date& d) const
@@ -209,7 +209,7 @@ bool Date::operator<(const Date& d) const
 
 /**
 	Operateur >
-	@params d - une Date
+	@param d - une Date
     @return Vrai si la date courante est superieure a celle passee en parametre, Faux sinon
  */
 bool Date::operator>(const Date& d) const
